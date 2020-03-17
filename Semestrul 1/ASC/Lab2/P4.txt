@@ -1,0 +1,89 @@
+# Se citeste un vector sa se afiseze maximul si pozitiile pe care apare
+
+.data
+v:.space 28
+sp:.asciiz " "
+pp:.asciiz "Maximul este: "
+pp2:.asciiz "\nPe pozitiile: "
+
+.text
+main:
+
+# Citire n
+li $v0, 5
+syscall
+move $t0, $v0
+
+li $t1, 0  # i
+li $t2, 0  # i 
+
+# Citire n elemente
+loop:
+beq $t1, $t0, bt
+li $v0, 5
+syscall
+sw $v0, v($t2)
+add $t1, 1
+add $t2, 4
+j loop
+
+bt:
+li $t1, 0  # i
+li $t2, 0  # i
+
+li $t5, 0  # max el
+
+# Cautare maxime
+loop2:
+beq $t1, $t0, bt2
+lw $t6, v($t2)
+bgt $t6, $t5, greater
+add $t1, 1
+add $t2, 4
+j loop2
+
+greater:
+move $t5, $t6
+j loop2
+
+bt2:
+li $t1, 0  # i
+li $t2, 0  # i
+
+li $v0, 4
+la $a0, pp
+syscall
+
+li $v0, 1
+move $a0, $t5  # Show maximum
+syscall
+
+li $v0, 4
+la $a0, pp2
+syscall
+
+walk:
+beq $t1, $t0, exit
+lw $t6, v($t2)
+beq $t6, $t5, showi
+add $t1, 1
+add $t2, 4
+j walk
+
+showi:
+
+li $v0, 1
+move $a0, $t1
+syscall
+
+li $v0, 4
+la $a0, sp
+syscall
+
+add $t1, 1
+add $t2, 4
+j walk
+
+exit:
+li $v0, 10
+syscall

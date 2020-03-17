@@ -1,0 +1,44 @@
+
+.data
+str:.asciiz "abczzzx"
+zz:.byte 'z'
+aa:.byte 'a'
+.text
+main:
+# 4. Se da un sir de caractere, sa se mofidice sirul adaugand +1 pe codul ascii al fiecarui caracter + ciclu ( din z in a )
+
+li $t0, 0
+lb $t1, str($t0)
+
+loop:
+beqz $t1, exit
+
+lb $t3, zz
+beq $t1, $t3, toa
+
+addi $t1, $t1, 1
+
+li $v0, 11
+move $a0, $t1
+syscall
+
+addi $t0, $t0, 1
+lb $t1, str($t0)
+j loop
+
+toa:
+lb $t4, aa
+move $t1, $t4
+
+li $v0, 11
+move $a0, $t1
+syscall
+
+addi $t0, $t0, 1
+lb $t1, str($t0)
+j loop
+
+exit:
+li $v0, 10
+syscall
+

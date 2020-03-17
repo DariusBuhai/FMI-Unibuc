@@ -1,0 +1,83 @@
+# 6. Dat un vector in memorie, sa se implementeze procedura modifica(*v, n) care adauga fiecarui element valoarea 1. (de exemplu, vectorul [1, 2, 3] devine [2, 3, 4]).
+.data
+v:.word 1, 2, 3
+n:.word 3
+sp:.asciiz " "
+.text
+# modifica(v, n)
+modifica:
+   subu $sp, 4         # ()(v)(n)
+   sw $fp, 0($sp)      # ($fp)(v)(n)
+   addi $fp, $sp, 4    # ($fp)$fp:(v)(n)
+   subu $sp, 4         # ()($fp)$fp:(v)(n)
+   sw $ra, 0($sp)      # ($ra)($fp)$fp:(v)(n)
+   subu $sp, 4         # ()($ra)($fp)$fp:(v)(n)
+   sw $s0, 0($sp)      # ($s0)($ra)($fp)$fp:(v)(n)
+
+   lw $s0, 0($fp)
+   lw $t0, 4($fp)
+
+   while_add:
+      beqz $t0, end_while_add
+
+      lw $t1, 0($s0)
+      addi $t1, 1
+      sw $t1, 0($s0)
+
+      addi $s0, 4
+      subu $t0, 1
+   j while_add
+   end_while_add:
+
+   lw $s0, -12($fp)
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+
+   addi $sp, 12
+jr $ra
+
+
+main:
+
+   #################################################
+   #					           #
+   # Created by Darius Buhai @ all rights reserved #
+   #					           #
+   #################################################
+
+
+   la $t0, v
+   lw $t1, n
+
+   subu $sp, 4
+   sw $t1, 0($sp)
+   subu $sp, 4
+   sw $t0, 0($sp)
+
+   jal modifica
+
+   addi $sp, 8
+
+   lw $t0, n
+   la $t1, v
+
+   while_show:
+     beqz $t0, end_while_show
+
+     lw $a0, 0($t1)
+     li $v0, 1
+     syscall
+
+     la $a0, sp
+     li $v0, 4
+     syscall
+
+     subu $t0, 1
+     addi $t1, 4
+   j while_show
+   end_while_show:
+
+   li $v0, 10
+   syscall
+
+

@@ -1,0 +1,76 @@
+# 5. Sa se implementeze un program MIPS care sa simuleze apelul f(g(x)) pentru un x numar intreg dat. f(x) = 2*x iar g(x) = x + 1. Se va implementa functia g(x), apoi se va implementa functia f, care va apela intern functia g. 
+
+.text
+# g(x) -> $v0
+g:
+   subu $sp, 4         # ()(x)
+   sw $fp, 0($sp)      # ($fp)(x)
+   addi $fp, $sp, 4    # ($fp)$fp:(x)
+   subu $sp, 4         # ()($fp)$fp:(x)
+   sw $ra, 0($sp)      # ($ra)($fp)$fp:(x)
+   subu $sp, 4         # ()($ra)($fp)$fp:(x)
+   sw $s0, 0($sp)      # ($s0)($ra)($fp)$fp:(x)
+
+   lw $s0, 0($fp)
+   addi $v0, $s0, 1
+
+   lw $s0, -12($fp)
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   
+   addi $sp, 12
+jr $ra
+
+# f(g(x)) -> $v0
+f:
+   subu $sp, 4         # ()(x)
+   sw $fp, 0($sp)      # ($fp)(x)
+   addi $fp, $sp, 4    # ($fp)$fp:(x)
+   subu $sp, 4         # ()($fp)$fp:(x)
+   sw $ra, 0($sp)      # ($ra)($fp)$fp:(x)
+   subu $sp, 4         # ()($ra)($fp)$fp:(x)
+   sw $s0, 0($sp)      # ($s0)($ra)($fp)$fp:(x)
+
+   lw $s0, 0($fp)
+   
+   subu $sp, 4
+   sw $s0, 0($sp)
+   
+   jal g
+   
+   addi $sp, 4
+
+   li $s0, 2
+   mul $v0, $v0, $s0
+
+   lw $s0, -12($fp)
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   
+   addi $sp, 12
+jr $ra
+
+main:
+
+   #################################################
+   #					           #
+   # Created by Darius Buhai @ all rights reserved #
+   #					           #
+   #################################################
+ 
+   li $t0, 2           # x
+
+   subu $sp, 4
+   sw $t0, 0($sp)
+  
+   jal f
+   
+   addi $sp, 4
+   
+   move $a0, $v0
+   li $v0, 1
+   syscall
+   
+   li $v0, 10
+   syscall
+

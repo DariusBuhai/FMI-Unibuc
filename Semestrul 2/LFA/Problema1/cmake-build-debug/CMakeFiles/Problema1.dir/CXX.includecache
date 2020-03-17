@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/Programs/C++/LFA/Problema1/main.cpp
+iostream
+-
+cstdio
+-
+vector
+-
+unordered_set
+-
+set
+-
+

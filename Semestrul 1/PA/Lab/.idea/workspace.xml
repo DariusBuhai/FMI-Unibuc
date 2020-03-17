@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d2a332b8-f5a7-4206-92a2-b0d97ad73c3e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Lab" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Rv1sTt6YMOM0YTXgsQ7zZVvzOD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lab3-homework.py" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/maxsecv" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.lab5">
+    <configuration name="int" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Introduction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/Library/Frameworks/Python.framework/Versions/3.7/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/int" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/int/int.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab5" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Introduction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab5.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.int" />
+      <item itemvalue="Python.lab5" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d2a332b8-f5a7-4206-92a2-b0d97ad73c3e" name="Default Changelist" comment="" />
+      <created>1570532961167</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1570532961167</updated>
+      <workItem from="1570532962284" duration="1509000" />
+      <workItem from="1571742958643" duration="6009000" />
+      <workItem from="1571849433492" duration="2011000" />
+      <workItem from="1572439845411" duration="97000" />
+      <workItem from="1572958629133" duration="245000" />
+      <workItem from="1573632896355" duration="1088000" />
+      <workItem from="1573638549888" duration="714000" />
+      <workItem from="1574165143997" duration="30000" />
+      <workItem from="1574165202411" duration="28000" />
+      <workItem from="1574165242419" duration="4456000" />
+      <workItem from="1575375309746" duration="25000" />
+      <workItem from="1575375363037" duration="3394000" />
+      <workItem from="1576585492755" duration="4814000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576585510251">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1576585510251" />
+    <state width="1238" height="263" key="GridCell.Tab.0.bottom" timestamp="1576597163897">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1576590118787" />
+    <state width="1238" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1576597163897" />
+    <state width="1238" height="263" key="GridCell.Tab.0.center" timestamp="1576597163897">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1576590118786" />
+    <state width="1238" height="263" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1576597163897" />
+    <state width="1238" height="263" key="GridCell.Tab.0.left" timestamp="1576597163896">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1576590118786" />
+    <state width="1238" height="263" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1576597163896" />
+    <state width="1238" height="263" key="GridCell.Tab.0.right" timestamp="1576597163897">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1576590118787" />
+    <state width="1238" height="263" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1576597163897" />
+    <state width="1238" height="263" key="GridCell.Tab.1.bottom" timestamp="1576597163899">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1238" height="263" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1576588945753" />
+    <state width="1238" height="263" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1576597163899" />
+    <state width="1238" height="263" key="GridCell.Tab.1.center" timestamp="1576597163898">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1238" height="263" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1576588945753" />
+    <state width="1238" height="263" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1576597163898" />
+    <state width="1238" height="263" key="GridCell.Tab.1.left" timestamp="1576597163898">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1238" height="263" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1576588945752" />
+    <state width="1238" height="263" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1576597163898" />
+    <state width="1238" height="263" key="GridCell.Tab.1.right" timestamp="1576597163898">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1238" height="263" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1576588945753" />
+    <state width="1238" height="263" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1576597163898" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="n" language="Python" />
+        <watch expression="pos" language="Python" />
+        <watch expression="fpos" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Lab$lab3_homework.coverage" NAME="lab3-homework Coverage Results" MODIFIED="1573638660500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lab$lab5.coverage" NAME="lab5 Coverage Results" MODIFIED="1576590118777" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Introduction$first.coverage" NAME="first Coverage Results" MODIFIED="1570535032235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lab$lab2_homework.coverage" NAME="lab3-homework Coverage Results" MODIFIED="1573633977330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Introduction$second.coverage" NAME="second Coverage Results" MODIFIED="1571748087650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lab$lab4.coverage" NAME="int Coverage Results" MODIFIED="1575378615618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/int" />
+    <SUITE FILE_PATH="coverage/Lab$rainbow.coverage" NAME="lab4 Coverage Results" MODIFIED="1574170766967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

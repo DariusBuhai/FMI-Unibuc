@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/Programs/C++/Structuri de Date/sort/main.cpp
+iostream
+-
+fstream
+-
+vector
+-
+algorithm
+-
+chrono
+-
+ctime
+-
+

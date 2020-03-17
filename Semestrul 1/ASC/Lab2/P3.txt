@@ -1,0 +1,51 @@
+# Se citesc n si un vector de n numere intregi, sa se afiseze pe ecran el pare
+
+.data
+v:.space 28
+sp:.asciiz " "
+
+.text
+main:
+li $v0, 5
+syscall
+move $t0, $v0
+li $t1, 0
+li $t2, 0
+
+loop:
+beq $t1, $t0, bt
+li $v0, 5
+syscall
+sw $v0, v($t2)
+add $t1, 1
+add $t2, 4
+j loop
+
+bt:
+li $t1, 0
+li $t2, 0
+
+loop2:
+beq $t1, $t0, exit
+lw $t5, v($t2)
+rem $t4, $t5, 2
+beq $t4, $0, afispar
+add $t1, 1
+add $t2, 4
+j loop2
+
+afispar:
+li $v0, 1
+lw $t5, v($t2)
+move $a0, $t5
+syscall
+li $v0, 4
+la $a0, sp
+syscall
+add $t1, 1
+add $t2, 4
+j loop2
+
+exit:
+li $v0, 10
+syscall

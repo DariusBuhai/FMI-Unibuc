@@ -1,0 +1,186 @@
+.data
+v:.space 100
+sp:.asciiz " "
+.text
+# suma_cifrelor_para(x) -> $v0
+suma_cifrelor_para:
+   subu $sp, 4          # $sp:()(x)
+   sw $fp, 0($sp)       # $sp:($fp)(x)
+   addi $fp, $sp, 4     # $sp:($fp)$fp:(x)
+   subu $sp, 4          # $sp:()($fp)$fp:(x)
+   sw $ra, 0($sp)       # $sp:($ra)($fp)$fp:(x)
+ 
+   lw $t0, 0($fp)
+   li $t3, 0
+   li $t4, 10
+   li $t2, 0
+      
+   for_suma:
+      rem $t1, $t0, $t4 # $t1 = $t0%10
+      add $t2, $t2, $t1 # $t2 += $t1
+      div $t0, $t0, $t4 # $t0 /= 10
+   bgt $t0, $t3, for_suma
+
+
+
+   li $t3, 2
+   li $v0, 1
+   
+   rem $t0, $t2, $t3
+   sub $v0, $v0, $t0
+
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   addi $sp, 8
+
+jr $ra
+
+# evalueaza(v, n, x, y, z) -> $v0
+evalueaza:
+   subu $sp, 4          # $sp:()(v)(n)(x)(y)(z)
+   sw $fp, 0($sp)       # $sp:($fp)(v)(n)(x)(y)(z)
+   addi $fp, $sp, 4     # $sp:($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($fp)$fp:(v)(n)(x)(y)(z)
+   sw $ra, 0($sp)       # $sp:($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s0, 0($sp)       # $sp:($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s1, 0($sp)       # $sp:($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s2, 0($sp)       # $sp:($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s3, 0($sp)       # $sp:($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s4, 0($sp)       # $sp:($s4)($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s4)($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s5, 0($sp)       # $sp:($s5)($s4)($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s5)($s4)($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s6, 0($sp)       # $sp:($s6)($s5)($s4)($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s6)($s5)($s4)($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s7, 0($sp)       # $sp:($s7)($s6)($s5)($s4)($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+
+   lw $s0, 0($fp)       # $s0 = v
+   lw $s1, 4($fp)       # $s1 = n
+   lw $s2, 8($fp)       # $s2 = x
+   lw $s3, 12($fp)      # $s3 = y
+   lw $s4, 16($fp)      # $s4 = z
+   li $s5, 0            # $s5 = index
+   li $s6, 0            # $s6 = sum result
+
+   for_evalueaza:
+      beqz $s1, end_for_evalueaza
+      lw $s7, 0($s0)
+      
+      ###
+      subu $sp, 4
+      sw $s7, 0($sp)
+
+      jal suma_cifrelor_para
+
+      addi $sp, 4
+      ###
+	
+      # left side = $t3
+      move $t3, $v0
+      li $t4, 1
+      sub $t3, $t4, $t3
+
+      # right side = $t2
+      move $t4, $s3
+      move $t5, $s4
+      li $t6, 3
+      div $t5, $t5, $t6
+      sub $t4, $t4, $t5
+      add $t4, $t4, $s5
+      mul $t5, $t4, $t4
+      mul $t5, $t5, $t4
+      
+      rem $t2, $s7, $s2
+      add $t2, $t5, $t2
+
+      mul $t2, $t3, $t2
+      add $s6, $s6, $t2
+      
+      addi $s0, 4
+      addi $s5, 1
+      addi $s1, -1
+   j for_evalueaza
+   end_for_evalueaza:
+   
+   move $v0, $s6
+
+end_evalueaza:
+
+   lw $s7, -32($fp)
+   lw $s6, -28($fp)
+   lw $s5, -24($fp)
+   lw $s4, -28($fp)
+   lw $s3, -24($fp)
+   lw $s2, -20($fp)
+   lw $s1, -16($fp)
+   lw $s0, -12($fp)
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   addi $sp, 32
+
+jr $ra
+
+main:
+   li $v0, 5
+   syscall
+
+   move $t0, $v0 # $t0 = n
+   move $t1, $t0
+   li $t2, 0
+   
+   for_read:
+       beqz $t1, end_for_read
+
+       li $v0, 5
+       syscall
+       
+       sw $v0, v($t2)
+
+       addi $t1, -1
+       addi $t2, 4
+   j for_read
+   end_for_read:
+
+   li $v0, 5
+   syscall
+   
+   move $a0, $v0 # x
+  
+   li $v0, 5
+   syscall
+   
+   move $a1, $v0 # y
+
+   li $v0, 5
+   syscall
+   
+   move $a2, $v0 # z
+
+   subu $sp, 4
+   sw $a2, 0($sp)
+   subu $sp, 4
+   sw $a1, 0($sp)
+   subu $sp, 4
+   sw $a0, 0($sp)
+   subu $sp, 4
+   sw $t0, 0($sp)
+   subu $sp, 4
+   la $t1, v
+
+   sw $t1, 0($sp)
+
+   jal evalueaza
+
+   addi $sp, 20
+   # also rotate the result
+   move $a0, $v0
+   li $v0, 1
+   syscall
+
+   li $v0, 10
+   syscall
