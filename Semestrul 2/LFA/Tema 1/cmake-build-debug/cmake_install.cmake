@@ -1,4 +1,4 @@
-# Install script for directory: /Users/dariusbuhai/Desktop/Programs/C++/LFA/Problema1
+# Install script for directory: /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema 1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/dariusbuhai/Desktop/Programs/C++/LFA/Problema1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema 1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

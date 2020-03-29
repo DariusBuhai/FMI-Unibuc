@@ -24,40 +24,36 @@ LL get_max(vector<LL> a){
     return maxi;
 }
 
-int partition(vector<LL> &a, int l, int r){
-    LL pivot = a[r];
-    int i = l, aux;
-    for(int j=l;j<r;j++)
-        if(a[j]<pivot)
-            swap(a[j], a[i++]);
-    swap(a[r], a[i]);
-    return i;
+LL rand_between(LL a, LL b){
+    LL r = a + ( std::rand() % ( b - a) );
+    if(r<a || r>b) throw EXIT_FAILURE;
+    return r;
+}
+
+pair<int, int> partition(vector<LL> &a, int l, int r, int pivot){
+    LL val = a[pivot];
+    bool coronavirus_exists = true;
+    while(coronavirus_exists){
+        while(a[l++] < val);
+        while(a[r--] > val);
+        if(--l > ++r) break;
+        swap(a[l++], a[r--]);
+    };
+    return {l, r};
 }
 
 void quicksort(vector<LL> &a, int l, int r){
-    if(l>=r)
-        return;
-    int m = partition(a, l, r);
+    if(l>=r) return;
+    pair<int, int> m;
 
-    quicksort(a, l, m-1);
-    quicksort(a, m+1, r);
+    /// 3 types of pivots
+    //m = partition(a, l, r, l);
+    //m = partition(a, l, r, r);
+    m = partition(a, l, r, rand_between(l, r));
+
+    quicksort(a, l, m.second);
+    quicksort(a, m.first, r);
 }
-
-/*void merge(vector<LL> &a, int l, int m, int r){
-    int i = l, j = m+1;
-    vector<LL> b;
-    while(i<=m && j<=r)
-        if(a[i]<a[j])
-            b.push_back(a[i++]);
-        else
-            b.push_back(a[j++]);
-    for(;i<=m;i++)
-        b.push_back(a[i]);
-    for(;j<=r;j++)
-        b.push_back(a[j]);
-    for(int k=l, i2=0;k<=r;k++, i2++)
-        a[k] = b[i2];
-}*/
 
 void mergesort(vector<LL> &a, int l, int r){
     if(l>=r)
@@ -66,12 +62,9 @@ void mergesort(vector<LL> &a, int l, int r){
     mergesort(a, l, m);
     mergesort(a, m+1, r);
 
-    /// Aparent merge ul din stl e mult mai eficient decat al meu ( cu 77.5% )
     merge(a.begin() + l, a.begin() + m + 1, a.begin() + m + 1, a.begin() + r + 1, other.begin());
     for(int i=l;i<=r;++i)
         a[i] = other[i-l];
-    ///
-    // merge(a, l, m, r)
 }
 
 void countsort_by_exp(vector<LL> &a, LL exp){

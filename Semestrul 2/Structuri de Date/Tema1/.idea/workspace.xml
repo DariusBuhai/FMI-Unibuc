@@ -2,21 +2,46 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="sort" targetName="sort" />
+      <config projectName="Tema1" targetName="Tema1" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0cb87ea-0022-4680-9668-45ea28238259" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../POO/Lab5/.idea/Lab5.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab4/.idea/Lab3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab4/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/.idea/Lab5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/ex1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/ex2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/ex3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/ex4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tehnici Web/Lab5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/Problema1.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/Problema1" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/Problema1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/Problema1.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/Problema1.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../LFA/Tema 1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../LFA/Tema 1/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
@@ -34,6 +59,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/sort" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/sort" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/sort.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/sort.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text.in" beforeDir="false" afterPath="$PROJECT_DIR$/text.in" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Tehnici Web/Proiect" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tehnici Web/Proiect" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +72,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1YIbJhwvgcEx3itIvhq7xqciPpz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -61,14 +87,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
-    <configuration name="sort" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="sort" TARGET_NAME="sort" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="sort" RUN_TARGET_NAME="sort">
+  <component name="RunManager" selected="CMake Application.Tema1">
+    <configuration name="Tema1" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tema1" TARGET_NAME="Tema1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Tema1" RUN_TARGET_NAME="Tema1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="sort" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tema1" TARGET_NAME="sort" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Tema1" RUN_TARGET_NAME="sort">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.sort" />
+      <item itemvalue="CMake Application.Tema1" />
+    </list>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -98,6 +133,12 @@
       <workItem from="1583773731315" duration="79000" />
       <workItem from="1583840117936" duration="2493000" />
       <workItem from="1584954134201" duration="1655000" />
+      <workItem from="1585065322572" duration="26000" />
+      <workItem from="1585486369603" duration="18000" />
+      <workItem from="1585486405277" duration="105000" />
+      <workItem from="1585508195142" duration="310000" />
+      <workItem from="1585509755492" duration="232000" />
+      <workItem from="1585510102899" duration="1661000" />
     </task>
     <servers />
   </component>
@@ -105,49 +146,53 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582742749828">
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585510176860">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1582742749828" />
-    <state width="1238" height="134" key="GridCell.Tab.0.bottom" timestamp="1584955911825">
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1585510176860" />
+    <state width="1238" height="151" key="GridCell.Tab.0.bottom" timestamp="1585511801706">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="134" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1584955911825" />
+    <state width="1238" height="151" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1585511801706" />
     <state width="1878" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1583854887597" />
-    <state width="1238" height="134" key="GridCell.Tab.0.center" timestamp="1584955911820">
+    <state width="1238" height="151" key="GridCell.Tab.0.center" timestamp="1585511801705">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="134" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1584955911820" />
+    <state width="1238" height="151" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1585511801705" />
     <state width="1878" height="271" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1583854887596" />
-    <state width="1238" height="134" key="GridCell.Tab.0.left" timestamp="1584955911819">
+    <state width="1238" height="151" key="GridCell.Tab.0.left" timestamp="1585511801704">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="134" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1584955911819" />
+    <state width="1238" height="151" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1585511801704" />
     <state width="1878" height="271" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1583854887595" />
-    <state width="1238" height="134" key="GridCell.Tab.0.right" timestamp="1584955911824">
+    <state width="1238" height="151" key="GridCell.Tab.0.right" timestamp="1585511801705">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="134" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1584955911824" />
+    <state width="1238" height="151" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1585511801705" />
     <state width="1878" height="271" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1583854887596" />
-    <state width="1238" height="134" key="GridCell.Tab.1.bottom" timestamp="1584955911826">
+    <state width="1238" height="151" key="GridCell.Tab.1.bottom" timestamp="1585511801707">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="134" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1584955911826" />
+    <state width="1238" height="151" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1585511801707" />
     <state width="1238" height="263" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1582643146595" />
-    <state width="1238" height="134" key="GridCell.Tab.1.center" timestamp="1584955911826">
+    <state width="1238" height="151" key="GridCell.Tab.1.center" timestamp="1585511801707">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="134" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1584955911826" />
+    <state width="1238" height="151" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1585511801707" />
     <state width="1238" height="263" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1582643146594" />
-    <state width="1238" height="134" key="GridCell.Tab.1.left" timestamp="1584955911825">
+    <state width="1238" height="151" key="GridCell.Tab.1.left" timestamp="1585511801706">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="134" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1584955911825" />
+    <state width="1238" height="151" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1585511801706" />
     <state width="1238" height="263" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1582643146594" />
-    <state width="1238" height="134" key="GridCell.Tab.1.right" timestamp="1584955911826">
+    <state width="1238" height="151" key="GridCell.Tab.1.right" timestamp="1585511801707">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="134" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1584955911826" />
+    <state width="1238" height="151" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1585511801707" />
     <state width="1238" height="263" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1582643146595" />
+    <state x="141" y="39" key="SettingsEditor" timestamp="1585510133919">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="141" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1585510133919" />
   </component>
 </project>

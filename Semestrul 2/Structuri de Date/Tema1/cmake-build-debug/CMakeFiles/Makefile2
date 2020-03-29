@@ -44,21 +44,21 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/sort"
+CMAKE_SOURCE_DIR = "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema1"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/sort/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema1/cmake-build-debug"
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/sort.dir/all
+all: CMakeFiles/Tema1.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/sort.dir/clean
+clean: CMakeFiles/Tema1.dir/clean
 
 .PHONY : clean
 
@@ -68,31 +68,31 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/sort.dir
+# Target rules for target CMakeFiles/Tema1.dir
 
 # All Build rule for target.
-CMakeFiles/sort.dir/all:
-	$(MAKE) -f CMakeFiles/sort.dir/build.make CMakeFiles/sort.dir/depend
-	$(MAKE) -f CMakeFiles/sort.dir/build.make CMakeFiles/sort.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/sort/cmake-build-debug/CMakeFiles" --progress-num=1,2 "Built target sort"
-.PHONY : CMakeFiles/sort.dir/all
+CMakeFiles/Tema1.dir/all:
+	$(MAKE) -f CMakeFiles/Tema1.dir/build.make CMakeFiles/Tema1.dir/depend
+	$(MAKE) -f CMakeFiles/Tema1.dir/build.make CMakeFiles/Tema1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema1/cmake-build-debug/CMakeFiles" --progress-num=1,2 "Built target Tema1"
+.PHONY : CMakeFiles/Tema1.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/sort.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/sort/cmake-build-debug/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sort.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/sort/cmake-build-debug/CMakeFiles" 0
-.PHONY : CMakeFiles/sort.dir/rule
+CMakeFiles/Tema1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema1/cmake-build-debug/CMakeFiles" 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Tema1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema1/cmake-build-debug/CMakeFiles" 0
+.PHONY : CMakeFiles/Tema1.dir/rule
 
 # Convenience name for target.
-sort: CMakeFiles/sort.dir/rule
+Tema1: CMakeFiles/Tema1.dir/rule
 
-.PHONY : sort
+.PHONY : Tema1
 
 # clean rule for target.
-CMakeFiles/sort.dir/clean:
-	$(MAKE) -f CMakeFiles/sort.dir/build.make CMakeFiles/sort.dir/clean
-.PHONY : CMakeFiles/sort.dir/clean
+CMakeFiles/Tema1.dir/clean:
+	$(MAKE) -f CMakeFiles/Tema1.dir/build.make CMakeFiles/Tema1.dir/clean
+.PHONY : CMakeFiles/Tema1.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

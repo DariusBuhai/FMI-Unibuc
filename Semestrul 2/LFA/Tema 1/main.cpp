@@ -4,12 +4,18 @@
 #include <unordered_set>
 #include <set>
 
+#define MAXN 1201
+
+bool viz[MAXN][MAXN];
+
 using namespace std;
 
 struct node{
     vector<pair<node *, char>> next;
     bool final_state;
-    node(int is_final_state){
+    int id;
+    node(int id, int is_final_state){
+        this->id = id;
         this->final_state = is_final_state;
     }
 };
@@ -27,22 +33,23 @@ bool check_dfa(string input, node *cg = g[0]){
 }
 
 bool check_nfa(string input){
-    unordered_set<node*> states, new_states;
-    states.insert(g[0]);
+    int k = 0;
+    vector<node*> states, new_states;
+    states.push_back(g[1]);
     bool end_state;
     for(char l : input){
+        k++;
         end_state = false;
         new_states.clear();
-        for(auto state : states){
+        for(auto state : states)
             for(auto next_state: state->next){
-                if(next_state.second==l){
-                    new_states.insert(next_state.first);
+                if(next_state.second==l && !viz[next_state.first->id][k]){
+                    viz[next_state.first->id][k] = 1;
+                    new_states.push_back(next_state.first);
                     if(next_state.first->final_state)
                         end_state = true;
                 }
             }
-
-        }
         states = new_states;
     }
     return end_state;
@@ -52,7 +59,7 @@ void read_data(){
     g.clear();
     cin>>s>>fs;
     for(int i=0;i<s;i++)
-        g.push_back(new node(false));
+        g.push_back(new node(i, false));
     for(int i=0;i<fs;i++){
         int x;
         cin>>x;
