@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/main.cpp
+iostream
+-
+vector
+-
+set
+-
+cstdio
+-
+nfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.cpp
+nfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
+iostream
+-
+vector
+-
+queue
+-
+map
+-
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
+vector
+-
+iostream
+-
+nfa.cpp
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.cpp
+

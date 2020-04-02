@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/btree.h
+vector
+-
+string
+-
+btree.tpp
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/btree.tpp
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/btree.tpp
+vector
+-
+iostream
+-
+btree.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/btree.h
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/main.cpp
+iostream
+-
+vector
+-
+random
+-
+btree.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/btree.h
+

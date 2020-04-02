@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Problema1" targetName="Problema1" />
+      <config projectName="Tema1" targetName="Tema1" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -12,42 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08f737fd-6370-4bad-a821-1229f933dcc0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../BD/Teme/Tema lab 1.pages" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Problema1.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Problema1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Problema1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Problema1.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Problema1.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/CXX.includecache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/depend.internal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/CMakeFiles/sort.dir/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/sort.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Structuri de Date/Tema1/cmake-build-debug/sort.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Tehnici Web/Proiect" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tehnici Web/Proiect" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,12 +50,21 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager">
-    <configuration name="Problema1" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Problema1" TARGET_NAME="Problema1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Problema1" RUN_TARGET_NAME="Problema1">
+  <component name="RunManager" selected="CMake Application.Tema1">
+    <configuration name="Problema1" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tema1" TARGET_NAME="Problema1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Tema1" RUN_TARGET_NAME="Problema1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tema1" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tema1" TARGET_NAME="Tema1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Tema1" RUN_TARGET_NAME="Tema1">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Problema1" />
+      <item itemvalue="CMake Application.Tema1" />
+    </list>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -114,6 +98,7 @@
       <workItem from="1585064662558" duration="295000" />
       <workItem from="1585065322580" duration="1136000" />
       <workItem from="1585067426905" duration="719000" />
+      <workItem from="1585653916720" duration="111000" />
     </task>
     <servers />
   </component>
@@ -121,10 +106,11 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582813302007">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="156" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585653944227">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1582813302007" />
+    <state x="156" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585653944227" />
     <state width="1238" height="69" key="GridCell.Tab.0.bottom" timestamp="1585068738133">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

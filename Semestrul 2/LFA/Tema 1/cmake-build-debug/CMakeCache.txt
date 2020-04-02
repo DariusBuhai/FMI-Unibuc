@@ -151,7 +151,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Problema1
+CMAKE_PROJECT_NAME:STATIC=Tema1
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib
@@ -220,6 +220,12 @@ Problema1_SOURCE_DIR:STATIC=/Users/dariusbuhai/Desktop/Proiecte Facultate/Semest
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
+
+//Value Computed by CMake
+Tema1_BINARY_DIR:STATIC=/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema 1/cmake-build-debug
+
+//Value Computed by CMake
+Tema1_SOURCE_DIR:STATIC=/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema 1
 
 
 ########################
