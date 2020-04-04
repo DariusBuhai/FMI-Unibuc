@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+nfa.o: nfa.cpp.o
+
+.PHONY : nfa.o
+
+# target to build an object file
+nfa.cpp.o:
+	$(MAKE) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/nfa.cpp.o
+.PHONY : nfa.cpp.o
+
+nfa.i: nfa.cpp.i
+
+.PHONY : nfa.i
+
+# target to preprocess a source file
+nfa.cpp.i:
+	$(MAKE) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/nfa.cpp.i
+.PHONY : nfa.cpp.i
+
+nfa.s: nfa.cpp.s
+
+.PHONY : nfa.s
+
+# target to generate assembly for a file
+nfa.cpp.s:
+	$(MAKE) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/nfa.cpp.s
+.PHONY : nfa.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... nfa.o"
+	@echo "... nfa.i"
+	@echo "... nfa.s"
 .PHONY : help
 
 

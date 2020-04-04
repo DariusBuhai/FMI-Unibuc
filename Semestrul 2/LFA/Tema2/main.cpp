@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    NFA<> nfa;
+    NFA nfa;
 
     freopen("nfa.in", "r", stdin);
 
@@ -14,6 +14,7 @@ int main() {
 
     nfa.remove_lambdas();
     nfa.convert_to_dfa();
+    nfa.remove_inaccessible();
     nfa.minimize();
 
     return 0;
