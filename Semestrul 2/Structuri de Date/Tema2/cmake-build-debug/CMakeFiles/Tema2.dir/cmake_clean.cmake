@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Tema2.dir/btree.cpp.o"
   "CMakeFiles/Tema2.dir/main.cpp.o"
   "Tema2"
   "Tema2.pdb"

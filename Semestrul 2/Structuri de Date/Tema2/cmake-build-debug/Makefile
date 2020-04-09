@@ -123,6 +123,33 @@ Tema2/fast:
 	$(MAKE) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/build
 .PHONY : Tema2/fast
 
+btree.o: btree.cpp.o
+
+.PHONY : btree.o
+
+# target to build an object file
+btree.cpp.o:
+	$(MAKE) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/btree.cpp.o
+.PHONY : btree.cpp.o
+
+btree.i: btree.cpp.i
+
+.PHONY : btree.i
+
+# target to preprocess a source file
+btree.cpp.i:
+	$(MAKE) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/btree.cpp.i
+.PHONY : btree.cpp.i
+
+btree.s: btree.cpp.s
+
+.PHONY : btree.s
+
+# target to generate assembly for a file
+btree.cpp.s:
+	$(MAKE) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/btree.cpp.s
+.PHONY : btree.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Tema2"
+	@echo "... btree.o"
+	@echo "... btree.i"
+	@echo "... btree.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

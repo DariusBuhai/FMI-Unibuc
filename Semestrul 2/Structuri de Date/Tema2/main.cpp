@@ -6,18 +6,35 @@
 
 using namespace std;
 
-/// Clasele se bazeaza pe template-uri ( typename default = int )
-/// In g++ 14 codul functioneaza, in schimb
-/// linkarea pentru alte compilatoare s-ar putea sa nu fie buna
-
 int main() {
-    BTree<> t;
-    t.insert({10,20,5,6,12,30,7,6,78,2000, 7, 12, 90, 11, 23, 11, 214, 121, 11, 8781, 121});
+    BTree t(3);
+    t.insert({1,3,7,10,11,13,14,15,18,16,19,24,25,26,21,4,5,20,22,2,17,12,6});
 
-    for(int i=0;i<45;i++)
-        t.insert(rand() % 100);
+    t.print();
 
-    t.print(", ");
+    t.remove(6);
+    cout << "Traversal of tree after removing 6\n";
+    t.print();
+
+    t.remove(13);
+    cout << "Traversal of tree after removing 13\n";
+    t.print();
+
+    t.remove(7);
+    cout << "Traversal of tree after removing 7\n";
+    t.print();
+
+    t.remove(4);
+    cout << "Traversal of tree after removing 4\n";
+    t.print();
+
+    t.remove(2);
+    cout << "Traversal of tree after removing 2\n";
+    t.print();
+
+    t.remove(16);
+    cout << "Traversal of tree after removing 16\n";
+    t.print();
 
     return 0;
 }

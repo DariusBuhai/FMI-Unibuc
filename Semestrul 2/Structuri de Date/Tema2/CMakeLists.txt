@@ -3,4 +3,4 @@ project(Tema2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Tema2 main.cpp btree.h btree.tpp)
+add_executable(Tema2 main.cpp btree.h btree.cpp)

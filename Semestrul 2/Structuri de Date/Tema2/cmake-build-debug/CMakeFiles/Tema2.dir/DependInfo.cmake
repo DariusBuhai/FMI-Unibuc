@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/btree.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/btree.cpp.o"
   "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/main.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

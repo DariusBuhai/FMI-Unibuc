@@ -23,7 +23,7 @@ private:
     std::vector<Node *> g;
 
     void remove_lambda(Node*, Node*, int);
-
+    std::vector<Node*> get_states(bool, bool);
 public:
     void read_data(std::istream&);
 

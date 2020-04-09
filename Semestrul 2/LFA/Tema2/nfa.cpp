@@ -16,6 +16,14 @@ using namespace std;
 
 Node::Node(int id, bool is_final_state, bool is_start_state): id(id), final_state(is_final_state), start_state(is_start_state){}
 
+vector<Node*> NFA::get_states(bool final_state, bool start_state){
+    vector<Node*> states;
+    for(auto s:g)
+        if(s->start_state==start_state && s->final_state==final_state)
+            states.push_back(s);
+    return states;
+}
+
 void NFA::read_data(std::istream &in){
     int s, fs, m, ss;
     g.clear();
@@ -37,10 +45,14 @@ void NFA::read_data(std::istream &in){
 }
 
 void NFA::remove_lambda(Node *v1, Node *v2, int id){
-    /// step 1 - remove lambda
-    /// step 2 - duplicate moves that starts from v2
-    /// step 3 - duplicate initial states
-    /// step 4 - duplicate final states
+
+    /**
+     * step 1 - remove lambda
+     * step 2 - duplicate moves that starts from v2
+     * step 3 - duplicate initial states
+     * step 4 - duplicate final states
+     */
+
     for(int j=id;j<v1->next.size()-1;j++)
         v1->next[j] = v1->next[j+1];
     v1->next.pop_back();
@@ -70,6 +82,7 @@ void NFA::convert_to_dfa(){
     queue<set<int>> to_add;
     map<char, set<int>> to;
 
+    /** First, add only the start states */
     for(Node* x: this->g)
         if(x->start_state){
             to.clear();
@@ -82,6 +95,7 @@ void NFA::convert_to_dfa(){
             break;
         }
 
+    /** While there is a chage in the states, group them */
     while(!to_add.empty()){
         set<int> current = to_add.front();
         to_add.pop();
@@ -98,6 +112,8 @@ void NFA::convert_to_dfa(){
 
         }
     }
+
+    /** Merge all states and add them in the final graph */
     map<set<int>, Node*> new_nodes;
     bool final_state, start_state;
     int id = 0;
@@ -124,6 +140,8 @@ void NFA::remove_inaccessible(){
     vector<Node*> states, new_states;
     set<int> coaccesible, accessible;
 
+    /** Find all accessible states -- should include only the accesible from the start node */
+    states = get_states(false, true);
     for(auto s: g) {
         for (auto n: s->next)
             accessible.insert(n.first->id);
@@ -131,9 +149,8 @@ void NFA::remove_inaccessible(){
             accessible.insert(s->id);
     }
 
-    for(auto s: g)
-        if(s->final_state)
-            states.push_back(s);
+    /** Find all coaccesible states */
+    states = get_states(true, false);
     while(!states.empty()){
         new_states.clear();
         for(auto state: states){
@@ -149,7 +166,7 @@ void NFA::remove_inaccessible(){
         states = new_states;
     }
 
-    /** Keep only the accessible, delete the rest -- should delete the connections also!! */
+    /** Keep only the accessible and coaccesible states, delete the rest */
     vector<Node*> new_g;
     for(int i=0;i<g.size();i++)
         if(coaccesible.find(g[i]->id)!=coaccesible.end() && accessible.find(g[i]->id)!=accessible.end()){
@@ -167,7 +184,7 @@ void NFA::remove_inaccessible(){
 
 void NFA::minimize(){
 
-    /// Minimization algorithm
+    /** Minimization algorithm */
     vector<vector<Node*>> partitions;
     partitions.resize(2);
     for(auto x: this->g)
@@ -229,9 +246,8 @@ void NFA::minimize(){
                         }
                     }
                     /** Check if node1 and node2 are distinguishable */
-
                     if(!distinguishable){
-                        cout<<node1->id<<" "<<node2->id<<'\n';
+                        //cout<<node1->id<<" "<<node2->id<<'\n';
                         bool added = false;
                         for(int k=0;k<new_partitions.size();k++)
                             if(find(new_partitions[k].begin(), new_partitions[k].end(), node1)!=new_partitions[k].end()){
@@ -297,6 +313,7 @@ void NFA::minimize(){
         Node* node = new Node(id++, final_state, start_state);
         new_states.push_back(node);
     }
+    /** Add state in the final graph */
     id = 0;
     g.clear();
     for(auto new_state: new_states){
