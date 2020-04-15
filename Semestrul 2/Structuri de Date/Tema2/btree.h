@@ -27,15 +27,20 @@ private:
 protected:
     std::vector<int> keys;
     std::vector<Node*> childs;
+
     const int t;
     int n;
     bool isLeaf;
 public:
 
-    Node(int = 3, bool = true);
+    explicit Node(int = 3, bool = true);
 
     void traverse(std::vector<int>&);
-    Node *search(int);
+    void traverse(std::vector<int>&, int, int);
+    int search(int);
+    int search_lower(int, int = 0);
+    int search_upper(int, int = 0);
+    bool contains(int);
 
     bool isFull();
 
@@ -51,10 +56,14 @@ class BTree{
 public:
     BTree(int = 3);
 
-    Node* search(int);
+    int search(int, bool);
+    int search(int);
+    bool contains(int);
     std::vector<int> traverse();
-    void print(std::string = " ");
-    
+    std::vector<int> traverse(int, int);
+    void print(std::ostream&, const std::string& = " ");
+    void print(std::ostream&, int, int, const std::string& = " ");
+
     void insert(int);
     void insert(std::vector<int>);
     void remove(int);

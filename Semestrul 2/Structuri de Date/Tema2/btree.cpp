@@ -31,7 +31,7 @@ void Node::removeChild(int x){
             fill(idx);
 
         if (flag && idx > n)
-            idx++;
+            idx--;
         childs[idx]->removeChild(x);
     }
 }
@@ -92,7 +92,6 @@ void Node::fill(int idx){
         else
             merge(idx-1);
     }
-
 }
 
 void Node::borrowFromPrev(int idx){
@@ -113,8 +112,8 @@ void Node::borrowFromPrev(int idx){
 
     keys[idx-1] = sibling->keys[sibling->n-1];
 
-    child->n += 1;
-    sibling->n -= 1;
+    child->n++;
+    sibling->n--;
 }
 
 void Node::borrowFromNext(int idx){
@@ -135,8 +134,8 @@ void Node::borrowFromNext(int idx){
         for(int i=1; i<=sibling->n; ++i)
             sibling->childs[i-1] = sibling->childs[i];
 
-    child->n += 1;
-    sibling->n -= 1;
+    child->n++;
+    sibling->n--;
 }
 
 void Node::merge(int idx){
@@ -202,7 +201,7 @@ void Node::appendChild(int x){
             i--;
         }
         keys[i+1] = x;
-        n = n+1;
+        n++;
         return;
     }
     while (i >= 0 && keys[i] > x)
@@ -222,7 +221,7 @@ void Node::splitChild(int i, Node *y){
     for (int j = 0; j < t-1; j++)
         z->keys[j] = y->keys[j+t];
 
-    if (y->isLeaf == false)
+    if (!y->isLeaf)
         for (int j = 0; j < t; j++)
             z->childs[j] = y->childs[j+t];
 
@@ -250,25 +249,44 @@ void Node::traverse(vector<int> &values){
     if (!isLeaf) childs[i]->traverse(values);
 }
 
-Node *Node::search(int x){
+void Node::traverse(vector<int> &values, int x, int y){
+    int i;
+    for (i = 0; i < n; i++){
+        if (!isLeaf)
+            childs[i]->traverse(values, x, y);
+        if(keys[i]>=x && keys[i]<=y)
+            values.push_back(keys[i]);
+    }
+    if (!isLeaf) childs[i]->traverse(values, x, y);
+}
+
+int Node::search(int x){
     int i = 0;
     while (i < n && x > keys[i])
         i++;
-
     if (keys[i] == x)
-        return this;
-
-    if (isLeaf == true)
-        return NULL;
-
+        return keys[i];
+    if (isLeaf)
+        return 0;
     return childs[i]->search(x);
 }
 
 BTree::BTree(int t): root(nullptr), t(t){}
 
-Node* BTree::search(int x){
-    if(root== nullptr) return nullptr;
+int BTree::search(int x){
+    if(root== nullptr) return 0;
     return root->search(x);
+}
+
+bool BTree::contains(int x){
+    if(root == nullptr) return false;
+    return root->contains(x);
+}
+
+int BTree::search(int x, bool lower){
+    if(root == nullptr) return 0;
+    if(lower) return root->search_lower(x);
+    return root->search_upper(x);
 }
 
 void BTree::remove(int x){
@@ -291,13 +309,71 @@ vector<int> BTree::traverse() {
     return values;
 }
 
-void BTree::print(string sep) {
+vector<int> BTree::traverse(int x, int y) {
+    vector<int> values;
+    if(root!= nullptr)
+        root->traverse(values, x, y);
+    return values;
+}
+
+void BTree::print(std::ostream& out, const string& sep) {
     vector<int> values = traverse();
     bool alpha = false;
     for(auto x: values){
-        if(alpha) cout<<sep;
+        if(alpha) out<<sep;
         alpha = true;
-        cout<<x;
+        out<<x;
     }
-    cout<<'\n';
+    out<<'\n';
 }
+
+void BTree::print(std::ostream& out, int x, int y, const string& sep) {
+    vector<int> values = traverse(x, y);
+    bool alpha = false;
+    for(auto x: values){
+        if(alpha) out<<sep;
+        alpha = true;
+        out<<x;
+    }
+    out<<'\n';
+}
+
+bool Node::contains(int x) {
+    int i=0;
+    while(i<n && x>keys[i])
+        ++i;
+    if(i<n && keys[i]==x)
+        return true;
+    if(isLeaf)
+        return false;
+    return childs[i]->contains(x);
+}
+
+int Node::search_upper(int x, int last){
+    int i = 0;
+    while (i < n && x > keys[i])
+        i++;
+    if (i<n) {
+        if (keys[i] == x) return keys[i];
+        last = keys[i];
+    }
+    if (isLeaf)
+        return last;
+
+    return childs[i]->search_upper(x, last);
+}
+
+int Node::search_lower(int x, int last){
+    int i = 0;
+    while (i < n && x > keys[i])
+        i++;
+    if(i<n){
+        if (keys[i] == x) return keys[i];
+    }
+    if(i>0) last = keys[i-1];
+    if (isLeaf)
+        return last;
+
+    return childs[i]->search_lower(x, last);
+}
+
