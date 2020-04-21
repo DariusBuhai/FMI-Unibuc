@@ -93,8 +93,8 @@ class Products {
             if(fields.hasOwnProperty("category")) products[id].category = fields.category;
             if(files.hasOwnProperty("image") && files.image!=null) products[id].image = files.image.name;
 
-            if(!categories.prototype.get(new_product.category)){
-                categories.prototype.post(new_product.category);
+            if(!categories.prototype.get().includes(products[id].category)){
+                categories.prototype.post(products[id].category);
             }
 
             fs.writeFileSync("data/products.json", JSON.stringify(products));

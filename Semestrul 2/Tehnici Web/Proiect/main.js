@@ -19,6 +19,7 @@ const _images_dir = __dirname+"/data/images";
 /** Link static files */
 /* Template */
 link_directory(_template_dir+"/scripts");
+link_directory(_template_dir+"/images", true);
 link_directory(_template_dir+"/fontawesome", true, "/fontawesome/");
 link_file(_template_dir+"/style.css");
 
