@@ -24,4 +24,5 @@
   - [ ] Tema 3
 - [ ] TW (Tehnici Web)
   - Laboratoare
-  - Proiect Final: ***https://github.com/DariusBuhai/Waitee***
+  - Proiect Final: ***https://github.com/DariusBuhai/Waitee**
+- [ ] Engleza
