@@ -1,12 +1,12 @@
 # Proiecte-Facultate
 ## Proiecte facultate anul I - Unibuc
 
-***Semestrul I:***
+**Semestrul I:**
 - [x] ASC (Arhitectura Sistemelor de Calcul )
 - [x] PA (Programarea Algoritmilor )
 - [x] GandireCritica
 
-***Semestrul II:***
+**Semestrul II:**
 - [ ] LFA (Limbaje Formale si Automate)
   - [x] Tema 1
   - [ ] Tema 2
