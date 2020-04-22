@@ -61,4 +61,105 @@ select job_title
 from (select job_title from jobs j join tab_medie using(job_id) order by medie asc) 
 where rownum <=3;
 
+--- Lab 7
+--1
+-- met 1
+SELECT DISTINCT employee_id, last_name
+FROM employees a
+WHERE NOT EXISTS
+    (SELECT 1
+     FROM project p
+     WHERE to_char(start_date, 'yyyy')=2006 and to_char(start_date, 'mm') <=6
+     AND NOT EXISTS
+        (SELECT 'x'
+        FROM works_on b
+        WHERE p.project_id=b.project_id
+        AND b.employee_id=a.employee_id));
+
+
+--met 2
+SELECT employee_id
+FROM works_on
+WHERE project_id IN
+    (SELECT project_id
+    FROM project
+    WHERE to_char(start_date, 'yyyy')=2006 and to_char(start_date, 'mm') <=6)
+GROUP BY employee_id
+HAVING COUNT(project_id)=
+    (SELECT COUNT(*)
+    FROM project
+    WHERE to_char(start_date, 'yyyy')=2006 and to_char(start_date, 'mm') <=6);
+    
+-- met 3
+SELECT employee_id
+FROM works_on
+MINUS
+SELECT employee_id from
+ (SELECT employee_id, project_id
+  FROM (SELECT DISTINCT employee_id FROM works_on) t1,
+       (SELECT project_id FROM project WHERE to_char(start_date, 'yyyy')=2006 and to_char(start_date, 'mm') <=6) t2
+  MINUS
+  SELECT employee_id, project_id
+  FROM works_on
+ ) t3;
+ 
+ --met 4
+ SELECT DISTINCT employee_id
+FROM works_on a
+WHERE NOT EXISTS (
+    (SELECT project_id
+     FROM project p
+     WHERE to_char(start_date, 'yyyy')=2006 and to_char(start_date, 'mm') <=6)
+     MINUS
+    (SELECT p.project_id
+     FROM project p, works_on b
+     WHERE p.project_id=b.project_id
+     AND b.employee_id=a.employee_id));
+
+--2
+--met 4
+select *
+from project p
+where not exists(select employee_id
+from job_history
+having count(job_id) = 2
+group by employee_id
+minus
+select employee_id
+from works_on
+where project_id = p.project_id
+);
+
+
+ --met 1
+SELECT *
+FROM project p
+WHERE NOT EXISTS
+    (SELECT 1
+     FROM employees e
+     WHERE employee_id in (select employee_id
+                           from job_history
+                           having count(job_id) = 2
+                           group by employee_id
+                          )
+     AND NOT EXISTS
+        (SELECT 'x'
+        FROM works_on b
+        WHERE p.project_id=b.project_id
+        AND b.employee_id=e.employee_id));
+
+--met 2
+SELECT project_id, project_name
+FROM works_on join project using (project_id)
+WHERE employee_id IN
+    (select employee_id
+     from job_history
+     having count(job_id) = 2
+     group by employee_id)
+GROUP BY project_id, project_name
+HAVING COUNT(employee_id)=
+    (SELECT count(COUNT(*))
+     FROM job_history
+     having count(job_id) = 2
+     group by employee_id);
 
