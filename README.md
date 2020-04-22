@@ -4,7 +4,7 @@
 **Semestrul I:**
 - [x] ASC (Arhitectura Sistemelor de Calcul )
 - [x] PA (Programarea Algoritmilor )
-- [x] GandireCritica
+- [x] Gandire Critica
 
 **Semestrul II:**
 - [ ] LFA (Limbaje Formale si Automate)
