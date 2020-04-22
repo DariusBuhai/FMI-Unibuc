@@ -22,6 +22,6 @@
   - [x] Tema 1
   - [x] Tema 2
   - [ ] Tema 3
-- [ ] Tehnici Web
+- [ ] TW (Tehnici Web)
   - Laboratoare
   - Proiect Final: ***https://github.com/DariusBuhai/Waitee***
