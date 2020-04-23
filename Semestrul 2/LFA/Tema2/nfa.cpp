@@ -95,7 +95,7 @@ void NFA::convert_to_dfa(){
             break;
         }
 
-    /** While there is a chage in the states, group them */
+    /** While there is a change in the states, group them */
     while(!to_add.empty()){
         set<int> current = to_add.front();
         to_add.pop();
@@ -245,7 +245,7 @@ void NFA::minimize(){
                             break;
                         }
                     }
-                    /** Check if node1 and node2 are distinguishable */
+                    /** if node1 and node2 are distinguishable */
                     if(!distinguishable){
                         //cout<<node1->id<<" "<<node2->id<<'\n';
                         bool added = false;
@@ -282,7 +282,7 @@ void NFA::minimize(){
             partitions.push_back(new_partition);
     }while(changed);
 
-    /** Merge states */
+    /** Merge partitions in states */
     vector<Node*> new_states;
     vector<vector<pair<int, char>>> next_states;
     int id = 0;
@@ -313,6 +313,7 @@ void NFA::minimize(){
         Node* node = new Node(id++, final_state, start_state);
         new_states.push_back(node);
     }
+
     /** Add state in the final graph */
     id = 0;
     g.clear();
