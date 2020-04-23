@@ -17,7 +17,7 @@ select department_id, department_name from departments d where (select distinct 
 select qty from orders_tbl join products_tbl using (prod_id) where lower(prod_desc) like '%plastic%';
 --8
 (SELECT last_name || ' ' || first_name "Nume", 'Angajat' "Tip" FROM employee_tbl
-UNION 
+UNION
 SELECT cust_name "Nume", 'Client' "Tip"FROM customer_tbl) ORDER BY "Tip", "Nume";
 --9
 select prod_desc from orders_tbl o join products_tbl using (prod_id) where o.sales_rep in (select sales_rep from orders_tbl join products_tbl using (prod_id) where length(prod_desc)>2 and lower(prod_desc) like '% p%');
@@ -64,3 +64,4 @@ AND (SELECT SALARY FROM employee_pay_tbl
 WHERE SALARY = '40000');
 --22
 select first_name, pay_rate from employee_tbl join employee_pay_tbl using (emp_id) where pay_rate > (select max(pay_rate) from employee_tbl join employee_pay_tbl using (emp_id) where lower(last_name) like '%ll%');
+
