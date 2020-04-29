@@ -6,13 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/btree.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/SD/Tema2/btree.cpp
+iostream
+-
+btree.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/SD/Tema2/btree.h
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/SD/Tema2/btree.h
 vector
 -
 string
 -
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/main.cpp
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/SD/Tema2/main.cpp
 iostream
 -
 string
@@ -20,5 +26,5 @@ string
 fstream
 -
 btree.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema2/btree.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/SD/Tema2/btree.h
 
