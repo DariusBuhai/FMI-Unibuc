@@ -1,0 +1,361 @@
+//
+// Created by Darius Buhai on 4/1/20.
+//
+
+#include <vector>
+#include <string>
+
+#ifndef TEMA2_BTREE_H
+#define TEMA2_BTREE_H
+
+class Node{
+private:
+    void remove_from_leaf(int);
+    void remove_from_non_leaf(int);
+
+    void borrowFromPrev(int);
+    void borrowFromNext(int);
+
+    int getSucc(int);
+    int getPred(int);
+
+    void merge(int);
+
+    void fill(int);
+
+protected:
+    std::vector<int> keys;
+    std::vector<Node*> childs;
+
+    const int t;
+    bool isLeaf = false;
+public:
+    Node(int = 3, bool = false);
+    Node(std::vector<int>, int = 3, bool = false);
+
+    int size();
+    bool isFull();
+
+    void split_child(int i);
+    void append_child(int x);
+    void remove(int x);
+
+    void traverse(std::vector<int>&);
+    Node* search(int x);
+
+    friend class BTree;
+};
+
+class BTree{
+private:
+    const int t;
+    Node *root;
+public:
+
+    BTree(int = 3);
+    BTree(std::vector<int>, int = 3);
+
+    void insert(int x);
+    void insert(std::vector<int>);
+    void insert_string(std::string);
+    void remove(int x);
+
+    std::vector<int> traverse();
+    void print(std::string = " ");
+    Node* search(int x);
+};
+
+#endif //TEMA2_BTREE_H
+
+
+//
+// Created by Darius Buhai on 4/1/20.
+//
+
+#include <vector>
+#include <iostream>
+#include "btree.h"
+
+using namespace std;
+
+
+Node::Node(int t, bool isLeaf): t(t), isLeaf(isLeaf){}
+Node::Node(std::vector<int> keys, int t, bool isLeaf): keys(keys), t(t), isLeaf(isLeaf){}
+
+bool Node::isFull() { return size()==2*t-1; }
+int Node::size() { return keys.size(); }
+
+void Node::split_child(int i) {
+    Node *child = childs[i];
+    Node *rchild = new Node(t, child->isLeaf);
+
+    for (int j = 0; j < t-1; j++)
+        rchild->keys.push_back(child->keys[j+t]);
+
+    if (!rchild->isLeaf){
+        for (int j = 0; j < t; j++)
+            rchild->childs.push_back(child->childs[j+t]);
+        child->childs.resize(t);
+    }
+    child->keys.resize(t-1);
+
+    childs.push_back(nullptr);
+    for (int j = size(); j >= i+1; j--)
+        childs[j+1] = childs[j];
+    childs[i+1] = rchild;
+
+    keys.push_back(0);
+    for (int j = size()-1; j >= i; j--)
+        keys[j+1] = keys[j];
+    keys[i] = child->keys[t-1];
+}
+
+void Node::append_child(int x) {
+    int i = size()-1;
+    if(isLeaf){
+        keys.push_back(0);
+        while(i>=0 && keys[i] > x){
+            keys[i+1] = keys[i];
+            i--;
+        }
+        keys[++i] = x;
+        return;
+    }
+    while(i>=0 && keys[i] > x)
+        i--;
+    i++;
+    if(childs[i]->isFull()){
+        split_child(i);
+        if (keys[i] < x)
+            i++;
+    }
+    childs[i]->append_child(x);
+}
+
+void Node::traverse(vector<int> &values){
+    int i;
+    for (i = 0; i < size(); i++){
+        if (!isLeaf)
+            childs[i]->traverse(values);
+        values.push_back(keys[i]);
+    }
+    if (!isLeaf) childs[i]->traverse(values);
+}
+
+Node* Node::search(int x){
+    int i = 0;
+    while (i < size() && x > keys[i]) i++;
+
+    if (keys[i] == x) return this;
+    if (!isLeaf) return childs[i]->search(x);
+
+    return nullptr;
+}
+
+BTree::BTree(int t): t(t){
+    root = nullptr;
+}
+
+BTree::BTree(std::vector<int> values, int t): t(t){
+    root = nullptr;
+    insert(values);
+}
+
+void BTree::insert(int x) {
+    if(root==NULL){
+        root = new Node({x}, t, true);
+        return;
+    }
+    if(root->isFull()){
+        int i = 0;
+        Node *newroot = new Node(t);
+
+        newroot->childs.push_back(root);
+        newroot->split_child(0);
+
+        if (newroot->keys[0] < x) i++;
+        newroot->childs[i]->append_child(x);
+
+        root = newroot;
+        return;
+    }
+    root->append_child(x);
+}
+
+
+void BTree::insert(std::vector<int> values){
+    for(auto x: values)
+        insert(x);
+}
+
+void BTree::remove(int x) {
+    if(root == nullptr) return;
+    root->remove(x);
+}
+
+vector<int> BTree::traverse() {
+    vector<int> values;
+    if(root!= nullptr)
+        root->traverse(values);
+    return values;
+}
+
+Node* BTree::search(int x){
+    if(root!= nullptr)
+        return root->search(x);
+    return nullptr;
+}
+
+void BTree::print(string sep) {
+    vector<int> values = traverse();
+    bool alpha = false;
+    for(auto x: values){
+        if(alpha) cout<<sep;
+        alpha = true;
+        cout<<x;
+    }
+    cout<<'\n';
+}
+
+/** Delete actions */
+void Node::remove_from_leaf(int i) {
+    for (int j=i+1; j<size(); ++j)
+        keys[j-1] = keys[j];
+}
+
+void Node::remove_from_non_leaf(int i) {
+    int x = keys[i];
+
+    if(childs[i]->size() >= t){
+        int pred = getPred(i);
+        keys[i] = pred;
+        childs[i]->remove(pred);
+        return;
+    }
+    if(childs[i+1]->size() >= t){
+        int succ = getSucc(i);
+        keys[i] = succ;
+        childs[i+1]->remove(succ);
+        return;
+    }
+    merge(i);
+    childs[i]->remove(x);
+}
+
+void Node::remove(int x) {
+
+    /** Search in keys */
+    int i = 0;
+    while(i<=size() && keys[i]<x)
+        i++;
+
+    /** If found, remove */
+    if(i<size() && keys[i]==x){
+        if(isLeaf) remove_from_leaf(i);
+        else remove_from_non_leaf(i);
+        return;
+    }
+    /** Otherwise, if it is a leaf return */
+    if(isLeaf){
+        cout<<"Key not found";
+        return;
+    }
+
+    /** Otherwise, magic */
+    bool flag = (i==size());
+    if (childs[i]->size() < t) fill(i);
+    if(flag && i>size()) i--;
+    childs[i]->remove(x);
+}
+
+
+int Node::getPred(int i){
+    Node *cur = childs[i];
+    while (!cur->isLeaf)
+        cur = cur->childs[cur->size()];
+
+    return cur->keys[cur->size()-1];
+}
+
+int Node::getSucc(int i){
+    Node *cur = childs[i+1];
+    while (!cur->isLeaf)
+        cur = cur->childs[0];
+
+    return cur->keys[0];
+}
+
+void Node::fill(int i){
+    if (i!=0 && childs[i-1]->size()>=t)
+        borrowFromPrev(i);
+    else if (i!=size() && childs[i+1]->size()>=t)
+        borrowFromNext(i);
+    else if (i != size())
+        merge(i);
+    else
+        merge(i-1);
+}
+
+void Node::borrowFromPrev(int i) {
+
+    Node *child = childs[i];
+    Node *sibling = childs[i - 1];
+
+    for (int j = child->size() - 1; j >= 0; --j)
+        child->keys[j + 1] = child->keys[j];
+
+    if (!child->isLeaf)
+        for (int j = child->size(); j >= 0; --j)
+            child->childs[j + 1] = child->childs[j];
+
+    child->keys[0] = keys[i - 1];
+
+    if (!child->isLeaf)
+        child->childs[0] = sibling->childs[sibling->size()];
+
+    keys[i - 1] = sibling->keys[sibling->size() - 1];
+}
+
+void Node::borrowFromNext(int i)
+{
+    Node *child = childs[i];
+    Node *sibling = childs[i+1];
+
+    child->keys[(child->size())] = keys[i];
+
+    if (!(child->isLeaf))
+        child->childs[(child->size())+1] = sibling->childs[0];
+
+    keys[i] = sibling->keys[0];
+
+    for (int j=1; j<sibling->size(); ++j)
+        sibling->keys[j-1] = sibling->keys[j];
+
+    if (!sibling->isLeaf)
+        for(int j=1; j<=sibling->size(); ++j)
+            sibling->childs[j-1] = sibling->childs[j];
+}
+
+void Node::merge(int i)
+{
+    Node *child = childs[i];
+    Node *sibling = childs[i+1];
+
+    child->keys[t-1] = keys[i];
+
+    for (int j=0; j<sibling->size(); ++j)
+        child->keys[j+t] = sibling->keys[j];
+
+    if (!child->isLeaf){
+        for(int j=0; j<=sibling->size(); ++j)
+            child->childs[j+t] = sibling->childs[j];
+    }
+
+    for (int j=i+1; j<size(); ++j)
+        keys[j-1] = keys[j];
+
+    for (int j=i+2; j<=size(); ++j)
+        childs[j-1] = childs[j];
+
+    delete(sibling);
+}
