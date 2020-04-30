@@ -16,6 +16,8 @@ int main() {
     nfa.convert_to_dfa();
     nfa.remove_inaccessible();
     nfa.minimize();
+    
+    nfa.write();
 
     return 0;
 }

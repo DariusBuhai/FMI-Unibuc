@@ -32,6 +32,7 @@ public:
 
     void remove_inaccessible();
     void minimize();
+    void write();
 };
 
 #endif //TEMA2_NFA_H

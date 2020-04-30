@@ -66,14 +66,22 @@ void NFA::remove_lambda(Node *v1, Node *v2, int id){
 
 void NFA::remove_lambdas(){
     int id;
-    for(int i=0;i<g.size();i++){
-        id = 0;
-        for(auto c : g[i]->next){
-            if(c.second==LAMBDA)
-                remove_lambda(g[i], c.first, id);
-            id++;
+    bool found_lambda;
+    do{
+        found_lambda = false;
+        for(auto state: g){
+            id = 0;
+            for(auto c : state->next){
+                if(c.second==LAMBDA){
+                    found_lambda = true;
+                    remove_lambda(state, c.first, id);
+                    break;
+                }
+                id++;
+            }
+            if(found_lambda) break;
         }
-    }
+    }while(found_lambda);
 }
 
 void NFA::convert_to_dfa(){
@@ -328,4 +336,22 @@ void NFA::minimize(){
         new_state->next = next;
         g.push_back(new_state);
     }
+}
+
+void NFA::write() {
+
+    cout<<g.size()<<'\n';
+    for(auto state: g)
+        if(state->start_state){
+            cout<<state->id<<'\n';
+            break;
+        }
+    for(auto state: g)
+        if(state->start_state)
+            cout<<state->id<<' ';
+    cout<<'\n';
+    for(auto state: g)
+        for(auto n: state->next)
+            cout<<state->id<<' '<<n.first->id<<' '<<n.second<<'\n';
+    cout<<'\n';
 }

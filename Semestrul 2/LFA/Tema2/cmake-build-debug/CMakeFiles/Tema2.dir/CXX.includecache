@@ -6,19 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.cpp
-nfa.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/main.cpp
 iostream
 -
-vector
+cstdio
 -
-queue
--
-set
--
-map
--
+nfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
 
 /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
 vector
