@@ -13,11 +13,14 @@ int main() {
     nfa.read_data(cin);
 
     nfa.remove_lambdas();
+
+    nfa.write(cout);
+
     nfa.convert_to_dfa();
-    nfa.remove_inaccessible();
     nfa.minimize();
+    nfa.remove_inaccessible();
     
-    nfa.write();
+    nfa.write(cout);
 
     return 0;
 }

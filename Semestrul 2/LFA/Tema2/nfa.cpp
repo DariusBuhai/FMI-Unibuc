@@ -19,7 +19,7 @@ Node::Node(int id, bool is_final_state, bool is_start_state): id(id), final_stat
 vector<Node*> NFA::get_states(bool final_state, bool start_state){
     vector<Node*> states;
     for(auto s:g)
-        if(s->start_state==start_state && s->final_state==final_state)
+        if(s->start_state==start_state || s->final_state==final_state)
             states.push_back(s);
     return states;
 }
@@ -49,8 +49,8 @@ void NFA::remove_lambda(Node *v1, Node *v2, int id){
     /**
      * step 1 - remove lambda
      * step 2 - duplicate moves that starts from v2
-     * step 3 - duplicate initial states
-     * step 4 - duplicate final states
+     * step 3 - set initial states
+     * step 4 - set final states
      */
 
     for(int j=id;j<v1->next.size()-1;j++)
@@ -59,9 +59,8 @@ void NFA::remove_lambda(Node *v1, Node *v2, int id){
     for(auto m: v2->next)
         v1->next.push_back(m);
     if(v1->start_state) v2->start_state = true;
-    if(v2->start_state) v1->start_state = true;
-    if(v1->final_state) v2->final_state = true;
     if(v2->final_state) v1->final_state = true;
+
 }
 
 void NFA::remove_lambdas(){
@@ -338,20 +337,20 @@ void NFA::minimize(){
     }
 }
 
-void NFA::write() {
+void NFA::write(std::ostream& out) {
 
-    cout<<g.size()<<'\n';
+    out<<g.size()<<'\n';
     for(auto state: g)
         if(state->start_state){
-            cout<<state->id<<'\n';
+            out<<state->id<<'\n';
             break;
         }
     for(auto state: g)
         if(state->start_state)
-            cout<<state->id<<' ';
-    cout<<'\n';
+            out<<state->id<<' ';
+    out<<'\n';
     for(auto state: g)
         for(auto n: state->next)
-            cout<<state->id<<' '<<n.first->id<<' '<<n.second<<'\n';
-    cout<<'\n';
+            out<<state->id<<' '<<n.first->id<<' '<<n.second<<'\n';
+    out<<'\n';
 }
