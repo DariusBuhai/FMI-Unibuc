@@ -344,9 +344,10 @@ void NFA::write(std::ostream& out, bool show_details) {
     if(show_details) out<<"Stare initiala: ";
     for(auto state: g)
         if(state->start_state){
-            out<<state->id<<'\n';
+            out<<state->id<<' ';
             break;
         }
+    out<<'\n';
     if(show_details) out<<"Stari finale: ";
     for(auto state: g)
         if(state->final_state)
