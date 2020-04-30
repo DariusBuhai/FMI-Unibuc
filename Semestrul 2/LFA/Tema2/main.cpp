@@ -11,11 +11,7 @@ int main() {
     freopen("nfa.in", "r", stdin);
 
     nfa.read_data(cin);
-
     nfa.remove_lambdas();
-
-    nfa.write(cout);
-
     nfa.convert_to_dfa();
     nfa.minimize();
     nfa.remove_inaccessible();

@@ -64,6 +64,7 @@ void NFA::remove_lambda(Node *v1, Node *v2, int id){
 }
 
 void NFA::remove_lambdas(){
+    /// Algoritmul de pe GeekForGeeks, ceva mai ok nu stiu sa fac
     int id;
     bool found_lambda;
     do{
@@ -338,7 +339,6 @@ void NFA::minimize(){
 }
 
 void NFA::write(std::ostream& out) {
-
     out<<g.size()<<'\n';
     for(auto state: g)
         if(state->start_state){
@@ -346,7 +346,7 @@ void NFA::write(std::ostream& out) {
             break;
         }
     for(auto state: g)
-        if(state->start_state)
+        if(state->final_state)
             out<<state->id<<' ';
     out<<'\n';
     for(auto state: g)
