@@ -32,7 +32,7 @@ public:
 
     void remove_inaccessible();
     void minimize();
-    void write(std::ostream&);
+    void write(std::ostream&, bool = false);
 };
 
 #endif //TEMA2_NFA_H

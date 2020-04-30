@@ -338,17 +338,21 @@ void NFA::minimize(){
     }
 }
 
-void NFA::write(std::ostream& out) {
+void NFA::write(std::ostream& out, bool show_details) {
+    if(show_details) out<<"Numar total de stari: ";
     out<<g.size()<<'\n';
+    if(show_details) out<<"Stari initiale: ";
     for(auto state: g)
         if(state->start_state){
             out<<state->id<<'\n';
             break;
         }
+    if(show_details) out<<"Stari finale: ";
     for(auto state: g)
         if(state->final_state)
             out<<state->id<<' ';
     out<<'\n';
+    if(show_details) out<<"Conexiuni: \n";
     for(auto state: g)
         for(auto n: state->next)
             out<<state->id<<' '<<n.first->id<<' '<<n.second<<'\n';

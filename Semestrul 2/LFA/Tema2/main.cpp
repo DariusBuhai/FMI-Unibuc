@@ -9,6 +9,7 @@ int main() {
     NFA nfa;
 
     freopen("nfa.in", "r", stdin);
+    //freopen("nfa.out", "w", stdout);
 
     nfa.read_data(cin);
     nfa.remove_lambdas();
@@ -16,7 +17,7 @@ int main() {
     nfa.minimize();
     nfa.remove_inaccessible();
     
-    nfa.write(cout);
+    nfa.write(cout, true);
 
     return 0;
 }
