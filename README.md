@@ -9,7 +9,7 @@
 **Semestrul II:**
 - [ ] LFA (Limbaje Formale si Automate)
   - [x] Tema 1
-  - [ ] Tema 2
+  - [x] Tema 2
   - [ ] Tema 3
 - [ ] POO (Programarea orientata pe obiecte)
   - Laboratoare
