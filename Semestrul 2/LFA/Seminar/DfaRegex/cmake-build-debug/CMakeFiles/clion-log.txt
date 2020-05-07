@@ -1,0 +1,4 @@
+/usr/local/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Seminar/DfaRegex"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Seminar/DfaRegex/cmake-build-debug

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Seminar/DfaRegex/main.cpp
+iostream
+-
+fstream
+-
+vector
+-
+map
+-
+
