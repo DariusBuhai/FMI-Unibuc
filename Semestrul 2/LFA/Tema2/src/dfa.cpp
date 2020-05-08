@@ -121,8 +121,7 @@ string DFA::get_regex(){
     bool removed_state;
     do{
         removed_state = false;
-        for(int i=1;i<states.size()-1;i++)
-            if(!states[i]->final_state && !states[i]->start_state){
+        for(int i=1;i<states.size()-1;i++){
                 remove_state(states[i]);
                 removed_state = true;
                 break;
