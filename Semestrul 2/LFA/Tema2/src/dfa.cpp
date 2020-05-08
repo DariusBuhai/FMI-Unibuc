@@ -1,5 +1,5 @@
-#include "../src/dfa.h"
-#include "../src/state.h"
+#include "../include/dfa.h"
+#include "../include/state.h"
 
 #include <iostream>
 #include <vector>
@@ -10,13 +10,6 @@
 #define LAMBDA '~'
 
 using namespace std;
-
-DFA::DFA(std::vector<State*> states){
-    for(auto state: states){
-        this->states.push_back(state);
-        if(state->start_state) this->start_state = state->id;
-    }
-}
 
 void DFA::strip_char(std::string& str, const char ch) {
     string new_string;
@@ -101,10 +94,6 @@ void DFA::remove_state(State* state){
     delete state;
 }
 
-std::vector<State *> DFA::get_states() const{
-    return this->states;
-}
-
 string DFA::get_regex(){
     /// Step 1 - add new start state, with lambda connection
     states.push_back(nullptr);
@@ -113,9 +102,14 @@ string DFA::get_regex(){
         states[i]->id++;
     }
     states[0] = new State(0, true);
-    states[start_state+1]->start_state = false;
-    states[0]->next.emplace_back(states[start_state+1], string(1, LAMBDA));
-    start_state = 0;
+    int start_state =0;
+    for(auto const&state: states)
+        if(state->start_state){
+            start_state = state->id;
+            break;
+        }
+    states[start_state]->start_state = false;
+    states[0]->next.emplace_back(states[start_state], string(1, LAMBDA));
     /// Step 2 - add new final state and connect old final states
     states.push_back(new State(states.size(), false, true));
     for(int i=1;i<states.size()-1;i++)
@@ -166,10 +160,10 @@ void DFA::minimize(){
                     State *State1 = partition[i], *State2 = partition[j];
                     /** Check if State1 and State2 are distinguishable */
                     bool distinguishable = false;
-                    for(auto next1: partition[i]->next){
+                    for(const auto& next1: partition[i]->next){
                         State *m, *n = nullptr;
                         m = next1.first;
-                        for(auto next2: partition[j]->next)
+                        for(const auto& next2: partition[j]->next)
                             if(next2.second==next1.second){
                                 n = next2.first;
                                 break;
@@ -179,7 +173,7 @@ void DFA::minimize(){
                             break;
                         }
                         int pk1 = 0, pk2 = 0;
-                        for (auto p:partitions) {
+                        for (const auto& p:partitions) {
                             bool found = false;
                             for (auto pn: p)
                                 if (pn->id == n->id) {
@@ -189,7 +183,7 @@ void DFA::minimize(){
                             if (found) break;
                             pk1++;
                         }
-                        for (auto p:partitions) {
+                        for (const auto& p:partitions) {
                             bool found = false;
                             for (auto pn: p)
                                 if (pn->id == m->id) {
@@ -208,15 +202,15 @@ void DFA::minimize(){
                     if(!distinguishable){
                         //cout<<State1->id<<" "<<State2->id<<'\n';
                         bool added = false;
-                        for(int k=0;k<new_partitions.size();k++)
-                            if(find(new_partitions[k].begin(), new_partitions[k].end(), State1)!=new_partitions[k].end()){
-                                if(find(new_partitions[k].begin(), new_partitions[k].end(), State2)==new_partitions[k].end())
-                                    new_partitions[k].push_back(State2);
+                        for(auto & new_partition : new_partitions)
+                            if(find(new_partition.begin(), new_partition.end(), State1)!=new_partition.end()){
+                                if(find(new_partition.begin(), new_partition.end(), State2)==new_partition.end())
+                                    new_partition.push_back(State2);
                                 added = true;
                                 break;
-                            }else if(find(new_partitions[k].begin(), new_partitions[k].end(), State2)!=new_partitions[k].end()){
-                                if(find(new_partitions[k].begin(), new_partitions[k].end(), State1)==new_partitions[k].end())
-                                    new_partitions[k].push_back(State1);
+                            }else if(find(new_partition.begin(), new_partition.end(), State2)!=new_partition.end()){
+                                if(find(new_partition.begin(), new_partition.end(), State1)==new_partition.end())
+                                    new_partition.push_back(State1);
                                 added = true;
                                 break;
                             }
@@ -224,10 +218,10 @@ void DFA::minimize(){
                             new_partitions.push_back({State1, State2});
                     }else{
                         bool found_State_1 = false, found_State_2 = false;
-                        for(int k=0;k<new_partitions.size();k++)
-                            if(find(new_partitions[k].begin(), new_partitions[k].end(), State1)!=new_partitions[k].end() )
+                        for(auto & new_partition : new_partitions)
+                            if(find(new_partition.begin(), new_partition.end(), State1)!=new_partition.end() )
                                 found_State_1 = true;
-                            else if(find(new_partitions[k].begin(), new_partitions[k].end(), State2)!=new_partitions[k].end())
+                            else if(find(new_partition.begin(), new_partition.end(), State2)!=new_partition.end())
                                 found_State_2 = true;
                         if(!found_State_1) new_partitions.push_back({State1});
                         if(!found_State_2) new_partitions.push_back({State2});
@@ -237,7 +231,7 @@ void DFA::minimize(){
             }
         }
         partitions.clear();
-        for(auto new_partition: new_partitions)
+        for(const auto& new_partition: new_partitions)
             partitions.push_back(new_partition);
     }while(changed);
     /** Merge partitions in states */
@@ -250,7 +244,7 @@ void DFA::minimize(){
         for(auto state: partition){
             if(state->final_state) is_final_state = true;
             if(state->start_state) is_start_state = true;
-            for(auto n: state->next){
+            for(const auto& n: state->next){
                 int p_id = 0;
                 for(const auto& partition2: partitions){
                     bool found = false;
@@ -277,7 +271,7 @@ void DFA::minimize(){
     states.clear();
     for(auto new_state: new_states){
         vector<pair<State*, string>> next;
-        for(auto n: next_states[id]){
+        for(const auto& n: next_states[id]){
             pair<State*, string> to_add = {new_states[n.first], n.second};
             if(find(next.begin(), next.end(), to_add)==next.end())
                 next.push_back(to_add);
@@ -290,14 +284,6 @@ void DFA::minimize(){
     this->remove_inaccessible();
 }
 
-vector<State*> DFA::get_states(bool final_state, bool start_state){
-    vector<State*> states;
-    for(auto s:states)
-        if(s->start_state==start_state || s->final_state==final_state)
-            states.push_back(s);
-    return states;
-}
-
 void DFA::remove_inaccessible(){
 
     vector<State*> states, new_states;
@@ -306,7 +292,7 @@ void DFA::remove_inaccessible(){
     /** Find all accessible states -- should include only the accesible from the start node */
     states = get_states(false, true);
     for(auto s: states) {
-        for (auto n: s->next)
+        for (const auto& n: s->next)
             accessible.insert(n.first->id);
         if (s->start_state)
             accessible.insert(s->id);
@@ -319,7 +305,7 @@ void DFA::remove_inaccessible(){
         for(auto state: states){
             coaccesible.insert(state->id);
             for(auto s: states)
-                for(auto n: s->next)
+                for(const auto& n: s->next)
                     if(n.first==state){
                         if(coaccesible.find(s->id)==coaccesible.end())
                             new_states.push_back(s);
@@ -331,11 +317,11 @@ void DFA::remove_inaccessible(){
 
     /** Keep only the accessible and coaccesible states, delete the rest */
     vector<State*> new_g;
-    for(int i=0;i<states.size();i++)
-        if(coaccesible.find(states[i]->id)!=coaccesible.end() && accessible.find(states[i]->id)!=accessible.end()){
-            State* to_add = states[i];
+    for(auto & state : states)
+        if(coaccesible.find(state->id)!=coaccesible.end() && accessible.find(state->id)!=accessible.end()){
+            State* to_add = state;
             vector<pair<State*, string>> next;
-            for(auto n:to_add->next)
+            for(const auto& n:to_add->next)
                 if(coaccesible.find(n.first->id)!=coaccesible.end() && accessible.find(n.first->id)!=accessible.end())
                     next.push_back(n);
             to_add->next = next;
@@ -343,44 +329,4 @@ void DFA::remove_inaccessible(){
         }
     states.clear();
     states = new_g;
-}
-
-std::istream& operator>>(std::istream& in, DFA &dfa){
-    dfa.states.clear();
-    int a, b, n, m, o;
-    string x;
-    in>>n>>m>>o>>a;
-    for(int i=0;i<n;i++)
-        dfa.states.push_back(new State(i));
-    dfa.start_state = a;
-    dfa.states[dfa.start_state]->start_state = true;
-    while(o--){
-        in>>a;
-        dfa.states[a]->final_state = true;
-    }
-    for(int i=0;i<m;i++){
-        in>>a>>b>>x;
-        dfa.states[a]->next.emplace_back(dfa.states[b], x);
-    }
-    return in;
-}
-
-ostream & operator<<(std::ostream& out, const DFA & dfa){
-    int cnt_final = 0, cnt_next = 0;
-    for(auto state: dfa.states)
-        if(state->final_state)
-            cnt_final++;
-    for(auto state: dfa.states)
-        for(auto n: state->next)
-            cnt_next++;
-    out<<dfa.states.size()<<' '<<cnt_next<<' '<<cnt_final<<'\n'<<dfa.start_state<<'\n';
-    for(auto state: dfa.states)
-        if(state->final_state)
-            out<<state->id<<' ';
-    out<<'\n';
-    for(auto state: dfa.states)
-        for(auto n: state->next)
-            out<<state->id<<' '<<n.first->id<<' '<<n.second<<'\n';
-    out<<'\n';
-    return out;
 }

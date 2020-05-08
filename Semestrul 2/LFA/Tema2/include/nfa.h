@@ -7,17 +7,19 @@
 #define TEMA2_NFA_H
 
 class NFA{
-private:
+    static void remove_lambda(State*, State*, int);
+protected:
     std::vector<State *> states;
-
-    void remove_lambda(State*, State*, int);
-    std::vector<State*> get_states(bool, bool);
 public:
+    NFA(std::vector<State *>);
+    NFA(NFA const &);
+    NFA() = default;
+
     void remove_lambdas();
     void convert_to_dfa();
-    //DFA get_dfa();
 
     std::vector<State *> get_states() const;
+    std::vector<State*> get_states(bool, bool);
 
     friend std::istream& operator>>(std::istream&, NFA&);
     friend std::ostream& operator<<(std::ostream&, const NFA&);

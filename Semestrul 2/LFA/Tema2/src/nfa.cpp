@@ -1,7 +1,8 @@
-#include "../src/nfa.h"
-#include "../src/state.h"
+#include "../include/nfa.h"
+#include "../include/state.h"
 
 #include <iostream>
+#include <utility>
 #include <vector>
 #include <queue>
 #include <set>
@@ -11,27 +12,21 @@
 
 using namespace std;
 
-vector<State*> NFA::get_states(bool final_state, bool start_state){
-    vector<State*> current_states;
-    for(auto s:states)
-        if(s->start_state==start_state || s->final_state==final_state)
-            current_states.push_back(s);
-    return current_states;
-}
+NFA::NFA(std::vector<State *> _states): states(std::move(_states)){}
+
+NFA::NFA(NFA const &_old): states(_old.states){}
 
 void NFA::remove_lambda(State *v1, State *v2, int id){
-
     /**
      * step 1 - remove lambda
      * step 2 - duplicate moves that starts from v2
      * step 3 - set initial current_states
      * step 4 - set final current_states
      */
-
     for(int j=id;j<v1->next.size()-1;j++)
         v1->next[j] = v1->next[j+1];
     v1->next.pop_back();
-    for(auto m: v2->next)
+    for(const auto& m: v2->next)
         v1->next.push_back(m);
     if(v1->start_state) v2->start_state = true;
     if(v2->final_state) v1->final_state = true;
@@ -60,11 +55,9 @@ void NFA::remove_lambdas(){
 }
 
 void NFA::convert_to_dfa(){
-
     map<set<int>, map<string, set<int>>> current_states;
     queue<set<int>> to_add;
     map<string, set<int>> to;
-
     /** First, add only the start current_states */
     for(State* x: states)
         if(x->start_state){
@@ -77,7 +70,6 @@ void NFA::convert_to_dfa(){
                     to_add.push(t.second);
             break;
         }
-
     /** While there is a change in the current_states, group them */
     while(!to_add.empty()){
         set<int> current = to_add.front();
@@ -85,22 +77,21 @@ void NFA::convert_to_dfa(){
         if(current_states.find(current)==current_states.end()){
             to.clear();
             for(int id: current){
-                for(auto s: states[id]->next)
+                for(const auto& s: states[id]->next)
                     to[s.second].insert(s.first->id);
             }
             current_states[current] = to;
-            for(auto t: to){
+            for(const auto& t: to){
                 to_add.push(t.second);
             }
 
         }
     }
-
     /** Merge all current_states and add them in the final graph */
     map<set<int>, State*> new_nodes;
     bool final_state, start_state;
     int id = 0;
-    for(auto state: current_states){
+    for(const auto& state: current_states){
         final_state = start_state = false;
         for(auto i: state.first){
             if(states[i]->final_state) final_state = true;
@@ -110,16 +101,23 @@ void NFA::convert_to_dfa(){
         id++;
     }
     states.clear();
-    for(auto new_node: new_nodes){
-        for(auto t: current_states[new_node.first])
-            new_node.second->next.push_back({new_nodes[t.second], t.first});
+    for(const auto& new_node: new_nodes){
+        for(const auto& t: current_states[new_node.first])
+            new_node.second->next.emplace_back(new_nodes[t.second], t.first);
         states.push_back(new_node.second);
     }
-
 }
 
 std::vector<State *> NFA::get_states() const{
     return this->states;
+}
+
+vector<State*> NFA::get_states(bool final_state, bool start_state){
+    vector<State*> new_states;
+    for(auto s:states)
+        if(s->start_state==start_state || s->final_state==final_state)
+            new_states.push_back(s);
+    return new_states;
 }
 
 std::istream& operator>>(std::istream& in, NFA &nfa){
@@ -163,7 +161,7 @@ ostream & operator<<(std::ostream& out, const NFA & nfa) {
             out<<state->id<<' ';
     out<<'\n';
     for(auto state: nfa.states)
-        for(auto n: state->next)
+        for(const auto& n: state->next)
             out<<state->id<<' '<<n.first->id<<' '<<n.second<<'\n';
     out<<'\n';
     return out;

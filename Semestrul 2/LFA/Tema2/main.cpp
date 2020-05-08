@@ -1,20 +1,18 @@
 #include <iostream>
 #include <cstdio>
 
-#include "src/nfa.h"
-#include "src/dfa.h"
+#include "include/nfa.h"
+#include "include/dfa.h"
 
 using namespace std;
 
 int main() {
-    NFA nfa;
     DFA dfa;
 
     freopen("data/nfa.in", "r", stdin);
-    cin>>nfa;
-    nfa.remove_lambdas();
-    nfa.convert_to_dfa();
-    dfa = DFA(nfa.get_states());
+    cin>>dfa;
+    dfa.remove_lambdas();
+    dfa.convert_to_dfa();
     dfa.minimize();
     cout<<dfa;
     cout<<dfa.get_regex()<<"\n\n";
