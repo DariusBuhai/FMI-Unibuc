@@ -58,14 +58,15 @@ void NFA::convert_to_dfa(){
     map<set<int>, map<string, set<int>>> current_states;
     queue<set<int>> to_add;
     map<string, set<int>> to;
+    int start_state_id;
     /** First, add only the start current_states */
     for(State* x: states)
         if(x->start_state){
-            to.clear();
-            for(auto s: x->next)
+            start_state_id = x->id;
+            for(const auto& s: x->next)
                 to[s.second].insert(s.first->id);
             current_states[{x->id}] = to;
-            for(auto t: to)
+            for(const auto& t: to)
                 if(current_states.find(t.second)==current_states.end())
                     to_add.push(t.second);
             break;
@@ -84,20 +85,19 @@ void NFA::convert_to_dfa(){
             for(const auto& t: to){
                 to_add.push(t.second);
             }
-
         }
     }
     /** Merge all current_states and add them in the final graph */
     map<set<int>, State*> new_nodes;
-    bool final_state, start_state;
+    bool is_final_state, is_start_state;
     int id = 0;
     for(const auto& state: current_states){
-        final_state = start_state = false;
-        for(auto i: state.first){
-            if(states[i]->final_state) final_state = true;
-            if(states[i]->start_state) start_state = true;
-        }
-        new_nodes[state.first] = new State(id, final_state, start_state);
+        is_final_state = is_start_state = false;
+        for(auto i: state.first)
+            if(states[i]->final_state) is_final_state = true;
+        if(state.first.size()==1 && state.first.find(start_state_id)!=state.first.end())
+            is_start_state = true;
+        new_nodes[state.first] = new State(id, is_final_state, is_start_state);
         id++;
     }
     states.clear();

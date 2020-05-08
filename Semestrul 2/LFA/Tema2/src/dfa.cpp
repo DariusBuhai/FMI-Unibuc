@@ -101,17 +101,17 @@ string DFA::get_regex(){
         states[i] = states[i-1];
         states[i]->id++;
     }
-    states[0] = new State(0, true);
     int start_state =0;
     for(auto const&state: states)
         if(state->start_state){
             start_state = state->id;
             break;
         }
+    states[0] = new State(0, false, true);
     states[start_state]->start_state = false;
     states[0]->next.emplace_back(states[start_state], string(1, LAMBDA));
     /// Step 2 - add new final state and connect old final states
-    states.push_back(new State(states.size(), false, true));
+    states.push_back(new State(states.size(), true, false));
     for(int i=1;i<states.size()-1;i++)
         if(states[i]->final_state){
             states[i]->final_state = false;
@@ -120,13 +120,8 @@ string DFA::get_regex(){
     /// Step 3, remove all states, one by one
     bool removed_state;
     do{
-        removed_state = false;
-        for(int i=1;i<states.size()-1;i++){
-                remove_state(states[i]);
-                removed_state = true;
-                break;
-            }
-    }while(removed_state);
+        remove_state(states[1]);
+    }while(states.size()>2);
     /// Clear lambdas
     strip_lambdas();
     /// Return regex
@@ -261,8 +256,8 @@ void DFA::minimize(){
             }
         }
         next_states.push_back(next);
-        auto* State = new struct State(id++, is_final_state, is_start_state);
-        new_states.push_back(State);
+        auto* new_state = new State(id++, is_final_state, is_start_state);
+        new_states.push_back(new_state);
     }
 
     /** Add state in the final graph */
