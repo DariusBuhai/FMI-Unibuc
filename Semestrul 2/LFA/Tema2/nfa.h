@@ -1,6 +1,4 @@
-//
-// Created by Darius Buhai on 4/2/20.
-//
+#include "state.h"
 
 #include <vector>
 #include <iostream>
@@ -8,31 +6,21 @@
 #ifndef TEMA2_NFA_H
 #define TEMA2_NFA_H
 
-class Node{
-public:
-    /// Nu ar trebui sa fie publice, dar dureaza prea mult sa le fac gettere si settere
-    std::vector<std::pair<Node *, char>> next;
-    bool final_state, start_state;
-    int id;
-
-    Node(int, bool = false, bool = false);
-};
-
 class NFA{
 private:
-    std::vector<Node *> g;
+    std::vector<State *> states;
 
-    void remove_lambda(Node*, Node*, int);
-    std::vector<Node*> get_states(bool, bool);
+    void remove_lambda(State*, State*, int);
+    std::vector<State*> get_states(bool, bool);
 public:
-    void read_data(std::istream&);
-
     void remove_lambdas();
     void convert_to_dfa();
+    //DFA get_dfa();
 
-    void remove_inaccessible();
-    void minimize();
-    void write(std::ostream&, bool = false);
+    std::vector<State *> get_states() const;
+
+    friend std::istream& operator>>(std::istream&, NFA&);
+    friend std::ostream& operator<<(std::ostream&, const NFA&);
 };
 
 #endif //TEMA2_NFA_H

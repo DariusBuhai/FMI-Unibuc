@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.cpp">
+			<Option target="Tema2"/>
+		</Unit>
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.h">
+			<Option target="Tema2"/>
+		</Unit>
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/main.cpp">
 			<Option target="Tema2"/>
 		</Unit>
@@ -87,6 +93,15 @@
 			<Option target="Tema2"/>
 		</Unit>
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h">
+			<Option target="Tema2"/>
+		</Unit>
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/regram.cpp">
+			<Option target="Tema2"/>
+		</Unit>
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/regram.h">
+			<Option target="Tema2"/>
+		</Unit>
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/state.h">
 			<Option target="Tema2"/>
 		</Unit>
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/CMakeLists.txt">

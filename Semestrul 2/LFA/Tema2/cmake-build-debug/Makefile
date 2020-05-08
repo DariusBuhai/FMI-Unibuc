@@ -143,6 +143,33 @@ Tema2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/build
 .PHONY : Tema2/fast
 
+dfa.o: dfa.cpp.o
+
+.PHONY : dfa.o
+
+# target to build an object file
+dfa.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/dfa.cpp.o
+.PHONY : dfa.cpp.o
+
+dfa.i: dfa.cpp.i
+
+.PHONY : dfa.i
+
+# target to preprocess a source file
+dfa.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/dfa.cpp.i
+.PHONY : dfa.cpp.i
+
+dfa.s: dfa.cpp.s
+
+.PHONY : dfa.s
+
+# target to generate assembly for a file
+dfa.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/dfa.cpp.s
+.PHONY : dfa.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -197,6 +224,33 @@ nfa.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/nfa.cpp.s
 .PHONY : nfa.cpp.s
 
+regram.o: regram.cpp.o
+
+.PHONY : regram.o
+
+# target to build an object file
+regram.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/regram.cpp.o
+.PHONY : regram.cpp.o
+
+regram.i: regram.cpp.i
+
+.PHONY : regram.i
+
+# target to preprocess a source file
+regram.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/regram.cpp.i
+.PHONY : regram.cpp.i
+
+regram.s: regram.cpp.s
+
+.PHONY : regram.s
+
+# target to generate assembly for a file
+regram.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/regram.cpp.s
+.PHONY : regram.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -206,12 +260,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Tema2"
+	@echo "... dfa.o"
+	@echo "... dfa.i"
+	@echo "... dfa.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
 	@echo "... nfa.o"
 	@echo "... nfa.i"
 	@echo "... nfa.s"
+	@echo "... regram.o"
+	@echo "... regram.i"
+	@echo "... regram.s"
 .PHONY : help
 
 
