@@ -1,5 +1,5 @@
-#include "dfa.h"
-#include "state.h"
+#include "../src/dfa.h"
+#include "../src/state.h"
 
 #include <iostream>
 #include <vector>

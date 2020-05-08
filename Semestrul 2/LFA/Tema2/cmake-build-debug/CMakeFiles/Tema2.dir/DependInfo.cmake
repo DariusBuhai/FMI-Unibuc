@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/dfa.cpp.o"
+  "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/dfa.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/include/dfa.cpp.o"
+  "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/nfa.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/include/nfa.cpp.o"
+  "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/regram.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/include/regram.cpp.o"
   "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/main.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/main.cpp.o"
-  "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/nfa.cpp.o"
-  "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/regram.cpp" "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles/Tema2.dir/regram.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

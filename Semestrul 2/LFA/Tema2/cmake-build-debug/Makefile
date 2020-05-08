@@ -143,32 +143,86 @@ Tema2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/build
 .PHONY : Tema2/fast
 
-dfa.o: dfa.cpp.o
+include/dfa.o: include/dfa.cpp.o
 
-.PHONY : dfa.o
+.PHONY : include/dfa.o
 
 # target to build an object file
-dfa.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/dfa.cpp.o
-.PHONY : dfa.cpp.o
+include/dfa.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/dfa.cpp.o
+.PHONY : include/dfa.cpp.o
 
-dfa.i: dfa.cpp.i
+include/dfa.i: include/dfa.cpp.i
 
-.PHONY : dfa.i
+.PHONY : include/dfa.i
 
 # target to preprocess a source file
-dfa.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/dfa.cpp.i
-.PHONY : dfa.cpp.i
+include/dfa.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/dfa.cpp.i
+.PHONY : include/dfa.cpp.i
 
-dfa.s: dfa.cpp.s
+include/dfa.s: include/dfa.cpp.s
 
-.PHONY : dfa.s
+.PHONY : include/dfa.s
 
 # target to generate assembly for a file
-dfa.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/dfa.cpp.s
-.PHONY : dfa.cpp.s
+include/dfa.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/dfa.cpp.s
+.PHONY : include/dfa.cpp.s
+
+include/nfa.o: include/nfa.cpp.o
+
+.PHONY : include/nfa.o
+
+# target to build an object file
+include/nfa.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/nfa.cpp.o
+.PHONY : include/nfa.cpp.o
+
+include/nfa.i: include/nfa.cpp.i
+
+.PHONY : include/nfa.i
+
+# target to preprocess a source file
+include/nfa.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/nfa.cpp.i
+.PHONY : include/nfa.cpp.i
+
+include/nfa.s: include/nfa.cpp.s
+
+.PHONY : include/nfa.s
+
+# target to generate assembly for a file
+include/nfa.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/nfa.cpp.s
+.PHONY : include/nfa.cpp.s
+
+include/regram.o: include/regram.cpp.o
+
+.PHONY : include/regram.o
+
+# target to build an object file
+include/regram.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/regram.cpp.o
+.PHONY : include/regram.cpp.o
+
+include/regram.i: include/regram.cpp.i
+
+.PHONY : include/regram.i
+
+# target to preprocess a source file
+include/regram.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/regram.cpp.i
+.PHONY : include/regram.cpp.i
+
+include/regram.s: include/regram.cpp.s
+
+.PHONY : include/regram.s
+
+# target to generate assembly for a file
+include/regram.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/include/regram.cpp.s
+.PHONY : include/regram.cpp.s
 
 main.o: main.cpp.o
 
@@ -197,60 +251,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-nfa.o: nfa.cpp.o
-
-.PHONY : nfa.o
-
-# target to build an object file
-nfa.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/nfa.cpp.o
-.PHONY : nfa.cpp.o
-
-nfa.i: nfa.cpp.i
-
-.PHONY : nfa.i
-
-# target to preprocess a source file
-nfa.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/nfa.cpp.i
-.PHONY : nfa.cpp.i
-
-nfa.s: nfa.cpp.s
-
-.PHONY : nfa.s
-
-# target to generate assembly for a file
-nfa.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/nfa.cpp.s
-.PHONY : nfa.cpp.s
-
-regram.o: regram.cpp.o
-
-.PHONY : regram.o
-
-# target to build an object file
-regram.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/regram.cpp.o
-.PHONY : regram.cpp.o
-
-regram.i: regram.cpp.i
-
-.PHONY : regram.i
-
-# target to preprocess a source file
-regram.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/regram.cpp.i
-.PHONY : regram.cpp.i
-
-regram.s: regram.cpp.s
-
-.PHONY : regram.s
-
-# target to generate assembly for a file
-regram.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/regram.cpp.s
-.PHONY : regram.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,18 +260,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Tema2"
-	@echo "... dfa.o"
-	@echo "... dfa.i"
-	@echo "... dfa.s"
+	@echo "... include/dfa.o"
+	@echo "... include/dfa.i"
+	@echo "... include/dfa.s"
+	@echo "... include/nfa.o"
+	@echo "... include/nfa.i"
+	@echo "... include/nfa.s"
+	@echo "... include/regram.o"
+	@echo "... include/regram.i"
+	@echo "... include/regram.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... nfa.o"
-	@echo "... nfa.i"
-	@echo "... nfa.s"
-	@echo "... regram.o"
-	@echo "... regram.i"
-	@echo "... regram.s"
 .PHONY : help
 
 

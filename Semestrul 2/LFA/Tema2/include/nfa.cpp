@@ -1,5 +1,5 @@
-#include "nfa.h"
-#include "state.h"
+#include "../src/nfa.h"
+#include "../src/state.h"
 
 #include <iostream>
 #include <vector>

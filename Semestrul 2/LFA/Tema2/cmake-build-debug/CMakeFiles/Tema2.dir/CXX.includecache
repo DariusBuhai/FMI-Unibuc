@@ -6,67 +6,35 @@
 
 #IncludeRegexTransform: 
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.cpp
-dfa.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.h
-state.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/state.h
-iostream
--
-vector
--
-set
--
-map
--
-string
--
-
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.h
-nfa.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
-iostream
--
-vector
--
-string
--
-
 /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/main.cpp
 iostream
 -
 cstdio
 -
-nfa.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
-dfa.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.h
+src/nfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/nfa.h
+src/dfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/dfa.h
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.cpp
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/dfa.h
 nfa.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
-state.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/state.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/nfa.h
 iostream
 -
 vector
 -
-queue
--
-set
--
-map
+string
 -
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/nfa.h
 state.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/state.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/state.h
 vector
 -
 iostream
 -
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/state.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/state.h
 vector
 -
 iostream

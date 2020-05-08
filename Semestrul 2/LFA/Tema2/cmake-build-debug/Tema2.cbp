@@ -80,28 +80,28 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.cpp">
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/dfa.cpp">
 			<Option target="Tema2"/>
 		</Unit>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/dfa.h">
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/nfa.cpp">
+			<Option target="Tema2"/>
+		</Unit>
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/regram.cpp">
 			<Option target="Tema2"/>
 		</Unit>
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/main.cpp">
 			<Option target="Tema2"/>
 		</Unit>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.cpp">
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/dfa.h">
 			<Option target="Tema2"/>
 		</Unit>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/nfa.h">
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/nfa.h">
 			<Option target="Tema2"/>
 		</Unit>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/regram.cpp">
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/regram.h">
 			<Option target="Tema2"/>
 		</Unit>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/regram.h">
-			<Option target="Tema2"/>
-		</Unit>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/state.h">
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/state.h">
 			<Option target="Tema2"/>
 		</Unit>
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/CMakeLists.txt">
