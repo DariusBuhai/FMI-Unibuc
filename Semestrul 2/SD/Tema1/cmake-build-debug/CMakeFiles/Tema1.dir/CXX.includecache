@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/Structuri de Date/Tema1/main.cpp
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/SD/Tema1/main.cpp
 iostream
 -
 fstream
@@ -14,11 +14,5 @@ fstream
 vector
 -
 algorithm
--
-chrono
--
-ctime
--
-functional
 -
 

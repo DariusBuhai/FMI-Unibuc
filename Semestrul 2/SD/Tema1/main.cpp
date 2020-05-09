@@ -30,29 +30,28 @@ LL rand_between(LL a, LL b){
     return r;
 }
 
-pair<int, int> partition(vector<LL> &a, int l, int r, int pivot){
-    LL val = a[pivot];
-    bool coronavirus_exists = true;
-    while(coronavirus_exists){
-        while(a[l++] < val);
-        while(a[r--] > val);
-        if(--l > ++r) break;
-        swap(a[l++], a[r--]);
-    };
-    return {l, r};
+int partition(vector<LL> &arr, int l, int r){
+    //int pivot = r;
+    //int pivot = l;
+    int pivot = rand_between(l, r);
+
+    if(pivot!=r) swap(arr[pivot], arr[r]);
+    int x = arr[r], i = (l - 1);
+    for (int j = l; j <= r - 1; j++)
+        if (arr[j] < x){
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    swap(arr[i + 1], arr[r]);
+    return (i + 1);
 }
 
-void quicksort(vector<LL> &a, int l, int r){
+void quicksort(vector<LL> &arr, int l, int r){
     if(l>=r) return;
-    pair<int, int> m;
+    int pi = partition(arr, l, r);
 
-    /// 3 types of pivots
-    //m = partition(a, l, r, l);
-    //m = partition(a, l, r, r);
-    m = partition(a, l, r, rand_between(l, r));
-
-    quicksort(a, l, m.second);
-    quicksort(a, m.first, r);
+    quicksort(arr, l, pi - 1);
+    quicksort(arr, pi + 1, r);
 }
 
 void mergesort(vector<LL> &a, int l, int r){
