@@ -10,7 +10,8 @@ struct State{
     bool final_state, start_state;
     int id;
 
-    State(int id = 0, bool is_final_state = false, bool is_start_state = false): id(id), final_state(is_final_state), start_state(is_start_state){}
+    State(int id = -1, bool _final_state = false, bool _start_state = false): id(id), final_state(_final_state), start_state(_start_state){}
+    State(bool _final_state, bool _start_state): id(-1), final_state(_final_state), start_state(_start_state){}
 };
 
 #endif //TEMA2_STATE_H

@@ -116,25 +116,25 @@ CMakeFiles/Tema2.dir/src/dfa.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tema2.dir/src/dfa.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/dfa.cpp" -o CMakeFiles/Tema2.dir/src/dfa.cpp.s
 
-CMakeFiles/Tema2.dir/src/regram.cpp.o: CMakeFiles/Tema2.dir/flags.make
-CMakeFiles/Tema2.dir/src/regram.cpp.o: ../src/regram.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Tema2.dir/src/regram.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Tema2.dir/src/regram.cpp.o -c "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/regram.cpp"
+CMakeFiles/Tema2.dir/src/reggram.cpp.o: CMakeFiles/Tema2.dir/flags.make
+CMakeFiles/Tema2.dir/src/reggram.cpp.o: ../src/reggram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Tema2.dir/src/reggram.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Tema2.dir/src/reggram.cpp.o -c "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/reggram.cpp"
 
-CMakeFiles/Tema2.dir/src/regram.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Tema2.dir/src/regram.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/regram.cpp" > CMakeFiles/Tema2.dir/src/regram.cpp.i
+CMakeFiles/Tema2.dir/src/reggram.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Tema2.dir/src/reggram.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/reggram.cpp" > CMakeFiles/Tema2.dir/src/reggram.cpp.i
 
-CMakeFiles/Tema2.dir/src/regram.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tema2.dir/src/regram.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/regram.cpp" -o CMakeFiles/Tema2.dir/src/regram.cpp.s
+CMakeFiles/Tema2.dir/src/reggram.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Tema2.dir/src/reggram.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/reggram.cpp" -o CMakeFiles/Tema2.dir/src/reggram.cpp.s
 
 # Object files for target Tema2
 Tema2_OBJECTS = \
 "CMakeFiles/Tema2.dir/main.cpp.o" \
 "CMakeFiles/Tema2.dir/src/nfa.cpp.o" \
 "CMakeFiles/Tema2.dir/src/dfa.cpp.o" \
-"CMakeFiles/Tema2.dir/src/regram.cpp.o"
+"CMakeFiles/Tema2.dir/src/reggram.cpp.o"
 
 # External object files for target Tema2
 Tema2_EXTERNAL_OBJECTS =
@@ -142,7 +142,7 @@ Tema2_EXTERNAL_OBJECTS =
 Tema2: CMakeFiles/Tema2.dir/main.cpp.o
 Tema2: CMakeFiles/Tema2.dir/src/nfa.cpp.o
 Tema2: CMakeFiles/Tema2.dir/src/dfa.cpp.o
-Tema2: CMakeFiles/Tema2.dir/src/regram.cpp.o
+Tema2: CMakeFiles/Tema2.dir/src/reggram.cpp.o
 Tema2: CMakeFiles/Tema2.dir/build.make
 Tema2: CMakeFiles/Tema2.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Tema2"

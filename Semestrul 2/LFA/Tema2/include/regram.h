@@ -1,4 +1,0 @@
-#ifndef TEMA2_REGRAM_H
-#define TEMA2_REGRAM_H
-
-#endif //TEMA2_REGRAM_H

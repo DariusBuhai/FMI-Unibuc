@@ -3,4 +3,4 @@ project(Tema2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Tema2 main.cpp include/nfa.h src/nfa.cpp include/dfa.h src/dfa.cpp src/regram.cpp include/regram.h include/state.h)
+add_executable(Tema2 main.cpp include/nfa.h src/nfa.cpp include/dfa.h src/dfa.cpp src/reggram.cpp include/reggram.h include/state.h)

@@ -4,6 +4,7 @@
 CMakeFiles/Tema2.dir/main.cpp.o
  /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/dfa.h
  /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/nfa.h
+ /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggram.h
  /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/state.h
  /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/main.cpp
 CMakeFiles/Tema2.dir/src/dfa.cpp.o
@@ -15,5 +16,9 @@ CMakeFiles/Tema2.dir/src/nfa.cpp.o
  /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/nfa.h
  /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/state.h
  /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/nfa.cpp
-CMakeFiles/Tema2.dir/src/regram.cpp.o
- /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/regram.cpp
+CMakeFiles/Tema2.dir/src/reggram.cpp.o
+ /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/dfa.h
+ /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/nfa.h
+ /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggram.h
+ /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/state.h
+ /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/reggram.cpp

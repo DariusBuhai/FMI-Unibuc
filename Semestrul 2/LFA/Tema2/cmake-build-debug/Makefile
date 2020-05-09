@@ -224,32 +224,32 @@ src/nfa.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/nfa.cpp.s
 .PHONY : src/nfa.cpp.s
 
-src/regram.o: src/regram.cpp.o
+src/reggram.o: src/reggram.cpp.o
 
-.PHONY : src/regram.o
+.PHONY : src/reggram.o
 
 # target to build an object file
-src/regram.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/regram.cpp.o
-.PHONY : src/regram.cpp.o
+src/reggram.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggram.cpp.o
+.PHONY : src/reggram.cpp.o
 
-src/regram.i: src/regram.cpp.i
+src/reggram.i: src/reggram.cpp.i
 
-.PHONY : src/regram.i
+.PHONY : src/reggram.i
 
 # target to preprocess a source file
-src/regram.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/regram.cpp.i
-.PHONY : src/regram.cpp.i
+src/reggram.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggram.cpp.i
+.PHONY : src/reggram.cpp.i
 
-src/regram.s: src/regram.cpp.s
+src/reggram.s: src/reggram.cpp.s
 
-.PHONY : src/regram.s
+.PHONY : src/reggram.s
 
 # target to generate assembly for a file
-src/regram.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/regram.cpp.s
-.PHONY : src/regram.cpp.s
+src/reggram.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggram.cpp.s
+.PHONY : src/reggram.cpp.s
 
 # Help Target
 help:
@@ -269,9 +269,9 @@ help:
 	@echo "... src/nfa.o"
 	@echo "... src/nfa.i"
 	@echo "... src/nfa.s"
-	@echo "... src/regram.o"
-	@echo "... src/regram.i"
-	@echo "... src/regram.s"
+	@echo "... src/reggram.o"
+	@echo "... src/reggram.i"
+	@echo "... src/reggram.s"
 .PHONY : help
 
 

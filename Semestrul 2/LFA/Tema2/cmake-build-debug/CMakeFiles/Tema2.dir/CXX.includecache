@@ -24,6 +24,16 @@ vector
 iostream
 -
 
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggram.h
+iostream
+-
+string
+-
+map
+-
+dfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/dfa.h
+
 /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/state.h
 vector
 -
@@ -32,19 +42,15 @@ iostream
 string
 -
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/dfa.cpp
-../include/dfa.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/dfa.h
-../include/state.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/state.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/main.cpp
 iostream
 -
-vector
+fstream
 -
-set
--
-map
--
-string
--
+include/nfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/nfa.h
+include/dfa.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/dfa.h
+include/reggram.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggram.h
 

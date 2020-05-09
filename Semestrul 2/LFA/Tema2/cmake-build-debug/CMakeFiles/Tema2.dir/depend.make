@@ -3,6 +3,7 @@
 
 CMakeFiles/Tema2.dir/main.cpp.o: ../include/dfa.h
 CMakeFiles/Tema2.dir/main.cpp.o: ../include/nfa.h
+CMakeFiles/Tema2.dir/main.cpp.o: ../include/reggram.h
 CMakeFiles/Tema2.dir/main.cpp.o: ../include/state.h
 CMakeFiles/Tema2.dir/main.cpp.o: ../main.cpp
 
@@ -15,5 +16,9 @@ CMakeFiles/Tema2.dir/src/nfa.cpp.o: ../include/nfa.h
 CMakeFiles/Tema2.dir/src/nfa.cpp.o: ../include/state.h
 CMakeFiles/Tema2.dir/src/nfa.cpp.o: ../src/nfa.cpp
 
-CMakeFiles/Tema2.dir/src/regram.cpp.o: ../src/regram.cpp
+CMakeFiles/Tema2.dir/src/reggram.cpp.o: ../include/dfa.h
+CMakeFiles/Tema2.dir/src/reggram.cpp.o: ../include/nfa.h
+CMakeFiles/Tema2.dir/src/reggram.cpp.o: ../include/reggram.h
+CMakeFiles/Tema2.dir/src/reggram.cpp.o: ../include/state.h
+CMakeFiles/Tema2.dir/src/reggram.cpp.o: ../src/reggram.cpp
 

@@ -16,6 +16,20 @@ NFA::NFA(std::vector<State *> _states): states(std::move(_states)){}
 
 NFA::NFA(NFA const &_old): states(_old.states){}
 
+int NFA::push_state(State * state) {
+    if(state->id==-1) state->id = states.size();
+    states.push_back(state);
+    return state->id;
+}
+
+State* NFA::operator[](int id){
+    if(states.size()>id && states[id]->id==id) return states[id];
+    for(auto &state: states)
+        if(state->id==id)
+            return state;
+    return nullptr;
+}
+
 void NFA::remove_lambda(State *v1, State *v2, int id){
     /**
      * step 1 - remove lambda
@@ -108,7 +122,7 @@ void NFA::convert_to_dfa(){
     }
 }
 
-std::vector<State *> NFA::get_states() const{
+std::vector<State *> NFA::get_states(){
     return this->states;
 }
 

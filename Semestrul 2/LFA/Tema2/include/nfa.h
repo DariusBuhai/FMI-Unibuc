@@ -18,8 +18,10 @@ public:
     void remove_lambdas();
     void convert_to_dfa();
 
-    std::vector<State *> get_states() const;
+    std::vector<State*> get_states();
     std::vector<State*> get_states(bool, bool);
+    State* operator[](int id);
+    int push_state(State*);
 
     friend std::istream& operator>>(std::istream&, NFA&);
     friend std::ostream& operator<<(std::ostream&, const NFA&);
