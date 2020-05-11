@@ -1,5 +1,5 @@
 #include "../include/nfa.h"
-#include "../include/reggex.h"
+#include "../include/regex.h"
 #include "../include/state.h"
 
 #include <iostream>
@@ -269,13 +269,13 @@ void NFA::convert_to_regex(){
     strip_lambdas();
 }
 
-REGGEX NFA::get_regex() {
+REGEX NFA::get_regex() {
     NFA copy_of_nfa = NFA(*this);
     copy_of_nfa.convert_to_regex();
     string _syntax;
     if(!copy_of_nfa.states.empty() && !copy_of_nfa.states[0]->next.empty())
         _syntax = copy_of_nfa.states[0]->next[0].second;
-    REGGEX reg = REGGEX(_syntax);
+    REGEX reg = REGEX(_syntax);
     reg.minimize();
     return reg;
 }

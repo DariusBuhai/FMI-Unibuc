@@ -3,13 +3,13 @@
 #include <vector>
 #include <set>
 
-#include "../include/reggex.h";
+#include "../include/regex.h";
 
 using namespace std;
 
-REGGEX::REGGEX(std::string _syntax): syntax(_syntax){}
+REGEX::REGEX(std::string _syntax): syntax(_syntax){}
 
-string REGGEX::minimize_string(string _syntax){
+string REGEX::minimize_string(string _syntax){
     set<string> options;
     string last_option;
     auto next_p = [](string in){
@@ -44,17 +44,17 @@ string REGGEX::minimize_string(string _syntax){
     return final;
 }
 
-void REGGEX::minimize() {
+void REGEX::minimize() {
     this->syntax = this->minimize_string(this->syntax);
 }
 
 
-std::istream& operator>>(std::istream& in, REGGEX &reggex){
+std::istream& operator>>(std::istream& in, REGEX &reggex){
     in>>reggex.syntax;
     return in;
 }
 
-ostream & operator<<(std::ostream& out, const REGGEX & reggex) {
+ostream & operator<<(std::ostream& out, const REGEX & reggex) {
     out<<reggex.syntax<<'\n';
     return out;
 }

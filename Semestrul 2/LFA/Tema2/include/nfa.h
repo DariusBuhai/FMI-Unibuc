@@ -1,5 +1,5 @@
 #include "state.h"
-#include "reggex.h"
+#include "regex.h"
 
 #include <vector>
 #include <iostream>
@@ -32,7 +32,7 @@ public:
 
     void convert_to_dfa();
 
-    REGGEX get_regex();
+    REGEX get_regex();
 
     friend std::istream& operator>>(std::istream&, NFA&);
     friend std::ostream& operator<<(std::ostream&, const NFA&);

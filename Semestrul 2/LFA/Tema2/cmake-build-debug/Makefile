@@ -224,32 +224,32 @@ src/nfa.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/nfa.cpp.s
 .PHONY : src/nfa.cpp.s
 
-src/reggex.o: src/reggex.cpp.o
+src/regex.o: src/regex.cpp.o
 
-.PHONY : src/reggex.o
+.PHONY : src/regex.o
 
 # target to build an object file
-src/reggex.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggex.cpp.o
-.PHONY : src/reggex.cpp.o
+src/regex.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/regex.cpp.o
+.PHONY : src/regex.cpp.o
 
-src/reggex.i: src/reggex.cpp.i
+src/regex.i: src/regex.cpp.i
 
-.PHONY : src/reggex.i
+.PHONY : src/regex.i
 
 # target to preprocess a source file
-src/reggex.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggex.cpp.i
-.PHONY : src/reggex.cpp.i
+src/regex.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/regex.cpp.i
+.PHONY : src/regex.cpp.i
 
-src/reggex.s: src/reggex.cpp.s
+src/regex.s: src/regex.cpp.s
 
-.PHONY : src/reggex.s
+.PHONY : src/regex.s
 
 # target to generate assembly for a file
-src/reggex.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggex.cpp.s
-.PHONY : src/reggex.cpp.s
+src/regex.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/regex.cpp.s
+.PHONY : src/regex.cpp.s
 
 src/reggram.o: src/reggram.cpp.o
 
@@ -296,9 +296,9 @@ help:
 	@echo "... src/nfa.o"
 	@echo "... src/nfa.i"
 	@echo "... src/nfa.s"
-	@echo "... src/reggex.o"
-	@echo "... src/reggex.i"
-	@echo "... src/reggex.s"
+	@echo "... src/regex.o"
+	@echo "... src/regex.i"
+	@echo "... src/regex.s"
 	@echo "... src/reggram.o"
 	@echo "... src/reggram.i"
 	@echo "... src/reggram.s"

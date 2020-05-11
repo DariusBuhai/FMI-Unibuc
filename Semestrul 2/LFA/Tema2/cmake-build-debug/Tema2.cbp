@@ -86,7 +86,7 @@
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/nfa.h">
 			<Option target="Tema2"/>
 		</Unit>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggex.h">
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/regex.h">
 			<Option target="Tema2"/>
 		</Unit>
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggram.h">
@@ -104,7 +104,7 @@
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/nfa.cpp">
 			<Option target="Tema2"/>
 		</Unit>
-		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/reggex.cpp">
+		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/regex.cpp">
 			<Option target="Tema2"/>
 		</Unit>
 		<Unit filename="/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/src/reggram.cpp">

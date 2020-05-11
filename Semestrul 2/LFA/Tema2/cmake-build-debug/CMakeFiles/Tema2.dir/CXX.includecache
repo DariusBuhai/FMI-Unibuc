@@ -19,14 +19,14 @@ string
 /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/nfa.h
 state.h
 /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/state.h
-reggex.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggex.h
+regex.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/regex.h
 vector
 -
 iostream
 -
 
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggex.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/regex.h
 iostream
 -
 string
@@ -61,6 +61,6 @@ include/dfa.h
 /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/dfa.h
 include/reggram.h
 /Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggram.h
-include/reggex.h
-/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/reggex.h
+include/regex.h
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/LFA/Tema2/include/regex.h
 
