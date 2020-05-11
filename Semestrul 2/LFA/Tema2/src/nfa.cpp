@@ -1,4 +1,5 @@
 #include "../include/nfa.h"
+#include "../include/reggex.h"
 #include "../include/state.h"
 
 #include <iostream>
@@ -12,9 +13,29 @@
 
 using namespace std;
 
-NFA::NFA(std::vector<State *> _states): states(std::move(_states)){}
+NFA::NFA(const std::vector<State *>& _states){
+    map<int, State*> relation;
+    for(auto const &state: states){
+        auto new_state = new State(state->id, state->final_state, state->start_state);
+        this->push_state(new_state);
+        relation[new_state->id] = new_state;
+    }
+    for(auto const &state: states)
+        for(auto const &n: state->next)
+            this->states[state->id]->next.emplace_back(relation[n.first->id],n.second);
+}
 
-NFA::NFA(NFA const &_old): states(_old.states){}
+NFA::NFA(NFA const &_old){
+    map<int, State*> relation;
+    for(auto const &state: _old.states){
+        auto new_state = new State(state->id, state->final_state, state->start_state);
+        this->push_state(new_state);
+        relation[new_state->id] = new_state;
+    }
+    for(auto const &state: _old.states)
+        for(auto const &n: state->next)
+            this->states[state->id]->next.emplace_back(relation[n.first->id],n.second);
+}
 
 int NFA::push_state(State * state) {
     if(state->id==-1) state->id = states.size();
@@ -132,6 +153,131 @@ vector<State*> NFA::get_states(bool final_state, bool start_state){
         if(s->start_state==start_state || s->final_state==final_state)
             new_states.push_back(s);
     return new_states;
+}
+
+void NFA::strip_lambdas(){
+    auto strip_char = [](std::string& str, const char ch) {
+        string new_string;
+        for(auto c: str)
+            if(c!=ch)
+                new_string.push_back(c);
+        str = new_string;
+    };
+    for(auto &state: states)
+        for(auto &n: state->next)
+            strip_char(n.second, LAMBDA);
+}
+
+void NFA::remove_regex_state(State* state){
+    /// Find all connections ( in and out )
+    vector<pair<State*, string>> out;
+    out = state->next;
+    auto in = get_all_inputs(state);
+    /// Remove from states vector
+    remove_from_states(state);
+    /// Connect loops
+    string loop;
+    for(auto const & input: in)
+        if(input.first==state){
+            if(!loop.empty() && loop[0]!=LAMBDA) loop+="+";
+            loop += input.second.second;
+        }
+    if(loop.size()>1) loop = "("+loop+")";
+    if(!loop.empty()) loop += "*";
+    /// Connect all inputs to the outputs
+    for(auto &input: in)
+        for(auto const& output: out){
+            if(output.first!=state)
+                input.first->next.emplace_back(output.first, input.second.second+loop+output.second);
+        }
+    /// Merge states that are the same
+    for(auto &input: in){
+        map<State*, vector<pair<State*, string>>> connections;
+        for(auto &x: input.first->next)
+            connections[x.first].push_back(x);
+        if(connections.size()!=input.first->next.size()){
+            input.first->next.clear();
+            for(const auto& con: connections){
+                string cost;
+                for(const auto& a: con.second){
+                    if(!cost.empty() && cost[0]!=LAMBDA)
+                        cost+="+";
+                    cost+=a.second;
+                }
+                input.first->next.emplace_back(con.first, cost);
+            }
+        }
+    }
+    /// Free space
+    delete state;
+}
+
+void NFA::remove_from_states(State* state){
+    bool found_state = false;
+    for(int i=0;i<states.size();i++){
+        if(!found_state && states[i]==state)
+            found_state = true;
+        if(found_state)
+            states[i] = states[i+1];
+    }
+    states.pop_back();
+}
+
+vector<pair<State*, pair<State*, string>>> NFA::get_all_inputs(State* state){
+    vector<pair<State*, pair<State*, string>>> in;
+    for(auto &i : states){
+        vector<pair<State*, string>> new_next;
+        for(auto &n: i->next)
+            if(n.first == state)
+                in.emplace_back(i, n);
+            else
+                new_next.emplace_back(n);
+        i->next.clear();
+        i->next = new_next;
+    }
+    return in;
+}
+
+void NFA::convert_to_regex(){
+    /// Step 1 - add new start state, with lambda connection
+    states.push_back(nullptr);
+    for(int i = static_cast<int>(states.size()-1);i>0;i--){
+        states[i] = states[i-1];
+        states[i]->id++;
+    }
+    int start_state =0;
+    for(auto const&state: states)
+        if(state->start_state){
+            start_state = state->id;
+            break;
+        }
+    states[0] = new State(0, false, true);
+    states[start_state]->start_state = false;
+    states[0]->next.emplace_back(states[start_state], string(1, LAMBDA));
+    /// Step 2 - add new final state and connect old final states
+    states.push_back(new State(states.size(), true, false));
+    for(int i=1;i<states.size()-1;i++)
+        if(states[i]->final_state){
+            states[i]->final_state = false;
+            states[i]->next.emplace_back(states.back(), string(1, LAMBDA));
+        }
+    /// Step 3, remove all states, one by one
+    do{
+        remove_regex_state(states[1]);
+    }while(states.size()>2);
+    /// Clear lambdas
+    strip_lambdas();
+}
+
+REGGEX NFA::get_regex() {
+    NFA copy_of_nfa = NFA(*this);
+    copy_of_nfa.convert_to_regex();
+    string _syntax;
+    if(!copy_of_nfa.states.empty() && !copy_of_nfa.states[0]->next.empty())
+        _syntax = copy_of_nfa.states[0]->next[0].second;
+    REGGEX reg = REGGEX(_syntax);
+    reg.minimize();
+    return reg;
 }
 
 std::istream& operator>>(std::istream& in, NFA &nfa){

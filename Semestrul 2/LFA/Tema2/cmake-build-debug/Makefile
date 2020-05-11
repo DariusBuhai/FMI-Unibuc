@@ -224,6 +224,33 @@ src/nfa.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/nfa.cpp.s
 .PHONY : src/nfa.cpp.s
 
+src/reggex.o: src/reggex.cpp.o
+
+.PHONY : src/reggex.o
+
+# target to build an object file
+src/reggex.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggex.cpp.o
+.PHONY : src/reggex.cpp.o
+
+src/reggex.i: src/reggex.cpp.i
+
+.PHONY : src/reggex.i
+
+# target to preprocess a source file
+src/reggex.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggex.cpp.i
+.PHONY : src/reggex.cpp.i
+
+src/reggex.s: src/reggex.cpp.s
+
+.PHONY : src/reggex.s
+
+# target to generate assembly for a file
+src/reggex.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tema2.dir/build.make CMakeFiles/Tema2.dir/src/reggex.cpp.s
+.PHONY : src/reggex.cpp.s
+
 src/reggram.o: src/reggram.cpp.o
 
 .PHONY : src/reggram.o
@@ -269,6 +296,9 @@ help:
 	@echo "... src/nfa.o"
 	@echo "... src/nfa.i"
 	@echo "... src/nfa.s"
+	@echo "... src/reggex.o"
+	@echo "... src/reggex.i"
+	@echo "... src/reggex.s"
 	@echo "... src/reggram.o"
 	@echo "... src/reggram.i"
 	@echo "... src/reggram.s"

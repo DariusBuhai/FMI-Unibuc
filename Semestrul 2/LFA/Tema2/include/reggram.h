@@ -7,7 +7,7 @@
 #define TEMA2_REGRAM_H
 
 class REGGRAM{
-    std::map<std::string, std::vector<std::string>> grammar;
+    std::map<std::string, std::vector<std::pair<std::string, std::string>>> grammar;
     std::string start_state;
 public:
     NFA get_nfa();

@@ -54,7 +54,7 @@ class BTree{
     Node *root; // Pointer to root node
     const int t;  // Minimum degree
 public:
-    BTree(int = 3);
+    explicit BTree(int = 3);
 
     int search(int, bool);
     int search(int);

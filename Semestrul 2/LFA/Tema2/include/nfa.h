@@ -1,4 +1,5 @@
 #include "state.h"
+#include "reggex.h"
 
 #include <vector>
 #include <iostream>
@@ -7,21 +8,31 @@
 #define TEMA2_NFA_H
 
 class NFA{
+private:
     static void remove_lambda(State*, State*, int);
+
+    std::vector<std::pair<State*, std::pair<State*, std::string>>> get_all_inputs(State* state);
+    void remove_from_states(State* state);
+    void remove_regex_state(State* state);
+    void strip_lambdas();
+    void convert_to_regex();
 protected:
-    std::vector<State *> states;
+    std::vector<State*> states;
 public:
-    NFA(std::vector<State *>);
+    NFA(const std::vector<State *>&);
     NFA(NFA const &);
     NFA() = default;
-
-    void remove_lambdas();
-    void convert_to_dfa();
 
     std::vector<State*> get_states();
     std::vector<State*> get_states(bool, bool);
     State* operator[](int id);
     int push_state(State*);
+
+    void remove_lambdas();
+
+    void convert_to_dfa();
+
+    REGGEX get_regex();
 
     friend std::istream& operator>>(std::istream&, NFA&);
     friend std::ostream& operator<<(std::ostream&, const NFA&);

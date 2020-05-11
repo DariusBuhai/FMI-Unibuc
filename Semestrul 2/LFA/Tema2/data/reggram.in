@@ -1,15 +1,9 @@
-14
-S1 a
-S1 b
-S1 aA
-S1 bB
-S1 ~
+8
 S a
-S b
 S aA
 S bB
-A a
+S ~
 A aA
 A aS
-B c
 B cS
+B ~
