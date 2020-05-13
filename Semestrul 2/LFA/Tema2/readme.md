@@ -1,4 +1,4 @@
-# **LFA Project 2**
+# **LFA Project 2 & 3**
 
 
 ## **NFA Class**:
