@@ -10,7 +10,7 @@
 - [ ] LFA (Limbaje Formale si Automate)
   - [x] Tema 1
   - [x] Tema 2
-  - [ ] Tema 3
+  - [x] Tema 3
 - [ ] POO (Programarea orientata pe obiecte)
   - Laboratoare
   - Seminar
@@ -21,8 +21,9 @@
 - [ ] SD (Structuri de Date)
   - [x] Tema 1
   - [x] Tema 2
-  - [ ] Tema 3
+  - [x] Tema 3
 - [ ] TW (Tehnici Web)
-  - Laboratoare
-  - Proiect Final: ***https://github.com/DariusBuhai/Waitee***
+  - [x] Laboratoare
+  - [x] Proiect Final: ***https://github.com/DariusBuhai/Waitee***
+  - [ ] Update proiect final
 - [ ] Engleza
