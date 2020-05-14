@@ -33,6 +33,10 @@ app.get('/', function(req, res){
     res.sendFile(_template_dir+"/index.html");
 });
 
+app.get('/random', function(req, res){
+    res.sendFile(_template_dir+"/random.html");
+});
+
 /** Data getters and setters */
 /** Categories */
 app.get('/categories', function(req,res){
@@ -96,7 +100,7 @@ app.get('/check_auth/:password', function(req, res){
 
 /** Start local server */
 app.listen(port, () =>
-    console.log("Server started at: 192.168.2.101:"+port)
+    console.log("Server started at: localhost:"+port)
 );
 
 /** Usefull functions */

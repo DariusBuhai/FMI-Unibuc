@@ -1,6 +1,8 @@
 var categories = [];
 var selected_category = null;
 var bill = {};
+var marked_products = {};
+var last_markup = null;
 
 function get_categories(callback = null){
     http_get("categories", function(data){
@@ -41,10 +43,19 @@ function get_products(callback = null){
         var products_template = document.getElementById("products");
         products_template.innerHTML = "";
         for(let i=0;i<data.length;i++){
+            var description = data[i].description;
+            if(marked_products.hasOwnProperty(i)){
+                var new_description = description.slice(0,marked_products[i].from);
+                new_description += "<mark>";
+                new_description += description.slice(marked_products[i].from, marked_products[i].to);
+                new_description += "</mark>";
+                new_description += description.slice(marked_products[i].to, description.length);
+                description = new_description;
+            }
             let product = generate_child_from_template(product_template.cloneNode(true), {
                 title: data[i].name,
                 image: "images/"+data[i].image,
-                description: data[i].description,
+                description: description,
                 price: data[i].price,
                 id: data[i].id
             });
@@ -57,9 +68,18 @@ function get_products(callback = null){
 
 function generate_product_details(product_id, template, callback){
     http_get("/product/"+product_id, async function(data){
+        var description = data["description"];
+        if(marked_products.hasOwnProperty(product_id)){
+            var new_description = description.slice(0,marked_products[product_id].from);
+            new_description += "<mark>";
+            new_description += description.slice(marked_products[product_id].from, marked_products[product_id].to);
+            new_description += "</mark>";
+            new_description += description.slice(marked_products[product_id].to, description.length);
+            description = new_description;
+        }
         let modal = generate_child_from_template(template.cloneNode(true), {
             title: data["name"],
-            description: data["description"],
+            description: description,
             image: "images/"+data["image"],
             price: data["price"],
             category: data["category"],
@@ -80,7 +100,7 @@ function check_user_permissions(admin_mode, callback){
         callback();
         return;
     }
-    password = prompt("Va rugam sa introduceti parola!");
+    let password = prompt("Va rugam sa introduceti parola!");
     check_password(password, function(resp){
         if(resp){
             callback(true);
@@ -105,3 +125,47 @@ function init_general(){
 }
 
 init_general();
+get_products_markup();
+
+/**
+ * Markup
+ * Task 4 - P4
+ * 2 pct
+ */
+
+function get_products_markup(){
+    marked_products = JSON.parse(window.localStorage.getItem("marked_products"));
+    get_products();
+}
+
+function apply_markup(){
+    if(last_markup==null) return;
+    if(marked_products.hasOwnProperty(last_markup.product_id)){
+        delete marked_products[last_markup.product_id];
+    }else{
+        marked_products[last_markup.product_id] = {from: last_markup.from,to: last_markup.to};
+    }
+    last_markup = null;
+    get_products();
+    window.localStorage.setItem("marked_products", JSON.stringify(marked_products));
+}
+
+function update_product_markup(product_id){
+    var marked = window.getSelection();
+    var from = marked.anchorOffset;
+    var to = marked.focusOffset;
+    if(from>to){
+        var aux = from;
+        from = to;
+        to = aux;
+    }
+    last_markup = {product_id, from, to};
+}
+
+function refresh_products(e) {
+    var evtobj = window.event? event : e
+    console.log(evtobj);
+    if (evtobj.keyCode == 91){
+        apply_markup();
+    }
+}

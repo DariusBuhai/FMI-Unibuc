@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body onkeyup="refresh_products()">
 <main>
     <nav id="navbar" class="nav-container">
         <button class="nav-toggle" onclick="toggle_expand_navbar()"><i class="fa fa-bars fa-2x"></i></button>
@@ -50,12 +50,6 @@
         </div>
     </div>
 
-    <div style="padding: 40px">
-        <h4>Calculator varsta: </h4>
-        <input placeholder="month#day#year" onkeyup="updateAge()" id="age-calculator">
-        <p hidden id="age-has-generated">Au trecut <b id="age-generated"></b> de cand te-ai nascut</p>
-    </div>
-
     <footer class="footer"></footer>
 </main>
 
@@ -80,7 +74,7 @@
                     generate_product_details([[id]], template, callback);
                 })" src="[[image]]">
         <h4 class="menu-item-title title">[[title]]</h4>
-        <p class="menu-item-description">[[description]]</p>
+        <p class="menu-item-description" onmouseup="update_product_markup([[id]])">[[description]]</p>
         <div class="index-content menu-item-price-container">
             <span class="menu-item-price">[[price]] lei</span>
             <button class="menu-item-button add-bill-button add-bill-button-[[id]]" onclick="add_to_bill([[id]])"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Adauga</button>
@@ -102,7 +96,7 @@
             </button>
             <div class="modal-content">
                 <div class="img">
-                    <img src="[[image]]">
+                    <img src="[[image]]" alt="Nicio imagine">
                 </div>
                 <div class="details">
                     <div class="details-content">
@@ -185,7 +179,5 @@
 
 <script src="script.js"></script>
 <script src="admin.js"></script>
-
-<script src="tasks.js"></script>
 
 </html>
