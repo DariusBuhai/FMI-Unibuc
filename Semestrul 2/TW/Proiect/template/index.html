@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Waiter</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script defer src="fontawesome/js/all.js"></script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<main>
+    <nav id="navbar" class="nav-container">
+        <button class="nav-toggle" onclick="toggle_expand_navbar()"><i class="fa fa-bars fa-2x"></i></button>
+        <div class="nav-content">
+            <ul id="categories"></ul>
+            <div class="index-content">
+                <a onclick="toggle_admin_mode()"><i class="fa fa-user-secret"></i> &nbsp;&nbsp;Administrare</a>
+                <button onclick="toggle_bill_view(false)" id="bill-button"><i class="fa fa-tasks"></i>&nbsp;&nbsp;Nota de plata <span id="bill-button-count"></span></button>
+            </div>
+            <div class="admin-content" hidden>
+                <a onclick="toggle_admin_mode(false)"><i class="fa fa-sign-out-alt"></i> &nbsp;&nbsp;Delogare</a>
+                <button onclick="show_modal('add-product-modal', function(template, callback){
+                    callback(generate_child_from_template(template, {
+                        template: ''
+                    }))
+                })" ><i class="fa fa-plus"></i>&nbsp;&nbsp;Adauga produs</button>
+                <!--<button onclick="delete_category()" class="danger"><i class="fa fa-trash"></i>&nbsp;&nbsp;Sterge categorie</button>-->
+            </div>
+        </div>
+    </nav>
+
+    <div class="site-overlay white" id="bill-overlay" hidden onclick="toggle_bill_view()"></div>
+    <div class="site-overlay dark" id="modal-overlay" hidden onclick="hide_modal('details-modal')"></div>
+
+    <section class="bill-container" id="bill-view" hidden>
+        <button onclick="toggle_bill_view()">
+            <i class="fa fa-times-circle fa-2x"></i>
+        </button>
+        <div class="bill-content" id="bill">
+        </div>
+    </section>
+    <div class="menu-container">
+        <div class="menu-content" id="products">
+        </div>
+    </div>
+
+    <div style="padding: 40px">
+        <h4>Calculator varsta: </h4>
+        <input placeholder="month#day#year" onkeyup="updateAge()" id="age-calculator">
+        <p hidden id="age-has-generated">Au trecut <b id="age-generated"></b> de cand te-ai nascut</p>
+    </div>
+
+    <footer class="footer"></footer>
+</main>
+
+<!-- Templates -->
+<app-root hidden>
+    <!-- Category  -->
+    <li id="category-template" class="[[active]] category-item category-item-[[id]]" hidden><a onclick="change_category([[id]])">[[name]]</a></li>
+
+    <!-- Bill -->
+    <div id="bill-item-template" class="bill-item">
+        <img src="[[image]]">
+        <div>
+            <h4>[[name]]</h4>
+            <p><b>[[price]] ron</b> x [[quantity]]</p>
+        </div>
+        <a onclick="remove_from_bill([[id]])"><i class="fa fa-times"></i></a>
+    </div>
+
+    <!-- Menu item -->
+    <div class="menu-item no-transition" id="product-template" hidden>
+        <img class="menu-item-image" onclick="show_modal('details-modal', function(template, callback){
+                    generate_product_details([[id]], template, callback);
+                })" src="[[image]]">
+        <h4 class="menu-item-title title">[[title]]</h4>
+        <p class="menu-item-description">[[description]]</p>
+        <div class="index-content menu-item-price-container">
+            <span class="menu-item-price">[[price]] lei</span>
+            <button class="menu-item-button add-bill-button add-bill-button-[[id]]" onclick="add_to_bill([[id]])"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Adauga</button>
+            <button class="menu-item-button added-bill-button success added-bill-button-[[id]]" onclick="toggle_bill_view(false)" hidden><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Adaugat</button>
+        </div>
+        <div class="admin-content menu-item-price-container"  oncontextmenu="" hidden>
+            <span class="menu-item-price">[[price]] lei</span>
+            <button class="menu-item-button add-bill-button" onclick="show_modal('edit-product-modal', function(template, callback){
+                    generate_product_details([[id]], template, callback);
+                })"><i class="fa fa-pen-nib"></i>&nbsp;&nbsp;Editeaza</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal template" id="details-modal-template" hidden>
+        <div class="modal-container">
+            <button onclick="hide_modal('details-modal')">
+                <i class="fa fa-times-circle fa-2x"></i> <span>Inchide</span>
+            </button>
+            <div class="modal-content">
+                <div class="img">
+                    <img src="[[image]]">
+                </div>
+                <div class="details">
+                    <div class="details-content">
+                        <div>
+                            <h3>[[title]]</h3>
+                            <p>[[description]]</p>
+                        </div>
+                        <button class="add-bill-button add-bill-button-[[id]]" onclick="add_to_bill([[id]])"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Adauga</button>
+                        <button class="added-bill-button success added-bill-button-[[id]]" onclick="hide_modal('details-modal');toggle_bill_view(false)" hidden><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Adaugat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit product Modal -->
+    <div class="modal template" id="edit-product-modal-template" hidden>
+        <div class="modal-container">
+            <button onclick="hide_modal('edit-product-modal')">
+                <i class="fa fa-times-circle fa-2x"></i> <span>Inchide</span>
+            </button>
+            <div class="modal-content">
+                <div class="img">
+                    <img id="product_[[id]]_image_view" src="[[image]]" alt=" Nicio imagine"><br><br>
+                    <input id="product_[[id]]_image" type="file" onchange="changed_image('product_[[id]]_image', 'product_[[id]]_image_view')">
+                </div>
+                <div class="details">
+                    <div class="details-content">
+                        <div>
+                            <input id="product_[[id]]_title" value="[[title]]"><br><br>
+                            <input id="product_[[id]]_price" value="[[price]]"><br><br>
+                            <input id="product_[[id]]_category" value="[[category]]"><br><br>
+                            <textarea id="product_[[id]]_description">[[description]]</textarea>
+                        </div>
+                        <div>
+                            <button class="delete" onclick="delete_product([[id]])"><i class="fa fa-trash"></i>&nbsp;&nbsp;Sterge</button>
+                            <button class="save" onclick="edit_product([[id]])"><i class="fa fa-save"></i>&nbsp;&nbsp;Salveaza</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add product Modal -->
+    <div class="modal template" id="add-product-modal-template" hidden>
+        <div class="modal-container">
+            <button onclick="hide_modal('add-product-modal')">
+                <i class="fa fa-times-circle fa-2x"></i> <span>Inchide</span>
+            </button>
+            <div class="modal-content">
+                <div class="img">
+                    <img id="product_image_view[[template]]" src="[[image]]" alt=" Adauga o imagine"><br><br>
+                    <input id="product_image[[template]]" type="file" accept="image/*" onchange="changed_image('product_image', 'product_image_view')">
+                </div>
+                <div class="details">
+                    <div class="details-content">
+                        <div>
+                            <input class="title" id="product_title[[template]]" placeholder="Titlu"><br><br>
+                            <input class="price" id="product_price[[template]]" placeholder="Pret"><br><br>
+                            <input class="price" id="product_category[[template]]" placeholder="Categorie"><br><br>
+                            <textarea id="product_description[[template]]" placeholder="Descriere"></textarea>
+                        </div>
+                        <div>
+                            <button class="save" onclick="add_product([[id]])"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Adauga</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-root>
+
+</body>
+<script src="functions.js"></script>
+<script src="animations.js"></script>
+<script src="modal.js"></script>
+
+<script src="general.js"></script>
+
+<script src="script.js"></script>
+<script src="admin.js"></script>
+
+<script src="tasks.js"></script>
+
+</html>
