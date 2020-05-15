@@ -141,10 +141,14 @@ function get_products_markup(){
 function apply_markup(){
     if(last_markup==null) return;
     if(marked_products.hasOwnProperty(last_markup.product_id)){
+        //let old_from = marked_products[last_markup.product_id].from;
+        //let old_to = marked_products[last_markup.product_id].to;
         delete marked_products[last_markup.product_id];
-    }else{
-        marked_products[last_markup.product_id] = {from: last_markup.from,to: last_markup.to};
+        get_products();
+        return;
     }
+    //console.log(last_markup);
+    marked_products[last_markup.product_id] = {from: last_markup.from,to: last_markup.to};
     last_markup = null;
     get_products();
     window.localStorage.setItem("marked_products", JSON.stringify(marked_products));
@@ -162,10 +166,10 @@ function update_product_markup(product_id){
     last_markup = {product_id, from, to};
 }
 
-function refresh_products(e) {
+function refresh_products() {
     var evtobj = window.event? event : e
-    console.log(evtobj);
-    if (evtobj.keyCode == 91){
+    //console.log(evtobj);
+    if (evtobj.keyCode === 91){
         apply_markup();
     }
 }

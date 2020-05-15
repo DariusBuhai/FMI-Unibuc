@@ -98,6 +98,12 @@ app.get('/check_auth/:password', function(req, res){
     res.send(isCorrect);
 });
 
+/** 404 Error redirect */
+app.use(function(req, res, next){
+    res.status(404);
+    res.sendFile(_template_dir+"/404.html");
+});
+
 /** Start local server */
 app.listen(port, () =>
     console.log("Server started at: localhost:"+port)
