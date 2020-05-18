@@ -18,6 +18,7 @@ function http_get(theUrl, callback, json_data = true) {
         }
     };
     xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.setRequestHeader("accepts", "application/json");
     xmlHttp.send(null);
 }
 
@@ -98,4 +99,9 @@ function toggle_expand_navbar(){
         return;
     }
     nav.classList.add("expanded");
+}
+
+function open_page(link){
+    console.log(link);
+    location.href = link;
 }

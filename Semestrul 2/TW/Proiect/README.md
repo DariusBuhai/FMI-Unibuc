@@ -38,3 +38,12 @@
 - utilitatea (sa rezolve probleme reale)
 - stabilitatea (sa NU contina defecte evidente)
 - complexitatea (sa aiba mai multe ecrane, layout-ul sa fie mai complex etc.)
+
+### Requirements:
+ - node.js
+ - express
+ - path
+ - fs
+ - body-parser
+ - formidable
+ - moment

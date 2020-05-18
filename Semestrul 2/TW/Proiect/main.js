@@ -4,7 +4,7 @@ const fs = require('fs');
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 80;
+const port = 3000;
 
 const password = "Parola";
 
@@ -14,19 +14,20 @@ app.use(bodyParser.raw());
 
 const products = require("./modules/products");
 const categories = require("./modules/categories");
+const logger = require("./modules/logger");
 
 const _template_dir = __dirname+"/template";
 const _images_dir = __dirname+"/data/images";
 
 /** Link static files */
 /* Template */
-link_directory(_template_dir+"/scripts");
-link_directory(_template_dir+"/images", true);
-link_directory(_template_dir+"/fontawesome", true, "/fontawesome/");
-link_file(_template_dir+"/style.css");
+link_folder(_template_dir+"/scripts");
+link_folder(_template_dir+"/images", true);
+link_folder(_template_dir+"/fontawesome", true, "/fontawesome/");
+link_path(_template_dir+"/style.css");
 
 /* Data */
-link_directory(_images_dir, true, "/images/");
+link_folder(_images_dir, true, "/images/");
 
 /** */
 app.get('/', function(req, res){
@@ -48,7 +49,7 @@ app.get('/categories/:id', function(req,res){
 });
 
 app.delete('/categories/:name/:password', function(req,res){
-    if(req.params.password!=password){
+    if(req.params.password!==password){
         res.send("Invalid auth params");
         return;
     }
@@ -65,31 +66,58 @@ app.get('/products/:category', function(req,res){
 });
 
 app.get('/product/:id', function(req,res){
-    res.send(products.prototype.get(null, req.params.id));
+    if(req.header("accepts")==="application/json"){
+        res.send(products.prototype.get(null, req.params.id));
+    }else{
+        res.sendFile(_template_dir+"/product.html");
+    }
+    /** Log action */
+    logger.prototype.post(req.ip,"Viewed the product with id "+req.params.id);
 });
 
 app.put('/product/:id/:password', function(req,res){
-    if(req.params.password!=password){
+    if(req.params.password!==password){
         res.send("Invalid auth params");
+        /** Log action */
+        logger.prototype.post(req.ip,"Attempted to modify products, but with invalid auth params!");
         return;
     }
     products.prototype.put(req.params.id, req, res)
+    /** Log action */
+    logger.prototype.post(req.ip,"Has edited the product with id "+req.params.id);
 });
 
 app.post('/products/:password', function(req,res){
-    if(req.params.password!=password){
+    if(req.params.password!==password){
         res.send("Invalid auth params");
+        /** Log action */
+        logger.prototype.post(req.ip,"Attempted to modify products, but with invalid auth params!");
         return;
     }
     products.prototype.post(req, res);
+    /** Log action */
+    logger.prototype.post(req.ip,"Created a new product");
 });
 
 app.delete('/product/:id/:password', function(req,res){
-    if(req.params.password!=password){
+    if(req.params.password!==password){
         res.send("Invalid auth params");
+        /** Log action */
+        logger.prototype.post(req.ip,"Attempted to modify products, but with invalid auth params!");
         return;
     }
     res.send(products.prototype.delete(req.params.id));
+    /** Log action */
+    logger.prototype.post(req.ip,"Has deleted the product with id "+req.params.id);
+});
+
+/** Logger */
+app.get('/logger', function(req,res){
+    if(req.header("accepts")==="application/json"){
+        res.send(logger.prototype.get());
+    }else{
+        res.send(logger.prototype.get_string());
+    }
 });
 
 /** Check password */
@@ -110,31 +138,29 @@ app.listen(port, () =>
 );
 
 /** Usefull functions */
-function link_file(file_path, get_path = null){
-    if(get_path==null){
-        file_path.split("/").forEach(function(dir){
-            get_path = dir;
+function link_path(file_location, get_prefix = null){
+    if(get_prefix==null){
+        file_location.split("/").forEach(function(dir){
+            get_prefix = dir;
         });
-        get_path = "/"+get_path;
+        get_prefix = "/"+get_prefix;
     }
-    app.get(get_path, function(req, res){
-       res.sendFile(path.join(file_path));
+    app.get(get_prefix, function(req, res){
+       res.sendFile(path.join(file_location));
     });
 }
 
-function link_directory(dir, separate_directories = false, sub = "/", ignore_ext = [".html"]){
+function link_folder(dir, separate_directories = false, sub = "/", ignore_extension = [".html"]){
     fs.readdirSync(path.join(dir)).forEach(function(file) {
-        get_path = file;
-        if(file.split('.')[0]=="index") get_path = "";
-        if(file.split('.').length==1){
-            if(separate_directories) link_directory(dir+"/"+file, separate_directories, sub+file+"/");
-            else link_directory(dir+"/"+file, separate_directories, sub);
-        }else{
-            //console.log(sub+get_path);
-            link_file(dir+"/"+file, sub+get_path);
-            for(var i=0;i<ignore_ext.length;i++)
-                if(get_path.search(ignore_ext[i]))
-                    link_file(dir+"/"+file, sub+get_path.replace(ignore_ext[i], ""));
+        get_prefix = (file.split('.')[0]==="index") ? "" : file;
+        if(file.split('.').length===1){
+            if(separate_directories) link_folder(dir+"/"+file, separate_directories, sub+file+"/");
+            else link_folder(dir+"/"+file, separate_directories, sub);
+            return;
         }
+        link_path(dir+"/"+file, sub+get_prefix);
+        for(var i=0;i<ignore_extension.length;i++)
+            if(get_prefix.search(ignore_extension[i]))
+                link_path(dir+"/"+file, sub+get_prefix.replace(ignore_extension[i], ""));
     });
 }

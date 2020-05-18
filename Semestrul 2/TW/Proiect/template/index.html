@@ -70,6 +70,7 @@
 
     <!-- Menu item -->
     <div class="menu-item no-transition" id="product-template" hidden>
+        <!--ondblclick="open_page('/product/[[id]]')"-->
         <img class="menu-item-image" onclick="show_modal('details-modal', function(template, callback){
                     generate_product_details([[id]], template, callback);
                 })" src="[[image]]">
@@ -83,7 +84,7 @@
         <div class="admin-content menu-item-price-container"  oncontextmenu="" hidden>
             <span class="menu-item-price">[[price]] lei</span>
             <button class="menu-item-button add-bill-button" onclick="show_modal('edit-product-modal', function(template, callback){
-                    generate_product_details([[id]], template, callback);
+                    generate_product_details([[id]], template, callback, false);
                 })"><i class="fa fa-pen-nib"></i>&nbsp;&nbsp;Editeaza</button>
         </div>
     </div>

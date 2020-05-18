@@ -44,12 +44,12 @@ function get_products(callback = null){
         products_template.innerHTML = "";
         for(let i=0;i<data.length;i++){
             var description = data[i].description;
-            if(marked_products.hasOwnProperty(i)){
-                var new_description = description.slice(0,marked_products[i].from);
+            if(marked_products && marked_products.hasOwnProperty(data[i].id)){
+                var new_description = description.slice(0,marked_products[data[i].id].from);
                 new_description += "<mark>";
-                new_description += description.slice(marked_products[i].from, marked_products[i].to);
+                new_description += description.slice(marked_products[data[i].id].from, marked_products[data[i].id].to);
                 new_description += "</mark>";
-                new_description += description.slice(marked_products[i].to, description.length);
+                new_description += description.slice(marked_products[data[i].id].to, description.length);
                 description = new_description;
             }
             let product = generate_child_from_template(product_template.cloneNode(true), {
@@ -66,10 +66,10 @@ function get_products(callback = null){
     });
 }
 
-function generate_product_details(product_id, template, callback){
+function generate_product_details(product_id, template, callback, include_markup = true){
     http_get("/product/"+product_id, async function(data){
         var description = data["description"];
-        if(marked_products.hasOwnProperty(product_id)){
+        if(include_markup && marked_products && marked_products.hasOwnProperty(product_id)){
             var new_description = description.slice(0,marked_products[product_id].from);
             new_description += "<mark>";
             new_description += description.slice(marked_products[product_id].from, marked_products[product_id].to);
@@ -135,19 +135,21 @@ get_products_markup();
 
 function get_products_markup(){
     marked_products = JSON.parse(window.localStorage.getItem("marked_products"));
+    if(marked_products==null){
+        marked_products = {};
+    }
     get_products();
 }
 
 function apply_markup(){
     if(last_markup==null) return;
-    if(marked_products.hasOwnProperty(last_markup.product_id)){
-        //let old_from = marked_products[last_markup.product_id].from;
-        //let old_to = marked_products[last_markup.product_id].to;
+    if(marked_products && marked_products.hasOwnProperty(last_markup.product_id)){
         delete marked_products[last_markup.product_id];
         get_products();
         return;
     }
-    //console.log(last_markup);
+    console.log(last_markup);
+    console.log(marked_products);
     marked_products[last_markup.product_id] = {from: last_markup.from,to: last_markup.to};
     last_markup = null;
     get_products();
