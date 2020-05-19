@@ -26,4 +26,5 @@
   - [x] Laboratoare
   - [x] Proiect Final: ***https://github.com/DariusBuhai/Waitee***
   - [ ] Update proiect final
-- [ ] Engleza
+- [x] Engleza
+- [ ] Sport
