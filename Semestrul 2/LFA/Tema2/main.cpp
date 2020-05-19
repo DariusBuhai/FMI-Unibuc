@@ -25,10 +25,14 @@ void lambda_nfa_dfa(ostream& out){
     nfa.remove_lambdas();
     nfa.convert_to_dfa();
     DFA dfa = *(DFA*)&nfa;
+    out<<dfa;
+    out<<dfa.get_regex();
+    fin.close();
+    /*DFA dfa = *(DFA*)&nfa;
     dfa.minimize();
     out<<"DFA: \n";
     out<<dfa;
-    fin.close();
+    fin.close();*/
 }
 
 void dfa_regex(ostream& out){
