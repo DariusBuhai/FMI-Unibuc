@@ -132,50 +132,6 @@ DFA:
 Final Regex: 
 aaa*baaa*b(caaa*b+cb)*ccaaa*
 
-
-A aA | aS
-B cS | ~
-S a | aA | bB | ~
-
-A aA | aS | a
-B cS | c
-S a | aA | bB | b
-S1 a | aA | bB | b | ~
-
-5 13 2
-3 
-3 4 
-0 0 a
-0 2 a
-0 4 a
-1 2 c
-1 4 c
-2 4 a
-2 0 a
-2 1 b
-2 4 b
-3 4 a
-3 0 a
-3 1 b
-3 4 b
-
-a+aa*a+b+bc+bc(aa*a+bc)*a
-
-6 9 6
-1 
-0 1 2 3 4 5 
-0 0 a
-0 5 b
-1 3 a
-1 5 b
-2 3 a
-2 5 b
-3 0 a
-4 0 a
-5 1 c
-
-aaa*baaa*b(caaa*b+cb)*ccaaa*
-
  ```
  
  **Created By Darius Buhai, all rights reserved**

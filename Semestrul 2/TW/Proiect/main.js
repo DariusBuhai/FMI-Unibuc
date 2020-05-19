@@ -84,7 +84,7 @@ app.put('/product/:id/:password', function(req,res){
     }
     products.prototype.put(req.params.id, req, res)
     /** Log action */
-    logger.prototype.post(req.ip,"Has edited the product with id "+req.params.id);
+    logger.prototype.post(req.ip,"Edited the product with id "+req.params.id);
 });
 
 app.post('/products/:password', function(req,res){
@@ -108,7 +108,7 @@ app.delete('/product/:id/:password', function(req,res){
     }
     res.send(products.prototype.delete(req.params.id));
     /** Log action */
-    logger.prototype.post(req.ip,"Has deleted the product with id "+req.params.id);
+    logger.prototype.post(req.ip,"Deleted the product with id "+req.params.id);
 });
 
 /** Logger */
