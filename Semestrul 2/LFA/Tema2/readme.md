@@ -43,27 +43,28 @@
 ...
 (State from) (State to) (Cost)
 
+
 <------ Lambda nfa to dfa: ----------->
 
 NFA: 
 3 4 1
 0 
 2 
-0 0 0
-0 0 1
-0 1 1
-1 2 0
+0 1 a
+0 0 a
+0 0 b
+1 2 b
 
 DFA: 
 3 6 1
 0 
 2 
-0 0 0
-0 1 1
-1 2 0
-1 1 1
-2 0 0
-2 1 1
+0 1 a
+0 0 b
+1 1 a
+1 2 b
+2 1 a
+2 0 b
 
 <------ Dfa to regex: ---------------->
 
@@ -79,7 +80,7 @@ Minimized DFA:
 2 2 c
 
 Regex: 
-ab*bab*ac*c
+ab*ac*c+ab*b
 
 <------ Regular grammar to dfa: ------>
 
@@ -113,7 +114,7 @@ NFA:
 3 4 b
 
 Regex: 
-a+aa*a+b+bc+bc(aa*a+bc)*a
+a+aa*a+b+bc+bc(aa*a+bc)*
 
 DFA: 
 6 9 6
@@ -130,7 +131,8 @@ DFA:
 5 1 c
 
 Final Regex: 
-aaa*baaa*b(caaa*b+cb)*ccaaa*
+a+aa*+aa*b(aa*b+ca+cb)*+b+c+ca
+
 
  ```
  

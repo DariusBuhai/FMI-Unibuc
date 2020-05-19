@@ -179,7 +179,7 @@ void NFA::remove_regex_state(State* state){
     string loop;
     for(auto const & input: in)
         if(input.first==state){
-            if(!loop.empty() && loop[0]!=LAMBDA) loop+="+";
+            //if(!loop.empty() && loop[0]!=LAMBDA) loop+="+";
             loop += input.second.second;
         }
     if(loop.size()>1) loop = "("+loop+")";
@@ -200,8 +200,8 @@ void NFA::remove_regex_state(State* state){
             for(const auto& con: connections){
                 string cost;
                 for(const auto& a: con.second){
-                    if(!cost.empty() && cost[0]!=LAMBDA)
-                        cost+="+";
+                    //if(!cost.empty() && cost[0]!=LAMBDA)
+                    cost+="+";
                     cost+=a.second;
                 }
                 input.first->next.emplace_back(con.first, cost);

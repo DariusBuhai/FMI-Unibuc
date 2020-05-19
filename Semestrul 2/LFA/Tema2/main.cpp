@@ -36,7 +36,7 @@ void dfa_regex(ostream& out){
     DFA dfa;
     ifstream fin("data/dfa.in");
     fin>>dfa;
-    dfa.minimize();
+    //dfa.minimize();
     out<<"Minimized DFA: \n";
     out<<dfa;
     out<<"Regex: \n";
@@ -73,7 +73,7 @@ int main() {
     
     ofstream fout("data/output.txt");
     
-    show_model(fout);
+    //show_model(fout);
 
     lambda_nfa_dfa(fout);
     dfa_regex(fout);
