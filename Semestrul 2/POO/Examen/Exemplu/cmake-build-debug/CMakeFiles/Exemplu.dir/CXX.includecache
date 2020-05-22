@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/Proiecte Facultate/Semestrul 2/POO/Examen/Exemplu/main.cpp
+iostream
+-
+cmath
+-
+vector
+-
+numeric
+-
+algorithm
+-
+unordered_map
+-
+
