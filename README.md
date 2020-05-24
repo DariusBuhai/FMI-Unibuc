@@ -7,24 +7,34 @@
 - [x] Gandire Critica
 
 **Semestrul II:**
-- [ ] LFA (Limbaje Formale si Automate)
+- [x] LFA (Limbaje Formale si Automate)
   - [x] Tema 1
-  - [x] Tema 2
-  - [x] Tema 3
+  - [x] Tema 2 & 3
 - [ ] POO (Programarea orientata pe obiecte)
   - Laboratoare
   - Seminar
   - Proiect Final: ***https://github.com/DariusBuhai/Checkmate***
 - [ ] BD (Baze de date)
-  - Laboratoare
-  - Teme
-- [ ] SD (Structuri de Date)
+  - Laborator
+    - [x] Tema 1
+    - [x] Tema 2
+    - [x] Tema 3
+    - [ ] Tema 4
+  - Curs
+    - [x] Tema 2
+    - [x] Tema 3
+    - [x] Tema 4
+    - [x] Tema 5
+    - [ ] Tema 6
+    - [x] Tema 7
+- [x] SD (Structuri de Date)
   - [x] Tema 1
   - [x] Tema 2
-  - [x] Tema 3
 - [ ] TW (Tehnici Web)
   - [x] Laboratoare
   - [x] Proiect Final: ***https://github.com/DariusBuhai/Waitee***
   - [ ] Update proiect final
 - [x] Engleza
-- [ ] Sport
+  - Examen
+- [x] Sport
+  - Testul Hettinger
