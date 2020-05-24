@@ -79,9 +79,16 @@ int main() {
     
     //show_model(fout);
 
-    lambda_nfa_dfa(fout);
-    dfa_regex(fout);
-    regular_grammar_dfa(fout);
+    //lambda_nfa_dfa(fout);
+    //dfa_regex(fout);
+    //regular_grammar_dfa(fout);
+
+    NFA nfa;
+    ifstream fin("data/nfa.in");
+    fin>>nfa;
+    nfa.convert_to_dfa();
+    cout<<nfa.get_regex();
+    fin.close();
 
     return 0;
 }

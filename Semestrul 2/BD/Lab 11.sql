@@ -35,8 +35,8 @@ join departments using (department_id) join locations using (location_id) where 
 
 --Lab 8
 --1
-CREATE TABLE EMP_darius_buhai AS SELECT * FROM employees; 
-CREATE TABLE DEPT_darius_buhai AS SELECT * FROM departments;
+CREATE TABLE EMP_BD AS SELECT * FROM employees; 
+CREATE TABLE DEPT_BD AS SELECT * FROM departments;
  
 --2
 
