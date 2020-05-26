@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <unordered_map>
 
+
 class I_IO {
 public:
     friend std::ostream &operator<<(std::ostream &os, const I_IO &ob) {
@@ -619,6 +620,36 @@ public:
     }
 };
 
+int main() {
+
+    try {
+
+        //menu(); //Nu l-am testat.
+
+        Tranzactie tranzactie;
+        std::cin >> tranzactie;
+
+        Producator::getInstance()->operator+=(tranzactie);
+        std::cout << *Producator::getInstance();
+
+        std::cin >> *Producator::getInstance();
+        std::cout << *Producator::getInstance();
+
+        Producator::getInstance()->top();
+        Producator::getInstance()->best();
+        Producator::getInstance()->turing(0.34, "Mercedes");
+
+    } catch (const std::exception &ex) {
+        std::cout << "Oopsie, am gresit ! (" << ex.what() << ")";
+    }
+
+    if (Producator::getInstance() != nullptr) {
+        delete Producator::getInstance();
+    }
+
+    return 0;
+}
+
 void menu() {
     loop:
 
@@ -659,34 +690,4 @@ void menu() {
     }
 
     goto loop;
-}
-
-int main() {
-
-    try {
-
-        //menu(); //Nu l-am testat.
-
-        Tranzactie tranzactie;
-        std::cin >> tranzactie;
-
-        Producator::getInstance()->operator+=(tranzactie);
-        std::cout << *Producator::getInstance();
-
-        std::cin >> *Producator::getInstance();
-        std::cout << *Producator::getInstance();
-
-        Producator::getInstance()->top();
-        Producator::getInstance()->best();
-        Producator::getInstance()->turing(0.34, "Mercedes");
-
-    } catch (const std::exception &ex) {
-        std::cout << "Oopsie, am gresit ! (" << ex.what() << ")";
-    }
-
-    if (Producator::getInstance() != nullptr) {
-        delete Producator::getInstance();
-    }
-
-    return 0;
 }
