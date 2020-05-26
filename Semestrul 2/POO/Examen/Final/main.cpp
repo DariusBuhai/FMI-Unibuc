@@ -414,12 +414,12 @@ public:
 };
 
 Achizitie Achizitie::operator+=(Dezinfectant* dezinfectant){
-    this->dezinfectanti.push_back(dezinfectant);
+    this->dezinfectanti.push_back(DezinfectantFactory::copyInstance(dezinfectant));
     return *this;
 }
 
 Achizitie Achizitie::operator+=(Masca* masca){
-    this->masti.push_back(masca);
+    this->masti.push_back(MascaFactory::copyInstance(masca));
     return *this;
 }
 
@@ -467,7 +467,6 @@ void Achizitie::read(std::istream& in){
 void Achizitie::write(std::ostream& out) const{
     /// de implementat!!!
 }
-
 
 double Achizitie::getTotal(){
     double total = 0;
@@ -647,7 +646,7 @@ Stoc& Stoc::operator+=(Achizitie* achizitie){
                 std::cin>>id;
             }
             Checker<int>::throwIfNotInRange(id, 1, masti.size(), "Id-ul");
-            *achizitie+=masti[id];
+            *achizitie+=masti[id-1];
             std::cout<<"\nMasca adaugata!\n";
         }else if(tip_p=="dezinfectant"){
             if(dezinfectanti.empty()){
@@ -661,7 +660,7 @@ Stoc& Stoc::operator+=(Achizitie* achizitie){
                 std::cin>>id;
             }
             Checker<int>::throwIfNotInRange(id, 1, dezinfectanti.size(), "Id-ul");
-            *achizitie+=dezinfectanti[id];
+            *achizitie+=dezinfectanti[id-1];
             std::cout<<"\nDezinfectant adaugat!\n";
         }
     }

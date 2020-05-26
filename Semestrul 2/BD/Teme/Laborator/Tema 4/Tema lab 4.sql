@@ -71,7 +71,23 @@ select t.term_desc as "Denumire semestru", count(c.course_no) as "Numar de cursu
 where c.course_name like '%Database%' group by t.term_desc;
 
 --12
+select grade, NR_STUDENTI from 
+(select grade, count(s_id) as NR_STUDENTI from (select distinct grade, s_id from enrollment) where grade is not null group by grade order by count(s_id) desc)
+where rownum = 1;
 
+--13
+select SEMESTRU, NUMAR_CURSURI from(
+select t.term_desc as SEMESTRU, count(cs.course_no) as NUMAR_CURSURI from 
+course_section cs join term t on (t.term_id=cs.term_id) join course c on (c.course_no=cs.course_no)
+where c.credits=3 group by t.term_desc order by count(cs.course_no) desc) 
+where rownum = 1;
 
+--14
+select l.loc_id, l.bldg_code 
+from location l join course_section cs on (cs.loc_id=l.loc_id)
+join course c on (c.course_no=cs.course_no) where lower(c.course_name) like '%c++%' and lower(c.course_name) like '%database%';
+
+--15
+select bldg_code from location l where (select count(*) from location where bldg_code = l.bldg_code) = 1 group by bldg_code;
 
 
