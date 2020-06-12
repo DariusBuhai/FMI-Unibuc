@@ -15,6 +15,7 @@ app.use(bodyParser.raw());
 const products = require("./modules/products");
 const categories = require("./modules/categories");
 const logger = require("./modules/logger");
+const ratings = require("./modules/ratings");
 
 const _template_dir = __dirname+"/template";
 const _images_dir = __dirname+"/data/images";
@@ -44,9 +45,9 @@ app.get('/categories', function(req,res){
     res.send(categories.prototype.get());
 });
 
-app.get('/categories/:id', function(req,res){
+/*app.get('/categories/:id', function(req,res){
     res.send(categories.prototype.get(req.params.id));
-});
+});*/
 
 app.delete('/categories/:name/:password', function(req,res){
     if(req.params.password!==password){
@@ -54,6 +55,23 @@ app.delete('/categories/:name/:password', function(req,res){
         return;
     }
     res.send(categories.prototype.delete(req.params.name));
+});
+
+/** Ratings */
+app.get('/ratings', function(req,res){
+    res.send(ratings.prototype.get());
+});
+
+app.get('/ratings/:product_id', function(req,res){
+    res.send(ratings.prototype.get()[req.params.product_id]);
+});
+
+app.get('/ratings/:product_id/:criteria', function(req,res){
+    res.send(ratings.prototype.get()[req.params.product_id][req.params.criteria]);
+});
+
+app.post('/ratings/:product_id/:criteria/:value', function(req,res){
+    res.send(ratings.prototype.post(req.ip,req.params.product_id,req.params.criteria,req.params.value ));
 });
 
 /** Products */

@@ -813,3 +813,15 @@ Modal
 [hidden]{
     display:none !important;
 }
+
+.rating{;
+    color: dimgray;
+    text-align: left;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+
+.rating .star:hover{
+    color: orange;
+}

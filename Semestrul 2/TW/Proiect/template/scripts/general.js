@@ -170,8 +170,8 @@ function update_product_markup(product_id){
 
 function refresh_products() {
     var evtobj = window.event? event : e
-    //console.log(evtobj);
-    if (evtobj.keyCode === 91){
+    console.log(evtobj);
+    if (evtobj.keyCode === 91 || evtobj.keyCode===17){
         apply_markup();
     }
 }

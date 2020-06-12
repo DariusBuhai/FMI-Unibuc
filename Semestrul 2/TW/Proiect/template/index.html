@@ -76,6 +76,13 @@
                 })" src="[[image]]">
         <h4 class="menu-item-title title">[[title]]</h4>
         <p class="menu-item-description" onmouseup="update_product_markup([[id]])">[[description]]</p>
+        <div class="rating">
+            <span onclick="update_rating(1, [[id]])" class="star star-1 fa fa-star [[rating-1]]"></span>
+            <span onclick="update_rating(2, [[id]])" class="star star-2 fa fa-star [[rating-2]]"></span>
+            <span onclick="update_rating(3, [[id]])" class="star star-3 fa fa-star [[rating-3]]"></span>
+            <span onclick="update_rating(4, [[id]])" class="star star-4 fa fa-star [[rating-4]]"></span>
+            <span onclick="update_rating(5, [[id]])" class="star star-5 fa fa-star [[rating-5]]"></span>
+        </div>
         <div class="index-content menu-item-price-container">
             <span class="menu-item-price">[[price]] lei</span>
             <button class="menu-item-button add-bill-button add-bill-button-[[id]]" onclick="add_to_bill([[id]])"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Adauga</button>
@@ -104,6 +111,30 @@
                         <div>
                             <h3>[[title]]</h3>
                             <p>[[description]]</p>
+                            Durata
+                            <div class="rating">
+                                <span onclick="update_rating(1, [[id]],1)" class="star star-1 fa fa-star [[rating-1-1]]"></span>
+                                <span onclick="update_rating(2, [[id]],1)" class="star star-2 fa fa-star [[rating-1-2]]"></span>
+                                <span onclick="update_rating(3, [[id]],1)" class="star star-3 fa fa-star [[rating-1-3]]"></span>
+                                <span onclick="update_rating(4, [[id]],1)" class="star star-4 fa fa-star [[rating-1-4]]"></span>
+                                <span onclick="update_rating(5, [[id]],1)" class="star star-5 fa fa-star [[rating-1-5]]"></span>
+                            </div>
+                            Calitate
+                            <div class="rating">
+                                <span onclick="update_rating(1, [[id]],2)" class="star star-1 fa fa-star [[rating-2-1]]"></span>
+                                <span onclick="update_rating(2, [[id]],2)" class="star star-2 fa fa-star [[rating-2-2]]"></span>
+                                <span onclick="update_rating(3, [[id]],2)" class="star star-3 fa fa-star [[rating-2-3]]"></span>
+                                <span onclick="update_rating(4, [[id]],2)" class="star star-4 fa fa-star [[rating-2-4]]"></span>
+                                <span onclick="update_rating(5, [[id]],2)" class="star star-5 fa fa-star [[rating-2-5]]"></span>
+                            </div>
+                            Pret
+                            <div class="rating">
+                                <span onclick="update_rating(1, [[id]],3)" class="star star-1 fa fa-star [[rating-3-1]]"></span>
+                                <span onclick="update_rating(2, [[id]],3)" class="star star-2 fa fa-star [[rating-3-2]]"></span>
+                                <span onclick="update_rating(3, [[id]],3)" class="star star-3 fa fa-star [[rating-3-3]]"></span>
+                                <span onclick="update_rating(4, [[id]],3)" class="star star-4 fa fa-star [[rating-3-4]]"></span>
+                                <span onclick="update_rating(5, [[id]],3)" class="star star-5 fa fa-star [[rating-3-5]]"></span>
+                            </div>
                         </div>
                         <button class="add-bill-button add-bill-button-[[id]]" onclick="add_to_bill([[id]])"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Adauga</button>
                         <button class="added-bill-button success added-bill-button-[[id]]" onclick="hide_modal('details-modal');toggle_bill_view(false)" hidden><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Adaugat</button>
