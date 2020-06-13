@@ -19,27 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="331da76a-b8a2-4e2c-b9d0-18628402d3d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/template/scripts/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/scripts/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/logger.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/logger.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/products.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/products.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ratings.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/ratings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/scripts/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/scripts/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/scripts/animations.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/scripts/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/scripts/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/scripts/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/scripts/general.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/scripts/modal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/scripts/random.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/scripts/random.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/scripts/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/scripts/bill.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/template/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="331da76a-b8a2-4e2c-b9d0-18628402d3d2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591972638041</updated>
-      <workItem from="1591972642979" duration="23018000" />
+      <workItem from="1591972642979" duration="23601000" />
     </task>
     <servers />
   </component>
