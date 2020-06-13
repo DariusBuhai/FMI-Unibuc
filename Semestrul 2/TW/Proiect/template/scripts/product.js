@@ -14,6 +14,7 @@ async function get_product(callback = null){
         let rating1 = await get_rating(product_id, 1);
         let rating2 = await get_rating(product_id, 2);
         let rating3 = await get_rating(product_id, 3);
+        let ratingt = await get_rating(product_id);
         var description = data["description"];
         if(marked_products && marked_products.hasOwnProperty(product_id)){
             var new_description = description.slice(0,marked_products[product_id].from);
@@ -37,19 +38,19 @@ async function get_product(callback = null){
             vegan: data["vegan"]?"DA":"NU",
             id: product_id
         };
-        for(var i=1;i<=3;i++)
+        for(var i=1;i<=4;i++)
             for(var j=1;j<=5;j++){
                 var v = 0;
                 if(i===1) v = rating1;
                 if(i===2) v = rating2;
                 if(i===3) v = rating3;
+                if(i===4) v = ratingt;
                 template_data["rating_"+i+"_"+j] = (v>=j ? "active" : "");
             }
         let generated_product = generate_child_from_template(product_template.cloneNode(true), template_data);
         product_section.appendChild(generated_product);
         if(callback!==null)
             callback(data);
-        get_bill();
     });
 }
 

@@ -33,9 +33,7 @@ function change_category(id){
     document.getElementById("age-calculator-container").hidden = (id!==4);
     document.getElementsByClassName("category-item-"+id)[0].classList.add("active");
     selected_category = categories[id];
-    get_products(function(){
-        get_bill();
-    });
+    get_products(get_bill);
 }
 
 async function get_products(callback = null){
@@ -148,6 +146,19 @@ async function generate_product_details(product_id, template, callback, include_
     });
 }
 
+function refresh_page(product_id = null){
+    if(page_type==="product"){
+        get_product(function(){
+            get_products(get_bill);
+        });
+    }
+    if(page_type==="home"){
+        get_products();
+        if(product_id!=null && document.getElementById("details-modal")!==null)
+            update_generated_modal('details-modal', product_id, true);
+    }
+}
+
 /** Admin actions **/
 
 function check_password(password, callback){
@@ -200,16 +211,11 @@ function apply_markup(){
     if(last_markup==null) return;
     if(marked_products && marked_products.hasOwnProperty(last_markup.product_id)){
         delete marked_products[last_markup.product_id];
-        get_products();
-        if(page_type==="product") get_product();
-
-        if(page_type==="home" && document.getElementById("details-modal")!==null) update_generated_modal('details-modal', last_markup.product_id, true);
+        refresh_page(last_markup.product_id);
         return;
     }
     marked_products[last_markup.product_id] = {from: last_markup.from,to: last_markup.to};
-    get_products();
-    if(page_type==="product") get_product();
-    if(page_type==="home" && document.getElementById("details-modal")!==null) update_generated_modal('details-modal', last_markup.product_id, true);
+    refresh_page(last_markup.product_id);
     last_markup = null;
     window.localStorage.setItem("marked_products", JSON.stringify(marked_products));
 }
@@ -245,9 +251,7 @@ function update_rating(value, product_id, criteria, product_page = false){
     }, function(res){
 
     });
-    if(product_page) get_product();
-    get_products();
-    update_generated_modal('details-modal', product_id, true);
+    refresh_page(product_id);
 }
 
 /**

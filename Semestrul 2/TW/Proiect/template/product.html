@@ -96,12 +96,20 @@
             <div class="details-content">
                 <div>
                     <h3>[[title]]</h3>
-                    <p class="ingredients">Ingrediente: </p>
+                    <p class="ingredients"><b>Ingrediente: </b></p>
                     <ul>[[ingredients]]</ul>
-                    <p class="price">Pret: [[price]] lei</p>
-                    <p class="type">Produs vegan: <b>[[vegan]]</b></p>
+                    <p class="price"><b>Pret: </b><i>[[price]] lei</i></p>
+                    <p class="type"><b>Produs vegan: </b><i>[[vegan]]</i></p>
 
-                    <p onmouseup="update_product_markup([[id]])"><i>[[description]]</i></p>
+                    <p onmouseup="update_product_markup([[id]])" style="max-width: 400px"><i>[[description]]</i></p>
+                    <p><b>Rating total:</b></p>
+                    <div class="rating">
+                        <span onclick="update_rating(1, [[id]],null,true)" class="star star-1 fa fa-star [[rating_4_1]]"></span>
+                        <span onclick="update_rating(2, [[id]],null,true)" class="star star-2 fa fa-star [[rating_4_2]]"></span>
+                        <span onclick="update_rating(3, [[id]],null,true)" class="star star-3 fa fa-star [[rating_4_3]]"></span>
+                        <span onclick="update_rating(4, [[id]],null,true)" class="star star-4 fa fa-star [[rating_4_4]]"></span>
+                        <span onclick="update_rating(5, [[id]],null,true)" class="star star-5 fa fa-star [[rating_4_5]]"></span>
+                    </div>
                     <p><b>Durata de preparare:</b></p>
                     <div class="rating">
                         <span onclick="update_rating(1, [[id]],1,true)" class="star star-1 fa fa-star [[rating_1_1]]"></span>
@@ -118,7 +126,7 @@
                         <span onclick="update_rating(4, [[id]],2,true)" class="star star-4 fa fa-star [[rating_2_4]]"></span>
                         <span onclick="update_rating(5, [[id]],2,true)" class="star star-5 fa fa-star [[rating_2_5]]"></span>
                     </div>
-                    <p><b>Pretul</b></p>
+                    <p><b>Pret</b></p>
                     <div class="rating">
                         <span onclick="update_rating(1, [[id]],3,true)" class="star star-1 fa fa-star [[rating_3_1]]"></span>
                         <span onclick="update_rating(2, [[id]],3,true)" class="star star-2 fa fa-star [[rating_3_2]]"></span>

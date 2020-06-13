@@ -149,8 +149,12 @@ app.get('/check_auth/:password', function(req, res){
 
 /** 404 Error redirect */
 app.use(function(req, res, next){
-    res.status(404);
-    res.sendFile(_template_dir+"/404.html");
+    if(req.headers.accept.indexOf("image/*")!==-1){
+        res.sendFile(_images_dir+"/blank.png");
+    }else{
+        res.status(404);
+        res.sendFile(_template_dir+"/404.html");
+    }
 });
 
 /** Start local server */
