@@ -30,13 +30,15 @@ link_path(_template_dir+"/style.css");
 /* Data */
 link_folder(_images_dir, true, "/images/");
 
-/** */
+/** General links */
 app.get('/', function(req, res){
     res.sendFile(_template_dir+"/index.html");
 });
 
-app.get('/random', function(req, res){
-    res.sendFile(_template_dir+"/random.html");
+app.get('/product', function(req, res){
+    res.sendFile(_template_dir+"/product.html");
+    /** Log action */
+    logger.prototype.post(req.ip,"a vizualizat produsul cu id-ul "+req.params.id);
 });
 
 /** Data getters and setters */
@@ -90,12 +92,6 @@ app.get('/products/:category', function(req,res){
 
 app.get('/product/:id', function(req,res){
     res.send(products.prototype.get(null, req.params.id));
-    /** Log action */
-    logger.prototype.post(req.ip,"a vizualizat produsul cu id-ul "+req.params.id);
-});
-
-app.get('/product', function(req, res){
-    res.sendFile(_template_dir+"/product.html");
     /** Log action */
     logger.prototype.post(req.ip,"a vizualizat produsul cu id-ul "+req.params.id);
 });

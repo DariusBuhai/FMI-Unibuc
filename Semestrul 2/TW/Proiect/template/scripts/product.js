@@ -49,6 +49,7 @@ async function get_product(callback = null){
         product_section.appendChild(generated_product);
         if(callback!==null)
             callback(data);
+        get_bill();
     });
 }
 
