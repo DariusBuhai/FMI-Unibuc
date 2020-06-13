@@ -37,13 +37,15 @@ function change_category(id){
 }
 
 
-function get_products(callback = null){
-    http_get("products/"+selected_category, function(data){
+async function get_products(callback = null){
+    http_get("products/"+selected_category, async function(data){
         var product_template = document.getElementById("product-template");
         var products_template = document.getElementById("products");
         products_template.innerHTML = "";
         for(let i=0;i<data.length;i++){
+            let rating = await get_rating(data[i].id);
             var description = data[i].description;
+            console.log(rating);
             if(marked_products && marked_products.hasOwnProperty(data[i].id)){
                 var new_description = description.slice(0,marked_products[data[i].id].from);
                 new_description += "<mark>";
@@ -57,7 +59,12 @@ function get_products(callback = null){
                 image: "images/"+data[i].image,
                 description: description,
                 price: data[i].price,
-                id: data[i].id
+                id: data[i].id,
+                rating_1: (rating>=1 ? "active" : ""),
+                rating_2: (rating>=2 ? "active" : ""),
+                rating_3: (rating>=3 ? "active" : ""),
+                rating_4: (rating>=4 ? "active" : ""),
+                rating_5: (rating>=5 ? "active" : ""),
             });
             products_template.appendChild(product);
         }
@@ -66,8 +73,11 @@ function get_products(callback = null){
     });
 }
 
-function generate_product_details(product_id, template, callback, include_markup = true){
+async function generate_product_details(product_id, template, callback, include_markup = true){
     http_get("/product/"+product_id, async function(data){
+        let rating1 = await  get_rating(product_id, 1);
+        let rating2 = await  get_rating(product_id, 2);
+        let rating3 = await  get_rating(product_id, 3);
         var description = data["description"];
         if(include_markup && marked_products && marked_products.hasOwnProperty(product_id)){
             var new_description = description.slice(0,marked_products[product_id].from);
@@ -77,15 +87,24 @@ function generate_product_details(product_id, template, callback, include_markup
             new_description += description.slice(marked_products[product_id].to, description.length);
             description = new_description;
         }
-        let modal = generate_child_from_template(template.cloneNode(true), {
+        var template_data = {
             title: data["name"],
             description: description,
             image: "images/"+data["image"],
             price: data["price"],
             category: data["category"],
             id: product_id
-        });
-        callback(modal)
+        };
+        for(var i=1;i<=3;i++)
+            for(var j=1;j<=5;j++){
+                var v = 0;
+                if(i===1) v = rating1;
+                if(i===2) v = rating2;
+                if(i===3) v = rating3;
+                template_data["rating_"+i+"_"+j] = (v>=j ? "active" : "");
+            }
+        let modal = generate_child_from_template(template.cloneNode(true), template_data);
+        callback(modal);
     });
 }
 
@@ -169,9 +188,31 @@ function update_product_markup(product_id){
 }
 
 function refresh_products() {
-    var evtobj = window.event? event : e
-    console.log(evtobj);
+    var evtobj = window.event? event : e;
     if (evtobj.keyCode === 91 || evtobj.keyCode===17){
         apply_markup();
     }
+}
+
+/**
+ * Task 4 - P2
+ * 2 pct
+ * Rating functions
+ **/
+async function get_rating(product_id, criteria=null){
+    var link = "/ratings/"+product_id;
+    if(criteria!=null) link += "/"+criteria;
+    return parseInt(await http_get_async(link));
+}
+
+function update_rating(value, product_id, criteria){
+    http_post("/ratings", {
+        product_id: product_id,
+        criteria: criteria,
+        value: value
+    }, function(res){
+
+    });
+    get_products();
+
 }

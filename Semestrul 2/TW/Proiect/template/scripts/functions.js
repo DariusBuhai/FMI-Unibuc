@@ -12,7 +12,6 @@ function http_get(theUrl, callback, json_data = true) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200){
-            //console.log(xmlHttp.responseText);
             if(!json_data) callback(xmlHttp.responseText);
             else callback(JSON.parse(xmlHttp.responseText));
         }
@@ -20,6 +19,17 @@ function http_get(theUrl, callback, json_data = true) {
     xmlHttp.open("GET", theUrl, true); // true for asynchronous
     xmlHttp.setRequestHeader("accepts", "application/json");
     xmlHttp.send(null);
+}
+
+async function http_get_async(theUrl, json_data = true){
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", theUrl, false); // true for asynchronous
+    xmlHttp.setRequestHeader("accepts", "application/json");
+    xmlHttp.send(null);
+    if (xmlHttp.readyState === 4 && xmlHttp.status === 200){
+        if(!json_data) return xmlHttp.responseText;
+        else return JSON.parse(xmlHttp.responseText);
+    }
 }
 
 function http_post(theUrl, data, callback, isFormData = false) {

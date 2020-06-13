@@ -821,7 +821,10 @@ Modal
     cursor: pointer;
 }
 
-
 .rating .star:hover{
+    color: orange;
+}
+
+.rating .star.active{
     color: orange;
 }

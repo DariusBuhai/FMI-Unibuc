@@ -58,20 +58,25 @@ app.delete('/categories/:name/:password', function(req,res){
 });
 
 /** Ratings */
-app.get('/ratings', function(req,res){
-    res.send(ratings.prototype.get());
-});
 
 app.get('/ratings/:product_id', function(req,res){
-    res.send(ratings.prototype.get()[req.params.product_id]);
+    res.send('"'+ratings.prototype.get(req.params.product_id)+'"');
 });
 
 app.get('/ratings/:product_id/:criteria', function(req,res){
-    res.send(ratings.prototype.get()[req.params.product_id][req.params.criteria]);
+    res.send('"'+ratings.prototype.get_by_criteria(req.params.product_id, req.params.criteria)+'"');
 });
 
-app.post('/ratings/:product_id/:criteria/:value', function(req,res){
-    res.send(ratings.prototype.post(req.ip,req.params.product_id,req.params.criteria,req.params.value ));
+app.post('/ratings', function(req,res){
+    if(req.body.criteria==undefined){
+        ratings.prototype.post(req.ip,req.body.product_id,1,req.body.value);
+        ratings.prototype.post(req.ip,req.body.product_id,2,req.body.value);
+        ratings.prototype.post(req.ip,req.body.product_id,3,req.body.value);
+    }else
+        ratings.prototype.post(req.ip,req.body.product_id,req.body.criteria,req.body.value);
+    res.send("added rating");
+    /** Log action */
+    logger.prototype.post(req.ip,"a adaugat un rating pentru produsul cu id-ul "+req.body.product_id+" dupa criteriul "+req.body.criteria);
 });
 
 /** Products */
@@ -90,43 +95,43 @@ app.get('/product/:id', function(req,res){
         res.sendFile(_template_dir+"/product.html");
     }
     /** Log action */
-    logger.prototype.post(req.ip,"Viewed the product with id "+req.params.id);
+    logger.prototype.post(req.ip,"a vizualizat produsul cu id-ul "+req.params.id);
 });
 
 app.put('/product/:id/:password', function(req,res){
     if(req.params.password!==password){
         res.send("Invalid auth params");
         /** Log action */
-        logger.prototype.post(req.ip,"Attempted to modify products, but with invalid auth params!");
+        logger.prototype.post(req.ip,"a incercat sa modifice produsele, dar cu date de autentificare gresite!");
         return;
     }
     products.prototype.put(req.params.id, req, res)
     /** Log action */
-    logger.prototype.post(req.ip,"Edited the product with id "+req.params.id);
+    logger.prototype.post(req.ip,"a modificat produsul cu id-ul "+req.params.id);
 });
 
 app.post('/products/:password', function(req,res){
     if(req.params.password!==password){
         res.send("Invalid auth params");
         /** Log action */
-        logger.prototype.post(req.ip,"Attempted to modify products, but with invalid auth params!");
+        logger.prototype.post(req.ip,"a incercat sa adauge un produs, dar cu date de autentificare gresite!");
         return;
     }
     products.prototype.post(req, res);
     /** Log action */
-    logger.prototype.post(req.ip,"Created a new product");
+    logger.prototype.post(req.ip,"a adaugat un produs");
 });
 
 app.delete('/product/:id/:password', function(req,res){
     if(req.params.password!==password){
         res.send("Invalid auth params");
         /** Log action */
-        logger.prototype.post(req.ip,"Attempted to modify products, but with invalid auth params!");
+        logger.prototype.post(req.ip,"a incercat sa stearga un produs, dar cu date de autentificare gresite!");
         return;
     }
     res.send(products.prototype.delete(req.params.id));
     /** Log action */
-    logger.prototype.post(req.ip,"Deleted the product with id "+req.params.id);
+    logger.prototype.post(req.ip,"a sters produsul cu id-ul "+req.params.id);
 });
 
 /** Logger */
