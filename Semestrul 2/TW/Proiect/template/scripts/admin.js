@@ -6,13 +6,17 @@ function edit_product(product_id){
     let new_price = document.getElementById("product_"+product_id+"_price").value;
     let new_image = document.getElementById("product_"+product_id+"_image").files[0];
     let new_category = document.getElementById("product_"+product_id+"_category").value;
+    let new_vegan = (document.getElementById("product_"+product_id+"_vegan").value.toLowerCase()=="da"?true:false);
+    let new_ingredients = document.getElementById("product_"+product_id+"_ingredients").value;
 
     http_put("product/"+product_id+"/"+password, {
         name: new_title,
         description: new_description,
         price: new_price,
         image: new_image,
-        category: new_category
+        category: new_category,
+        vegan: new_vegan,
+        ingredients: new_ingredients
     }, function(res){
         console.log(res);
         get_products();
@@ -27,7 +31,9 @@ function add_product(){
         description: document.getElementById("product_description").value,
         image: document.getElementById("product_image").files[0],
         category: document.getElementById("product_category").value,
-        price: document.getElementById("product_price").value
+        price: document.getElementById("product_price").value,
+        ingredients: document.getElementById("product_ingredients").value,
+        vegan: (document.getElementById("product_vegan").value.toLowerCase()=="da"?true:false)
     }, function(res){
         setTimeout(function(){
             get_categories(function(){

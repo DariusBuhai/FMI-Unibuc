@@ -89,11 +89,13 @@ app.get('/products/:category', function(req,res){
 });
 
 app.get('/product/:id', function(req,res){
-    if(req.header("accepts")==="application/json"){
-        res.send(products.prototype.get(null, req.params.id));
-    }else{
-        res.sendFile(_template_dir+"/product.html");
-    }
+    res.send(products.prototype.get(null, req.params.id));
+    /** Log action */
+    logger.prototype.post(req.ip,"a vizualizat produsul cu id-ul "+req.params.id);
+});
+
+app.get('/product', function(req, res){
+    res.sendFile(_template_dir+"/product.html");
     /** Log action */
     logger.prototype.post(req.ip,"a vizualizat produsul cu id-ul "+req.params.id);
 });

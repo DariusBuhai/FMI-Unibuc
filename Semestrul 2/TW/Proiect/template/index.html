@@ -12,8 +12,9 @@
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="functions.js"></script>
 </head>
-<body onkeyup="refresh_products()">
+<body onkeyup="key_up_action()" onkeydown="key_down_action()">
 <main>
     <nav id="navbar" class="nav-container">
         <button class="nav-toggle" onclick="toggle_expand_navbar()"><i class="fa fa-bars fa-2x"></i></button>
@@ -50,7 +51,16 @@
         </div>
     </div>
 
-    <footer class="footer"></footer>
+    <div class="age-calculator" id="age-calculator-container" hidden>
+        <!-- T2 - 1 -->
+        <div>
+            <h4>Calculeaza varsta vinului: </h4>
+            <input placeholder="month#day#year" onkeyup="update_age()" id="age-calculator">
+            <p hidden id="age-has-generated">Vinul are o varsta de <b id="age-generated"></b></p>
+        </div>
+    </div>
+
+    <!--<footer class="footer"></footer>-->
 </main>
 
 <!-- Templates -->
@@ -71,9 +81,12 @@
     <!-- Menu item -->
     <div class="menu-item no-transition" id="product-template" hidden>
         <!--ondblclick="open_page('/product/[[id]]')"-->
-        <img class="menu-item-image" onclick="show_modal('details-modal', function(template, callback){
-                    generate_product_details([[id]], template, callback);
-                })" src="[[image]]">
+        <img class="menu-item-image" onclick="ctrl_click_action(function(){
+                show_modal('details-modal', function(template, callback){generate_product_details([[id]], template, callback);})
+            }, function(){
+                open_link('/product?id=[[id]]')
+            }
+        )" src="[[image]]">
         <h4 class="menu-item-title title">[[title]]</h4>
         <p class="menu-item-description" onmouseup="update_product_markup([[id]])">[[description]]</p>
         <div class="rating">
@@ -110,7 +123,7 @@
                     <div class="details-content">
                         <div>
                             <h3>[[title]]</h3>
-                            <p>[[description]]</p>
+                            <p onmouseup="update_product_markup([[id]])">[[description]]</p>
                             Durata
                             <div class="rating">
                                 <span onclick="update_rating(1, [[id]],1)" class="star star-1 fa fa-star [[rating_1_1]]"></span>
@@ -158,10 +171,12 @@
                 <div class="details">
                     <div class="details-content">
                         <div>
-                            <input id="product_[[id]]_title" value="[[title]]"><br><br>
-                            <input id="product_[[id]]_price" value="[[price]]"><br><br>
-                            <input id="product_[[id]]_category" value="[[category]]"><br><br>
-                            <textarea id="product_[[id]]_description">[[description]]</textarea>
+                            <label>Titlu: </label><input id="product_[[id]]_title" value="[[title]]"><br><br>
+                            <label>Pret: </label><input id="product_[[id]]_price" value="[[price]]"><br><br>
+                            <label>Produs vegan: </label><input id="product_[[id]]_vegan" value="[[vegan]]"><br><br>
+                            <label>Ingrediente: </label><input id="product_[[id]]_ingredients" value="[[ingredients]]"><br><br>
+                            <label>Categorie: </label><input id="product_[[id]]_category" value="[[category]]"><br><br>
+                            <textarea id="product_[[id]]_description" placeholder="descriere">[[description]]</textarea>
                         </div>
                         <div>
                             <button class="delete" onclick="delete_product([[id]])"><i class="fa fa-trash"></i>&nbsp;&nbsp;Sterge</button>
@@ -190,6 +205,8 @@
                             <input class="title" id="product_title[[template]]" placeholder="Titlu"><br><br>
                             <input class="price" id="product_price[[template]]" placeholder="Pret"><br><br>
                             <input class="price" id="product_category[[template]]" placeholder="Categorie"><br><br>
+                            <input id="product_ingredients[[template]]" placeholder="Ingrediente"><br><br>
+                            <input id="product_vegan[[template]]" placeholder="Vegan"><br><br>
                             <textarea id="product_description[[template]]" placeholder="Descriere"></textarea>
                         </div>
                         <div>
@@ -203,13 +220,11 @@
 </app-root>
 
 </body>
-<script src="functions.js"></script>
-<script src="animations.js"></script>
-<script src="modal.js"></script>
 
 <script src="general.js"></script>
+<script src="home.js"></script>
 
-<script src="script.js"></script>
+<script src="bill.js"></script>
 <script src="admin.js"></script>
 
 </html>

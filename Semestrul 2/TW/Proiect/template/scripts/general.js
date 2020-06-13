@@ -3,6 +3,7 @@ var selected_category = null;
 var bill = {};
 var marked_products = {};
 var last_markup = null;
+var page_type;
 
 function get_categories(callback = null){
     http_get("categories", function(data){
@@ -29,13 +30,13 @@ function change_category(id){
     let c = document.getElementsByClassName("category-item");
     for(let i=0;i<c.length;i++)
         c[i].classList.remove("active");
+    document.getElementById("age-calculator-container").hidden = (id!==4);
     document.getElementsByClassName("category-item-"+id)[0].classList.add("active");
     selected_category = categories[id];
     get_products(function(){
         get_bill();
     });
 }
-
 
 async function get_products(callback = null){
     http_get("products/"+selected_category, async function(data){
@@ -45,7 +46,6 @@ async function get_products(callback = null){
         for(let i=0;i<data.length;i++){
             let rating = await get_rating(data[i].id);
             var description = data[i].description;
-            console.log(rating);
             if(marked_products && marked_products.hasOwnProperty(data[i].id)){
                 var new_description = description.slice(0,marked_products[data[i].id].from);
                 new_description += "<mark>";
@@ -73,8 +73,12 @@ async function get_products(callback = null){
     });
 }
 
-async function generate_product_details(product_id, template, callback, include_markup = true){
+async function update_generated_modal(modal_id, product_id, include_markup = true){
+    console.log("updating modal");
     http_get("/product/"+product_id, async function(data){
+        var modal = document.getElementById(modal_id);
+        let modal_template = document.getElementById(modal_id+"-template").cloneNode(true);
+
         let rating1 = await  get_rating(product_id, 1);
         let rating2 = await  get_rating(product_id, 2);
         let rating3 = await  get_rating(product_id, 3);
@@ -103,10 +107,48 @@ async function generate_product_details(product_id, template, callback, include_
                 if(i===3) v = rating3;
                 template_data["rating_"+i+"_"+j] = (v>=j ? "active" : "");
             }
+        modal.innerHTML = generate_child_from_template(modal_template.cloneNode(true), template_data).innerHTML;
+    });
+}
+
+async function generate_product_details(product_id, template, callback, include_markup = true){
+    http_get("/product/"+product_id, async function(data){
+        let rating1 = await  get_rating(product_id, 1);
+        let rating2 = await  get_rating(product_id, 2);
+        let rating3 = await  get_rating(product_id, 3);
+        var description = data["description"];
+        if(include_markup && marked_products && marked_products.hasOwnProperty(product_id)){
+            var new_description = description.slice(0,marked_products[product_id].from);
+            new_description += "<mark>";
+            new_description += description.slice(marked_products[product_id].from, marked_products[product_id].to);
+            new_description += "</mark>";
+            new_description += description.slice(marked_products[product_id].to, description.length);
+            description = new_description;
+        }
+        var template_data = {
+            title: data["name"],
+            description: description,
+            image: "images/"+data["image"],
+            price: data["price"],
+            category: data["category"],
+            ingredients: data["ingredients"],
+            vegan: data["vegan"] ? "DA" : "NU",
+            id: product_id
+        };
+        for(var i=1;i<=3;i++)
+            for(var j=1;j<=5;j++){
+                var v = 0;
+                if(i===1) v = rating1;
+                if(i===2) v = rating2;
+                if(i===3) v = rating3;
+                template_data["rating_"+i+"_"+j] = (v>=j ? "active" : "");
+            }
         let modal = generate_child_from_template(template.cloneNode(true), template_data);
         callback(modal);
     });
 }
+
+/** Admin actions **/
 
 function check_password(password, callback){
     http_get("/check_auth/"+password,function(resp){
@@ -139,25 +181,19 @@ function toggle_admin_mode(admin_mode = true){
     });
 }
 
-function init_general(){
-    strip_transition_blockers();
-}
-
-init_general();
-get_products_markup();
-
 /**
  * Markup
  * Task 4 - P4
  * 2 pct
  */
 
-function get_products_markup(){
+function get_products_markup(also_get_products = true){
     marked_products = JSON.parse(window.localStorage.getItem("marked_products"));
     if(marked_products==null){
         marked_products = {};
     }
-    get_products();
+    if(also_get_products)
+        get_products();
 }
 
 function apply_markup(){
@@ -165,13 +201,16 @@ function apply_markup(){
     if(marked_products && marked_products.hasOwnProperty(last_markup.product_id)){
         delete marked_products[last_markup.product_id];
         get_products();
+        if(page_type==="product") get_product();
+
+        if(page_type==="home" && document.getElementById("details-modal")!==null) update_generated_modal('details-modal', last_markup.product_id, true);
         return;
     }
-    console.log(last_markup);
-    console.log(marked_products);
     marked_products[last_markup.product_id] = {from: last_markup.from,to: last_markup.to};
-    last_markup = null;
     get_products();
+    if(page_type==="product") get_product();
+    if(page_type==="home" && document.getElementById("details-modal")!==null) update_generated_modal('details-modal', last_markup.product_id, true);
+    last_markup = null;
     window.localStorage.setItem("marked_products", JSON.stringify(marked_products));
 }
 
@@ -187,13 +226,6 @@ function update_product_markup(product_id){
     last_markup = {product_id, from, to};
 }
 
-function refresh_products() {
-    var evtobj = window.event? event : e;
-    if (evtobj.keyCode === 91 || evtobj.keyCode===17){
-        apply_markup();
-    }
-}
-
 /**
  * Task 4 - P2
  * 2 pct
@@ -205,7 +237,7 @@ async function get_rating(product_id, criteria=null){
     return parseInt(await http_get_async(link));
 }
 
-function update_rating(value, product_id, criteria){
+function update_rating(value, product_id, criteria, product_page = false){
     http_post("/ratings", {
         product_id: product_id,
         criteria: criteria,
@@ -213,6 +245,27 @@ function update_rating(value, product_id, criteria){
     }, function(res){
 
     });
+    if(product_page) get_product();
     get_products();
+    update_generated_modal('details-modal', product_id, true);
+}
 
+/**
+ * Age calculator
+ * Task 2 - P1
+ * 1 pct
+ */
+setInterval(function(){
+    update_age();
+}, 1000);
+
+function update_age(){
+    console.log("Updating age");
+    var birthday = document.getElementById("age-calculator").value;
+    if(!Date.parse(birthday)) return;
+    var diff = Date.now()-Date.parse(birthday);
+    var date_diff = new Date(diff);
+    let res = date_diff.getFullYear()-1970+" ani "+date_diff.getMonth()+" luni "+date_diff.getDay()+" zile "+date_diff.getHours()+" de ore, "+date_diff.getMinutes()+" minute si "+date_diff.getSeconds()+" secunde";
+    document.getElementById("age-generated").innerText = res;
+    document.getElementById("age-has-generated").hidden = false;
 }

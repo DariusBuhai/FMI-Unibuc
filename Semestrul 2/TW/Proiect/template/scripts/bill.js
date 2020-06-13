@@ -69,17 +69,3 @@ function remove_from_bill(product_id){
     window.localStorage.setItem("bill", JSON.stringify(bill));
     get_bill();
 }
-
-function init_index(){
-    get_categories(function () {
-        get_products(function () {
-            get_bill();
-        });
-    });
-    /** Reload bill just to be sure */
-    /*setInterval(function () {
-        get_bill();
-    }, 4000);*/
-}
-
-init_index();
