@@ -983,6 +983,15 @@ Modal
     margin-bottom: 50px !important;
 }
 
+.age-calculator button{
+    background-color: var(--main-primarly-color);
+    border-radius: 5px;
+    padding: 11px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
 .age-calculator h4{
     font-family: "Montserrat", sans-serif;
     font-size: 20px;

@@ -53,11 +53,10 @@
 
     <div class="age-calculator" id="age-calculator-container" hidden>
         <!-- T2 - 1 -->
-        <div>
-            <h4>Calculeaza varsta vinului: </h4>
-            <input placeholder="month#day#year" onkeyup="update_age()" id="age-calculator">
-            <p hidden id="age-has-generated">Vinul are o varsta de <b id="age-generated"></b></p>
-        </div>
+        <h4>Calculeaza varsta bauturii: </h4>
+        <input placeholder="luna#zi#an" id="age-calculator">
+        <button onclick="init_age_calculator()">Calculeaza</button>
+        <p hidden id="age-has-generated">Vinul are o varsta de <b id="age-generated"></b></p>
     </div>
 
     <!--<footer class="footer"></footer>-->

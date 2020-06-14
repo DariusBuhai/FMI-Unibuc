@@ -74,11 +74,15 @@ app.post('/ratings', function(req,res){
         ratings.prototype.post(req.ip,req.body.product_id,1,req.body.value);
         ratings.prototype.post(req.ip,req.body.product_id,2,req.body.value);
         ratings.prototype.post(req.ip,req.body.product_id,3,req.body.value);
-    }else
+        /** Log action */
+        logger.prototype.post(req.ip,"a adaugat un rating general pentru produsul cu id-ul "+req.body.product_ida);
+    }else{
         ratings.prototype.post(req.ip,req.body.product_id,req.body.criteria,req.body.value);
+        /** Log action */
+        logger.prototype.post(req.ip,"a adaugat un rating pentru produsul cu id-ul "+req.body.product_id+" dupa criteriul "+req.body.criteria);
+    }
+
     res.send("added rating");
-    /** Log action */
-    logger.prototype.post(req.ip,"a adaugat un rating pentru produsul cu id-ul "+req.body.product_id+" dupa criteriul "+req.body.criteria);
 });
 
 /** Products */

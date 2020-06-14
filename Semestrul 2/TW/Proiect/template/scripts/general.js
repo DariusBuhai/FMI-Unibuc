@@ -4,6 +4,7 @@ var bill = {};
 var marked_products = {};
 var last_markup = null;
 var page_type;
+var age_calculator_interval = null;
 
 function get_categories(callback = null){
     http_get("categories", function(data){
@@ -224,6 +225,7 @@ function update_product_markup(product_id){
     var marked = window.getSelection();
     var from = marked.anchorOffset;
     var to = marked.focusOffset;
+    console.log(from, to);
     if(from>to){
         var aux = from;
         from = to;
@@ -259,17 +261,24 @@ function update_rating(value, product_id, criteria, product_page = false){
  * Task 2 - P1
  * 1 pct
  */
-setInterval(function(){
+
+function init_age_calculator(){
+    if(age_calculator_interval!=null) clearInterval(age_calculator_interval);
     update_age();
-}, 1000);
+    age_calculator_interval = setInterval(function(){
+        update_age();
+    }, 1000);
+}
 
 function update_age(){
-    console.log("Updating age");
-    var birthday = document.getElementById("age-calculator").value;
-    if(!Date.parse(birthday)) return;
-    var diff = Date.now()-Date.parse(birthday);
-    var date_diff = new Date(diff);
-    let res = date_diff.getFullYear()-1970+" ani "+date_diff.getMonth()+" luni "+date_diff.getDay()+" zile "+date_diff.getHours()+" de ore, "+date_diff.getMinutes()+" minute si "+date_diff.getSeconds()+" secunde";
-    document.getElementById("age-generated").innerText = res;
-    document.getElementById("age-has-generated").hidden = false;
+    if(page_type==="home"){
+        console.log("Updating age");
+        var birthday = document.getElementById("age-calculator").value;
+        if(!Date.parse(birthday)) return;
+        var diff = Date.now()-Date.parse(birthday);
+        var date_diff = new Date(diff);
+        let res = date_diff.getFullYear()-1970+" ani "+date_diff.getMonth()+" luni "+date_diff.getDay()+" zile "+date_diff.getHours()+" de ore, "+date_diff.getMinutes()+" minute si "+date_diff.getSeconds()+" secunde";
+        document.getElementById("age-generated").innerText = res;
+        document.getElementById("age-has-generated").hidden = false;
+    }
 }
