@@ -1,6 +1,6 @@
 /**
  * Game
- * Task 6 - P1
+ * Task 6 - P6
  * 3 pct
  */
 var trexUp = false;
@@ -108,4 +108,23 @@ function trex_jump(){
         trex.style.top = "155px";
         trexUp = false;
     }, 300);
+}
+
+/**
+ * Age calculator
+ * Task 2 - P1
+ * 1 pct
+ */
+setInterval(function(){
+    update_age();
+}, 1000);
+
+function update_age(){
+    var birthday = document.getElementById("age-calculator").value;
+    if(!Date.parse(birthday)) return;
+    var diff = Date.now()-Date.parse(birthday);
+    var date_diff = new Date(diff);
+    let res = date_diff.getFullYear()-1970+" ani "+date_diff.getMonth()+" luni "+date_diff.getDay()+" zile "+date_diff.getHours()+" de ore, "+date_diff.getMinutes()+" minute si "+date_diff.getSeconds()+" secunde";
+    document.getElementById("age-generated").innerText = res;
+    document.getElementById("age-has-generated").hidden = false;
 }

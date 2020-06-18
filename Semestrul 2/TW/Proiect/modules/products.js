@@ -58,8 +58,6 @@ class Products {
             if(fields.hasOwnProperty("price")) new_product.price = fields.price;
             if(fields.hasOwnProperty("category")) new_product.category = fields.category;
             if(files.hasOwnProperty("image")) new_product.image = files.image.name;
-            if(fields.hasOwnProperty("ingredients")) new_product.ingredients = fields.ingredients;
-            if(fields.hasOwnProperty("vegan")) new_product.vegan = fields.vegan;
 
             if(!categories.prototype.get().includes(new_product.category)){
                 console.log("adding new");
@@ -93,8 +91,6 @@ class Products {
             if(fields.hasOwnProperty("description")) products[id].description = fields.description;
             if(fields.hasOwnProperty("price")) products[id].price = fields.price;
             if(fields.hasOwnProperty("category")) products[id].category = fields.category;
-            if(fields.hasOwnProperty("ingredients")) products[id].ingredients = fields.ingredients;
-            if(fields.hasOwnProperty("vegan")) products[id].vegan = fields.vegan;
             if(files.hasOwnProperty("image") && files.image!=null) products[id].image = files.image.name;
 
             if(!categories.prototype.get().includes(products[id].category)){
