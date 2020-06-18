@@ -10,10 +10,12 @@
 - [x] LFA (Limbaje Formale si Automate)
   - [x] Tema 1
   - [x] Tema 2 & 3
-- [ ] POO (Programarea orientata pe obiecte)
+  - [x] Examen
+- [x] POO (Programarea orientata pe obiecte)
   - Laboratoare
   - Seminar
   - Proiect Final: ***https://github.com/DariusBuhai/Checkmate***
+  - [x] Colocviu
 - [ ] BD (Baze de date)
   - Laborator
     - [x] Tema 1
@@ -30,10 +32,10 @@
 - [x] SD (Structuri de Date)
   - [x] Tema 1
   - [x] Tema 2
-- [ ] TW (Tehnici Web)
+- [x] TW (Tehnici Web)
   - [x] Laboratoare
   - [x] Proiect Final: ***https://github.com/DariusBuhai/Waitee***
-  - [ ] Update proiect final
+  - [x] Update proiect final
 - [x] Engleza
   - Examen
 - [x] Sport
