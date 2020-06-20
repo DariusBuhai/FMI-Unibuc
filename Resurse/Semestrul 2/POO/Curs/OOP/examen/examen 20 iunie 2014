@@ -1,0 +1,62 @@
+Teorie:
+1) mostenire multipla
+2)functie prin referinta
+3)incapsulare si mostenire
+4)clase generice
+5)functii virtuale
+6)
+
+Exercitii:
+1) //Corect
+#include<iostream>
+#include <typeinfo>
+using namespace std;
+
+class A
+{
+int n;
+public:
+A(int x){n=x;}
+void afis(){cout<<n;}
+};
+int main()
+{
+  A v[]={*(new A(3)),*(new A(7))};
+  v[0]->afis();
+  return 0;
+}
+
+2) //Incorect, obiectul o e distrus intre {}
+#include<iostream>
+#include <typeinfo>
+using namespace std;
+
+class A
+{
+int n;
+public:
+A(int x){n=x;}
+void afis(){cout<<n;}
+};
+
+class B:public A
+{
+  public: B(int x):A(x){}
+};
+int main()
+{
+  int x;
+  cin>>x;
+  if(x>0)
+  { A ob(2); }
+  else
+  { B ob(2); }
+  ob.afis();
+  return 0;
+}
+
+3)constructori si destructori, dupa declararea unei clase aparea si un obiect global
+4)Aveam un program corect, in clasa A avem static int x si redefinit =. Avem doua obiecte a si b de tipul a. La definirea lui a se modifica x cu 2 si la definirea lui b se modifica x cu 3. Se afiseaza(b=a).afis(); Afiseaza 3, deoarece x-ul e static.
+5)un program care nu era corect deoarece in clasa abstracta aveam o functie virtuala fara tip de intoarcere care pe deasupra nici nu era redeclarata in clasa care deriva din aceasta.
+
+

@@ -2,7 +2,8 @@ const fs = require("fs");
 const moment = require("moment");
 
 /**
- * Task 5 - 12
+ * Task 5 - 4
+ * 2.5 pct
  */
 
 class Logger{
@@ -26,7 +27,7 @@ class Logger{
     post(ip, action){
         var data = JSON.parse(fs.readFileSync("data/logger.json"));
         var new_log = {
-            date: moment().format('yyyy-mm-dd, hh:mm:ss').toString(),
+            date: moment().format('DD/MM/yyyy, hh:mm:ss').toString(),
             ip: ip,
             action: action
         }

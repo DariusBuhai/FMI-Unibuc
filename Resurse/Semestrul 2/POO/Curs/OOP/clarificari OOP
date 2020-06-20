@@ -1,0 +1,490 @@
+1)  MOSTENIRE
+class A
+{
+ *
+int a
+ public:
+A(int i) { a=i; }
+};
+
+class B:public A
+{
+int b;
+ public:
+B(int i):A(i+2) {b=i; }
+int suma() {return a+b; } //aceasta operatie este valabila doar daca * este protected:
+                          //in cazul in care * este private: nu avem acest drept
+};
+
+//La constructorul lui B fie apelam A(i+2) ca in exemplu, fie il declar normal , dar declar si constructorul lui A fara parametrii unde
+//initializez variabila a, A(){a=0;}
+
+2) FUNCTII FRIEND
+a)
+#include <iostream>
+using namespace std;
+
+class myclass {
+   int a, b;
+public:
+   friend int sum(myclass x);
+   void set_ab(int i, int j);
+};
+
+void myclass::set_ab(int i, int j) { a = i; b = j; }
+
+// Note: sum() is not a member function of any class.
+int sum(myclass x)
+{
+   /* Because sum() is a friend of myclass, it can directly access a and b. */
+   return x.a + x.b;
+}
+
+int main()
+{
+   myclass n;
+   n.set_ab(3, 4);
+   cout << sum(n);
+   return 0;
+}
+
+b) Daca scriu functia friend intai in clasa A si apoi in B si are ca parametrii un obiect din clasa A si un obiect din clasa B, atunci trebuie sa definesc inainte clasa B inainte de definirea clasei A. exemplu: class B;
+                                                        class A{..};
+                                                        class B{..};
+c) exemplu in curs 3, slide 20
+
+3) CLASE PRIETEN
+Exemplu in cursul 3, slide 22
+
+4) EXCEPTII
+  -un catch pentru tipul de baza va fi executat pentru un obiect aruncat de tipul derivat
+  -ar putea sa se puna catch-ulpe tipul derivat primul si apoi catchul pe tipul de baza 
+
+// Catching derived classes.
+#include <iostream>
+using namespace std;
+
+class B {};
+
+class D: public B {};
+
+int main()
+{
+   D derived;
+   try {
+      throw derived;
+   }
+   catch(B b) {
+      cout << "Caught a base class.\n";
+   }
+   catch(D d) {
+      cout << "This won't execute.\n";
+   }
+   return 0;
+}                                                         
+
+5) MOSTENIRE - OVERLOAD DE FUNCTII
+ -daca in clasa derivata se redefineste o functie suprascrisa (overloaded) in baza, toate variantele functiei respective sunt ascunse (nu mai
+  sunt accesibile in derivata)
+ -putem face overload in clasa derivata pe o functie overloaduita din baza (dar semnatura noii functii trebuie sa fie distincta de cele din
+  baza)
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Base {
+public:
+  int f() const { 
+    cout << "Base::f()\n"; 
+    return 1; 
+  }
+  int f(string) const { return 1; }
+  void g() {}
+};
+
+class Derived1 : public Base {
+public:
+  void g() const {}
+};
+
+class Derived2 : public Base {
+public:
+  // Redefinition:
+  int f() const { 
+    cout << "Derived2::f()\n"; 
+    return 2;
+  }
+};
+class Derived3 : public Base {
+public:
+  // Change return type:
+  void f() const { cout << "Derived3::f()\n"; }};
+
+class Derived4 : public Base {
+public:
+  // Change argument list:
+  int f(int) const { 
+    cout << "Derived4::f()\n"; 
+    return 4; 
+  }};
+
+int main() {
+  string s("hello");
+  Derived1 d1;
+  int x = d1.f();
+  d1.f(s);
+  Derived2 d2;
+  x = d2.f();
+//!  d2.f(s); // string version hidden
+  Derived3 d3;
+//!  x = d3.f(); // return int version hidden
+  Derived4 d4;
+//!  x = d4.f(); // f() version hidden
+  x = d4.f(1);
+}
+
+  Afiseaza:  Base::f()
+             Derived2::f()
+             Derived4::f()
+
+6) UPCASTING
+Clasa derivata poate lua locul clasei de baza
+
+#include <iostream>
+using namespace std;
+enum note { middleC, Csharp, Eflat }; // Etc.
+
+class Instrument {
+public:
+  void play(note) const {
+    cout << "Instrument::play" << endl;
+  }
+};
+
+// Wind objects are Instruments
+// because they have the same interface:
+class Wind : public Instrument {
+public:
+  // Redefine interface function:
+  void play(note) const {
+    cout << "Wind::play" << endl;
+  }
+};
+
+void tune(Instrument& i) {
+  // ...
+  i.play(middleC);
+}
+int main() {
+  Wind flute;
+  tune(flute); // Upcasting
+}
+
+         Printeaza pe ecran: Instrument::play , nu Wind::play
+7) FUNCTII VIRTUALE
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Pet {
+  string pname;
+public:
+  Pet(const string& name) : pname(name) {}
+  virtual string name() const { return pname; }
+  virtual string description() const {
+    return "This is " + pname;
+  }
+};
+
+class Dog : public Pet {
+  string favoriteActivity;
+public:
+  Dog(const string& name, const string& activity)
+    : Pet(name), favoriteActivity(activity) {}
+  string description() const {
+    return Pet::name() + " likes to " +
+      favoriteActivity;
+  }
+};
+void describe(Pet p) { // Slicing
+  cout << p.description() << endl;
+}
+
+int main() {
+  Pet p("Alfred");
+  Dog d("Fluffy", "sleep");
+  describe(p);
+  describe(d);
+}
+
+      Afiseaza:  This is Alfred
+                 This is Fluffy
+
+8) DESTRUCTORI VIRTUALI
+a)
+
+#include <iostream>
+using namespace std;
+
+class Base1 {
+public:
+  ~Base1() { cout << "~Base1()\n"; }
+};
+
+class Derived1 : public Base1 {
+public:
+  ~Derived1() { cout << "~Derived1()\n"; }
+};
+
+class Base2 {
+public:
+  virtual ~Base2() { cout << "~Base2()\n"; }
+};
+
+class Derived2 : public Base2 {
+public:
+  ~Derived2() { cout << "~Derived2()\n"; }
+};
+int main() {
+  Base1* bp = new Derived1; // Upcast
+  delete bp;
+  Base2* b2p = new Derived2; // Upcast
+  delete b2p;
+}
+
+             Afiseaza: ~Base1()
+                       ~Derived2()
+                       ~Base2()
+
+b) 
+
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+  virtual ~Base() { 
+    cout << "Base1()\n"; 
+    f(); 
+  }
+  virtual void f() { cout << "Base::f()\n"; }
+};
+
+class Derived : public Base {
+public:
+  ~Derived() { cout << "~Derived()\n"; }
+  void f() { cout << "Derived::f()\n"; }
+};
+
+int main() {
+  Base* bp = new Derived; // Upcast
+  delete bp;
+}
+
+              Afiseaza:  ~Derived()
+                         Base1()
+                         Base::f()
+
+9) RTTI
+RTTI nu functioneaza cu pointeri void, nu au informatie de tip
+
+//: C08:VoidRTTI.cpp
+// RTTI & void pointers.
+//!#include <iostream>
+#include <typeinfo>
+using namespace std;
+ 
+class Stimpy {
+public:
+  virtual void happy() {}
+  virtual void joy() {}
+  virtual ~Stimpy() {}
+};
+ 
+int main() {
+  void* v = new Stimpy;
+  // Error:
+//!  Stimpy* s = dynamic_cast<Stimpy*>(v);
+  // Error:
+//!  cout << typeid(*v).name() << endl;
+} ///:~
+
+10) CONST
+a)
+// Constants and aggregates
+const int i[] = { 1, 2, 3, 4 };
+//! float f[i[3]]; // Illegal
+struct S { int i, j; };
+const S s[] = { { 1, 2 }, { 3, 4 } };
+//! double d[s[1].j]; // Illegal
+int main() {}
+
+b)
+//: C08:ConstPointers.cpp 
+const int* u; 
+int const* v; 
+int d = 1; 
+int* const w = &d; 
+const int* const x = &d; // (1) 
+int const* const x2 = &d; // (2) 
+int main() {} ///:~ 
+
+c)Variabile const NU se initializeaza in constructor, ci in lista acestuia
+// Initializing const in classes
+#include <iostream>
+using namespace std;
+
+class Fred {
+  const int size;
+public:
+  Fred(int sz);
+  void print();
+};
+
+Fred::Fred(int sz) : size(sz) {}
+void Fred::print() { cout << size << endl; }
+
+int main() {
+  Fred a(1), b(2), c(3);
+  a.print(), b.print(), c.print();
+} ///:~
+
+
+11) FUNCTII CONST
+schimbari in obiect din functii const
+ -“casting away constness”
+ -se face castare a pointerului this la pointer catre tipul de obiect
+ -pentru ca in functii const este de tip clasa const*
+ -dupa aceasta schimbare de tip se modifica prin pointerul this
+
+// "Casting away" constness
+
+class Y {
+  int i;
+public:
+  Y();
+  void f() const;
+};
+
+Y::Y() { i = 0; }
+
+void Y::f() const {
+//!  i++; // Error -- const member function
+  ((Y*)this)->i++; // OK: cast away const-ness
+  // Better: use C++ explicit cast syntax:
+  (const_cast<Y*>(this))->i++;
+}
+
+int main() {
+  const Y yy;
+  yy.f(); // Actually changes it!
+} ///:~
+
+12) SUPRAINCARCAREA << , >>
+
+#include<iostream>
+using namespace std;
+class A
+{
+  int x;
+  string s;
+public:
+  A(){x=0;}
+  A(int,string);
+  void show(){cout<<endl<<x<<"  "<<s;}
+  friend istream &operator>>(istream &in,A &obiect)
+  {
+    int a_x;
+    string a_s;
+    in>>a_x;
+    in>>a_s;
+    obiect.x=a_x;
+    obiect.s=a_s;
+    return in;
+  }
+  friend ostream &operator<<(ostream &out, const A &obiect)
+  {
+    out<<endl<<obiect.x<<"  "<<obiect.s;
+    return out;
+  }
+};
+
+A::A(int i,string ss)
+{
+  x=i;
+  s=ss;
+}
+
+int main()
+{
+
+A ob1(2,"Ana");
+A ob2;
+cout<<"Dati caracteristicile obiectului ob2: "<<endl;
+cin>>ob2;
+ob1.show();
+cout<<ob2;
+
+return 0;
+
+}
+
+
+              ATENTIE:
+1)
+#include<iostream>
+using namespace std;
+class B
+{ protected: int x;                                              //x e protected
+  public: B(int i=28) { x=i; }
+          virtual B f(B ob) { return x+ob.x+1; }
+          void afisare(){ cout<<x; } };
+class D: public B
+{ public: D(int i=-32):B(i) {}
+          B f(B ob) { return x+ob.x-1; } };                     //EROARE: ne aflam in clasa derivata (ob.x unde ob e din clasa de baza nu se 
+int main()                                                      //poate, in clasa de baza x e considerat private)
+{ B *p1=new D, *p2=new B, *p3=new B(p1->f(*p2));
+  p3->afisare();
+  return 0;
+}
+
+
+2)
+#include<iostream.h>
+class A
+{
+int x;
+static int y;
+public: A(int i, int j):x(i), y(j) { }             //nu am voie sa initializez o variabila statica in lista de initializare a constructorului
+int f() const; };
+int A::y;
+int A::f() const { return y; }
+int main()
+{ const A a(21,2);
+cout<<a.f();
+return 0;
+}
+
+3)
+#include<iostream.h>
+class cls1
+{ public: int x;
+cls1(int i=13) { x=i; } };
+class cls2: virtual public cls1
+{ public: cls2(int i=15) { x=i; } };
+class cls3: virtual public cls1
+{ public: cls3(int i=17) { x=i; } };
+class cls4: public cls1
+{ public: cls4(int i=19) { x=i; } };
+class cls5: public cls2, public cls3, public cls4
+{ public: int y;
+cls5(int i,int j):cls4(i),cls2(j){ y=i+j; }
+cls5(cls5& ob) ){ y=-ob.y; }};
+int main()
+{ cls5 ob1(-9,3), ob2=ob1;
+cout<<ob2.y;
+return 0;
+}
+
+1 2 3 1 4 5    1 2 3 1 4 copiere5
