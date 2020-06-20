@@ -12,9 +12,9 @@
   - [x] Tema 2 & 3
   - [x] Examen
 - [x] POO (Programarea orientata pe obiecte)
-  - Laboratoare
-  - Seminar
-  - Proiect Final: ***https://github.com/DariusBuhai/Checkmate***
+  - [x] Laboratoare
+  - [x] Seminar
+  - [x] Proiect Final: ***https://github.com/DariusBuhai/Checkmate***
   - [x] Colocviu
 - [ ] BD (Baze de date)
   - Laborator
@@ -37,6 +37,6 @@
   - [x] Proiect Final: ***https://github.com/DariusBuhai/Waitee***
   - [x] Update proiect final
 - [x] Engleza
-  - Examen
+  - [x] Examen
 - [x] Sport
-  - Testul Hettinger
+  - [x] Testul Hettinger
