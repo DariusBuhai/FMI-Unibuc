@@ -40,3 +40,6 @@
   - [x] Examen
 - [x] Sport
   - [x] Testul Hettinger
+- [x] Geometrie&Alg liniara
+  - [x] Examen
+  - [x] Model Examen
