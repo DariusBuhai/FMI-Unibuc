@@ -16,7 +16,7 @@
   - [x] Seminar
   - [x] Proiect Final: ***https://github.com/DariusBuhai/Checkmate***
   - [x] Colocviu
-- [ ] BD (Baze de date)
+- [x] BD (Baze de date)
   - Laborator
     - [x] Tema 1
     - [x] Tema 2
