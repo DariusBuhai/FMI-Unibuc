@@ -1,0 +1,5 @@
+Host: 193.226.51.37
+Port: 1521
+SID: o11g
+User: grupa234
+Password: oracle
