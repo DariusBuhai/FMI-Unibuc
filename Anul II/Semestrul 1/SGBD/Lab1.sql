@@ -27,6 +27,16 @@ select 'drop table ' || table_name || ';'
 from user_tables where table_name like 'EMP_%';
 SPOOL OFF;
 SET FEEDBACK ON;
---18
---19
---22, 23 tema
+--22
+
+--23
+SET FEEDBACK OFF;
+SET PAGESIZE 1;
+SPOOL create_table.sql;
+select 'create table DEPARTMENTS2 ' || * 
+FROM DEPARTMENTS;
+SPOOL OFF;
+SET FEEDBACK ON;
+
+select 'create table DEPARTMENTS2 ' || *
+FROM DEPARTMENTS;
