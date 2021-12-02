@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Adaugare Categorie";
+}
+
+
+<h2>Adaugare Categorie</h2>
+
+<form method="post" action="/Categories/New">
+
+    @Html.Label("CategoryName", "Denumire categorie")
+    <br />
+
+    @Html.TextBox("CategoryName", null, new { @class = "form-control" })
+    <br /><br />
+
+    <button class="btn btn-success" type="submit">Adauga categorie</button>
+</form>
+

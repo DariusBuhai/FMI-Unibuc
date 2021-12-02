@@ -1,0 +1,20 @@
+﻿
+
+<h1>@ViewBag.Message</h1>
+<h2>News</h2>
+
+
+@foreach (Lab10.Models.Article article in ViewBag.Articles)
+ {
+    <div class="panel panel-default">
+        @Html.Partial("ArticleInfo", article)
+        <div class="panel-footer">
+            <a class="btn btn-success" href="/Articles/Show/@article.Id">Afisare articol</a>
+        </div>
+    </div>
+
+ }
+
+
+
+

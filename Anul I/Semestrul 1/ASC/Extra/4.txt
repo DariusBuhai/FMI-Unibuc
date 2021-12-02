@@ -1,0 +1,71 @@
+# Sa se implementeze procedura divizibile_in_interval(a, b, x) care determina cate numere sunt divizibile cu x in intervalul [a, b], stiind ca a < b si ca a, b, si x sunt numere naturale nenule. (in $v0, ca .word)
+
+.text
+# divizibile_in_interval(x) -> $v0
+divizibile_in_interval:
+   
+   subu $sp, 4         # ()(a)(b)(x)
+   sw $fp, 0($sp)      # ($fp)(a)(b)(x)
+   addi $fp, $sp, 4    # ($fp)$fp:(a)(b)(x)
+   subu $sp, 4         # ()($fp)$fp:(a)(b)(x)
+   sw $ra, 0($sp)      # ($ra)($fp)$fp:(a)(b)(x)
+   subu $sp, 4         # ()($ra)($fp)$fp:(a)(b)(x)
+   sw $s0, 0($sp)      # ($s0)($ra)($fp)$fp:(a)(b)(x)
+
+   lw $t0, 0($fp)      # a
+   lw $t1, 4($fp)      # b
+   lw $t2, 8($fp)      # x
+
+   li $t3, 0           # result, to be moved in $v0
+
+   while:
+      bge $t0, $t1, endwhile
+
+      rem $s0, $t0, $t2
+      addi $t0, $t0, 1
+
+      bne $s0, $0, while
+      addi $t3, $t3, 1
+   j while   
+   endwhile:
+
+   move $v0, $t3
+
+   lw $s0, -12($fp)
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   
+   addi $sp, 12
+
+jr $ra
+
+main:
+   
+   #################################################
+   #					           #
+   # Created by Darius Buhai @ all rights reserved #
+   #					           #
+   #################################################
+
+   li $t0, 1          # a
+   li $t1, 10         # b
+   li $t2, 3          # x
+
+   subu $sp, 4
+   sw $t2, 0($sp)
+   subu $sp, 4
+   sw $t1, 0($sp)
+   subu $sp, 4
+   sw $t0, 0($sp)
+   
+   jal divizibile_in_interval
+
+   addi $sp, 12
+
+   move $a0, $v0
+   li $v0, 1
+   syscall
+
+   li $v0, 10
+   syscall
+   

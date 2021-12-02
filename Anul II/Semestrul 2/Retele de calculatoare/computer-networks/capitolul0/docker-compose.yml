@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+    rt1:
+        image: snisioi/retele:2021
+        volumes:
+            - .:/elocal
+        tty: true
+        networks:
+            - dmz
+        sysctls:
+          - net.ipv4.icmp_echo_ignore_broadcasts=0
+    rt2:
+        image: snisioi/retele:2021
+        volumes:
+            - .:/elocal
+        tty: true
+        networks:
+            - dmz
+        sysctls:
+          - net.ipv4.icmp_echo_ignore_broadcasts=0
+    rt3:
+        image: snisioi/retele:2021
+        volumes:
+            - .:/elocal
+        tty: true
+        networks:
+            - dmz
+        sysctls:
+          - net.ipv4.icmp_echo_ignore_broadcasts=0
+networks:
+    dmz: 
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.111.111.0/16
+                  gateway: 172.111.111.1
+    net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 198.13.13.0/16
+                  gateway: 198.13.13.1 

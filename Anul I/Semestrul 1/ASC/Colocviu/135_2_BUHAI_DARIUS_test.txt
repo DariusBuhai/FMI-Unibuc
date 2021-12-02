@@ -1,0 +1,173 @@
+# Buhai Darius
+# Grupa 135
+# Semigrupa 2
+# 06.01.2020
+# tio
+.data
+v:.space 100
+n:.word 0
+sp:.asciiz " "
+.text
+# nr_f(x) -> $v0
+nr_f:
+   subu $sp, 4          # $sp:()(x)
+   sw $fp, 0($sp)       # $sp:($fp)(x)
+   addi $fp, $sp, 4     # $sp:($fp)$fp:(x)
+   subu $sp, 4          # $sp:()($fp)$fp:(x)
+   sw $ra, 0($sp)       # $sp:($ra)($fp)$fp:(x)
+ 
+   lw $t0, 0($fp) 
+   li $t1, 1
+   li $t2, 0           # nr f
+   li $t3, 2
+   li $t5, 3
+
+   for_f:
+      beq $t0, $t1, end_for_f
+      addi $t2, 1
+      rem $t4, $t0, $t3
+      beqz $t4, nr_par
+      mul $t0, $t0, $t5
+      addi $t0, 1
+      j for_f
+      nr_par:
+      div $t0, $t0, $t3
+      j for_f
+   end_for_f:
+
+   move $v0, $t2
+
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   addi $sp, 8
+
+jr $ra
+
+# modif(v, n, a) -> $v0
+modif:
+   subu $sp, 4          # $sp:()(v)(n)(x)(y)(z)
+   sw $fp, 0($sp)       # $sp:($fp)(v)(n)(x)(y)(z)
+   addi $fp, $sp, 4     # $sp:($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($fp)$fp:(v)(n)(x)(y)(z)
+   sw $ra, 0($sp)       # $sp:($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s0, 0($sp)       # $sp:($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s1, 0($sp)       # $sp:($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s2, 0($sp)       # $sp:($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   subu $sp, 4          # $sp:()($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+   sw $s3, 0($sp)       # $sp:($s3)($s2)($s1)($s0)($ra)($fp)$fp:(v)(n)(x)(y)(z)
+
+   lw $s0, 0($fp)       # $s0 = v
+   lw $s1, 4($fp)       # $s1 = n
+   lw $s2, 8($fp)       # $s2 = a
+
+   for_modif:
+      beqz $s1, end_for_modif
+      lw $s3, 0($s0)
+
+      #### call to nr_f(x) -> $v0
+      subu $sp, 4
+      sw $s3, 0($sp)
+
+      jal nr_f
+
+      addu $sp, 4
+      #####
+
+      move $t0, $v0
+
+      li $t2, 2
+      li $t3, 1
+      rem $t1, $t0, $t2
+
+      beq $t1, $t3, nr1_impar
+      add $t0, $t0, $s2
+      sw $t0, 0($s0)
+  
+      nr1_impar:
+
+      addi $s1, -1
+      addi $s0, 4
+      j for_modif
+   end_for_modif:
+
+end_evalueaza:
+
+   lw $s3, -24($fp)
+   lw $s2, -20($fp)
+   lw $s1, -16($fp)
+   lw $s0, -12($fp)
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   addi $sp, 24
+
+jr $ra
+
+main:
+
+   li $v0, 5
+   syscall
+
+   move $t0, $v0    # $t0 = n
+   sw $t0, n
+   move $t1, $t0
+   li $t2, 0
+   
+   for_read:
+       beqz $t1, end_for_read
+
+       li $v0, 5
+       syscall
+       
+       sw $v0, v($t2)
+
+       addi $t1, -1
+       addi $t2, 4
+   j for_read
+   end_for_read:
+
+   li $v0, 5
+   syscall
+   
+   move $s0, $v0 # a
+
+   #########
+   subu $sp, 4
+   sw $s0, 0($sp)
+   subu $sp, 4
+   sw $t0, 0($sp)
+   subu $sp, 4
+   la $t1, v
+
+   sw $t1, 0($sp)
+
+   jal modif
+
+   addi $sp, 20
+   #########
+
+   li $t0, 0       # index
+   lw $t1, n       # $t1 = n
+
+   # afisare
+   for_afisare:
+      beqz $t1, end_for_afisare
+      ######
+      lw $t2, v($t0)
+      move $a0, $t2
+      li $v0, 1
+      syscall
+
+      la $a0, sp
+      li $v0, 4
+      syscall
+      ######
+      addi $t1, -1
+      addi $t0, 4
+      j for_afisare
+   end_for_afisare:
+
+   li $v0, 10
+   syscall

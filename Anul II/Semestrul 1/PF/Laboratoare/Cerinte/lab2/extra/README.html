@@ -1,0 +1,211 @@
+<!DOCTYPE html><html>
+<head>
+<title>Lab 2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" type="text/css" href="https://www.dropbox.com/s/48bx1xvl42hr5gp/progdecl.css?dl=1">
+  <script type="text/javascript" src="https://www.dropbox.com/s/hk9x49z7vmznfp9/progdecl.js?dl=1">
+  </script>
+</head>
+<body>
+<h1> Declarative Programming - Lab 2</h1>
+Based on the Informatics 1 &mdash; Functional Programming @ University of Edinburgh
+2>Exercise</h2>
+
+
+<h2>Chess</h2>
+<p> We'll use again the chess exercise from last week.
+First, open the file <tt>showPic.html</tt> in your web-browser.  Load the file <tt>lab2chess.hs</tt>
+into GHCi and remember that  you can draw pictures using <tt>render</tt>. For example:
+<pre>
+Main&gt; render knight<br/>
+</pre>
+The webpage (which refreshes every second) should now show a picture of a white knight chess piece:
+<center><img src="images/knight.png" width="50"/></center>
+
+<p>Recall that the <tt>PicturesSVG</tt> module includes all chess pieces and white and grey squares to create a chessboard, and some functions to manipulate the images. The following table shows the basic pictures:
+<table>
+<th><td colspan="3">Chess pieces</td>
+<td colspan="3">Board squares</td>
+</th>
+<tr>
+<td><tt>bishop</tt>&nbsp;&nbsp;</td>
+<td>A bishop</td>
+<td><img src="images/bishop.png" width="50"/></td>
+<td><tt>blackSquare</tt></td>
+<td>A black (grey) square*</td>
+<td><img src="images/black.jpg" width="50"/></td>
+</tr>
+<tr>
+<td><tt>king</tt></td>
+<td>A king</td>
+<td><img src="images/king.png" width="50"/></td>
+<td><tt>whiteSquare</tt></td>
+<td>A white square</td>
+<td><img border=1 src="images/white.jpg" width="50"/></td>
+</tr>
+<tr>
+<td><tt>knight</tt></td>
+<td>A knight</td>
+<td><img src="images/knight.png" width="50"/></td>
+</tr>
+<tr>
+<td><tt>pawn</tt></td>
+<td>A pawn</td>
+<td><img src="images/pawn.png" width="50"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td colspan="2" rowspan="2">* The black square is grey so that you can see <br/>the
+black pieces on it.</td>
+</tr>
+<tr>
+<td><tt>queen</tt></td>
+<td>A queen</td>
+<td><img src="images/queen.png" width="50"/></td>
+</tr>
+<tr>
+<td><tt>rook</tt></td>
+<td>A rook</td>
+<td><img src="images/rook.png" width="50"/></td>
+</table>
+All the basic pictures above have the type <tt>Picture</tt>.
+
+
+<p>Below are the functions for arranging pictures:<br/>
+<table>
+<tr>
+<td><tt>flipV</tt></td>
+<td>reflection in the vertical axis</td>
+</tr>
+<tr>
+<td><tt>flipH</tt></td>
+<td>reflection in the horizontal axis</td>
+</tr>
+<tr>
+<td><tt>invert</tt></td>
+<td>change black to white and vice versa</td>
+</tr>
+<tr>
+<td><tt>over</tt></td>
+<td>place one picture onto another</td>
+</tr>
+<tr>
+<td><tt>beside</tt></td>
+<td>place one picture next to another</td>
+</tr>
+<tr>
+<td><tt>above</tt></td>
+<td>place one picture above another</td>
+</tr>
+<tr>
+<td><tt>repeatH</tt></td>
+<td>place several copies of a picture side by side</td>
+</tr>
+<tr>
+<td><tt>repeatV</tt></td>
+<td>stack several copies of a picture vertically</td>
+</tr>
+</table>
+
+Note that you can also use:<br>
+- the  <tt> Empty </tt> element to the <tt> Picture </tt> type, as neutral element for
+<tt> beside </tt>, <tt> above </tt> and <tt> over </tt>, <br>
+- the <tt> clear </tt> element, which is a square picture that contains only an invisible background.<br>
+Test <tt>Empty</tt> and <tt> clear </tt> using <tt>render</tt>.
+ <br><br>
+
+
+
+
+
+In the next exercises we shall use the
+ <a href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">FEN notation</a>.
+
+
+
+<ol start="1">
+  <li>Write a function <tt>isFENChar</tt> which checks whether a given <tt>Char</tt> can be part of an FEN encoding, that is:
+    <ul>
+      <li> It is one of the letters representing pieces ('r','n','b','q','k','p') regardless of capitalization (Hint: use <tt>elem</tt> and <tt>toLower</tt>)
+<pre>
+Prelude&gt; elem 2 [1,2 3]
+</pre>
+      <li> It is a digit encoding clear spaces (Hint: use <tt>toDigit</tt>)
+      <li> It is the character '/' separating rows
+      </ul>
+<li><ol type='a'>
+<li> Write a function <tt> besideList</tt> that takes a list of pictures and returns the picture obtained by placing
+the pictures from the list one beside another.
+<li>Read the documentation for the function <a href="http://hackage.haskell.org/package/base-4.10.0.0/docs/Prelude.html#v:replicate"><tt>replicate</tt></a>
+<li>
+Use the two functions above to write a function <tt>toClear</tt> that takes an integer <tt>n</tt>, n>=0, and returns a picture representing
+<tt>n</tt> <tt>clear</tt> squares, one beside another.
+</ol>
+
+<li>
+Write a function <tt>fenCharToPicture</tt> that, when applied to a character, returns the picture corresponding to it, such that:
+<ul>
+<li> for any letter, it returns the corresponding picture,
+<li> if the character is a digit 'n', it returns <tt>to_clear n</tt>,  (to convert a character digit to the corresponding integer digit
+use the function <tt>digitToInt</tt>),
+<li> returns <tt> Empty </tt> for any letter that it is not used in FEN.
+</ul>
+Hint: use the <tt>case</tt> expression, or function definitions by cases.
+
+<li> Write a function <tt> isFENRow</tt> that checks if a given string represents a row of a chess board in the FEN notation.
+You can use the <tt>isFENChar</tt> function defined above.
+
+<li> Recall the constructor for lists is <tt>:</tt> and learn the functions  <tt> ++</tt>, <tt>head</tt> and <tt>tail</tt>.
+<pre>
+Prelude&gt; x:l = [1,2,3]
+Prelude&gt;  head [1,2,3]
+Prelude&gt;  tail [1,2,3]
+Prelude&gt;  head "abc"
+Prelude&gt;  tail "abc"
+Prelude&gt;  [1,2]++[3,4]
+</pre>
+
+<li><ol type='a'>
+<li>Write a function <tt>fenCharsToPictures</tt> that takes a list of FEN characters and returns the list of corresponding
+pictures.  See the type in the <tt>lab2chess.hs</tt> file.
+<li>Write a function <tt>fenRowToPicture</tt> that translates a row in the FEN encoding in the corresponding picture.  Hint: use <tt>besideList</tt>.
+</ol>
+
+<li> Learn about the <tt> splitOn </tt> function from the module <a href="https://hackage.haskell.org/package/split-0.2.3.2/docs/Data-List-Split.html">
+Data.List.Split</a>.  Read the examples, try it in GHCi. Pay attention that you have to import the module Data.List.Split
+<br>
+<b>Suplimentary exercise:</b> Define <tt>mysplitOn</tt>, your own <tt>splitOn</tt> function.
+
+<li><ol type='a'>
+<li>   Write a function <tt>fenRowsToPictures</tt> whose argument is a list of FEN strings representing rows like
+
+<pre>["rnbqkbnr", "pppppppp", "8", "8", "8", "8", "PPPPPPPP", "RNBQKBNR"]</pre>
+
+ and whose result is a list pictures, each corresponding to a row description in the input list
+
+<li> Write the function <tt>aboveList</tt>  that takes a list of pictures and returnes the picture obtained by placing
+the pictures from the list one above another.
+<li> Write a function <tt>fenToPicture</tt>, which combines the above two functions to compute the picture associated to the FEN encoding.
+</ol>
+<li> You can finally define the chess board! Write a function <tt>chessBoard</tt> whose argument is a FEN string and
+whose result is the picture corresponding to the FEN over an empty board.
+
+
+<li><strong>Extra credit exercise. </strong>
+
+Assume that the chess board is empty. Write a function <tt>allowedMoves</tt> that takes a chess piece and a position and returns
+the list of all possible moves the given piece can make from the given position. The chess piece will be represented by a 
+ a <tt>Char</tt> similarly to the FEN encoding, e.g. 'n' for "knight" etc. A position is a square on the chess board and will be represented by 
+ a tuple <tt>(c,n) </tt>, where <tt> c &isin; {'a',...,'h'} </tt> and <tt> n &isin; {1,..,8}</tt>. 
+ <br>
+ 
+ Note that the type  <tt>Char</tt> belongs to the <tt>Ord</tt> typeclass, so one can use functions like 
+ <tt> succ</tt>, <tt> pred </tt>, <tt> min</tt>, <tt> max </tt>.
+ <br>
+ 
+ <pre>
+Prelude&gt;  succ 'C'
+Prelude&gt;  pred 'C'
+Prelude&gt;  min 'A' 'B'
+</pre>
+ 
+</ol>
+</body>
+</html>

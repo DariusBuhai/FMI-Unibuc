@@ -1,0 +1,332 @@
+.data
+p:.word 0
+
+powc:.space 104        # 26 * 4
+vispow:.space 104      # 26 * 4
+decodeds:.space 100    # normal input to be encoded
+encodeds:.space 100    # encoded input to be decoded
+
+aa:.asciiz "A"
+sp:.asciiz " "
+endl:.asciiz "\n"
+
+not_prime_msg:.asciiz " is not a prime number, choose another value for p"
+error_log_msg:.asciiz "Error: "
+working:.asciiz "\n\nRegisters work properly!"
+generator_msg:.asciiz "The value of the generator g is: "
+
+.text
+
+# read p function
+readp:
+  li $v0, 5
+  syscall
+  sw $v0, p
+jr $ra
+
+# prime function $sp:(x) -> $v0
+prime:
+   subu $sp, 4 	       # $sp:()(x)
+   sw $fp, 0($sp)      # $sp:($fp v)(x)
+   addi $fp, $sp, 4    # $sp:($fp v)$fp:(x)
+   subu $sp, 4         # $sp:()($fp v)$fp:(x)
+   sw $s0, 0($sp)      # $sp:($s0 v)($fp v)$fp:(x)
+
+   lw $t0, 0($fp)      # $t0 = x
+   li $t2, 2           # $t2 = 2 (div)
+   li $v0, 1           # $v0 = 1 (true)
+
+   blt $t0, 2, endprimebad
+
+   whileprime:
+      mul $t1, $t2, $t2       # $t2 ^ 2
+      bgt $t1, $t0, endprime  # finish prime function when $t2 ^ 2 > $t0 (x)
+      rem $s0, $t0, $t2       # $s0 = $t0 % $t2
+      beqz $s0, endprimebad   # finish prime function with negative result
+      add $t2, $t2, 1         # $t2++
+   j whileprime
+
+   endprimebad:
+      li $v0, 0        # $v0 = 0 (false)
+   endprime:
+
+   lw $s0, -8($fp)     # restore $s0
+   lw $fp, -4($sp)     # restore $fp
+   addu $sp, 12        # clear $sp
+
+jr $ra
+
+# check prime function
+checkprime:
+
+   subu $sp, 8 	       # $sp:()()
+   sw $fp, 0($sp)      # $sp:($fp v)()
+   sw $ra, 4($sp)      # $sp:($fp v)($ra)
+   addi $fp, $sp, 4    # $sp:($fp v)$fp:($ra)
+
+   lw $t0, p           # $t0 = p
+   subu $sp, 4         # $sp:()($ra v)
+   sw $t0, 0($sp)      # $sp:($t0)($ra v)
+
+   jal prime           # call prime: $sp:($t0)($ra v) -> $v0
+
+   beqz $v0, exitnotprime
+
+   lw $ra, 4($sp)      # restore $ra
+   lw $fp, 0($sp)      # restore $fp
+   addu $sp, 8         # clear $sp
+
+jr $ra
+
+# determine the minimum generator g and store it's powers in (powc)
+determineg:
+
+   subu $sp, 20        # $sp:()()()()() size = 5 * 4
+
+   sw $s0, 0($sp)      # $sp:($s0)
+   sw $s1, 4($sp)      # $sp:($s0)($s1)
+   sw $s2, 8($sp)      # $sp:($s1)($s2)
+   sw $s3, 12($sp)     # $sp:($s0)($s1)($s3)
+   sw $s4, 16($sp)     # $sp:($s0)($s1)($s3)($s4)
+
+   li $s0, 1           # $s0 -> g
+   lw $s2, p           # $s2 -> p
+   lw $s4, p
+   sub $s4, $s4, 1     # $s4 -> p-1
+
+   loopdg:
+
+      beq $s0, $s2, enddetermineg
+
+      add $s0, $s0, 1  # $s0++
+      li $s1, 1        # $s1 -> g**0
+      li $t0, 0	       # $t0 -> visual i for powc
+      li $t1, 0        # $t1 -> real i for powc
+
+      sw $s1, powc($t1)
+
+      move $t2, $t0    # $t2 -> visual j for vispow
+      move $t3, $t1    # $t3 -> real j for vispow
+
+      loopclearvis:    # clear visited
+
+         sw $0, vispow($t3)
+         add $t2, $t2, 1
+         add $t3, $t3, 4
+
+      blt $t2, $s4, loopclearvis
+
+      loopdgp:         # check powers, and verify if they are visited
+
+         beq $t0, $s4, enddetermineg
+
+         mul $t3, $s1, 4
+         lw $t2, vispow($t3)
+         beq $t2, 1, loopdg
+         li $t2, 1
+         sw $t2, vispow($t3)
+
+         mul $s1, $s1, $s0
+         rem $s1, $s1, $s2
+
+         add $t0, $t0, 1
+         add $t1, $t1, 4
+
+         sw $s1, powc($t1)
+
+      j loopdgp
+
+   j loopdg
+
+enddetermineg:
+
+   lw $s0, 0($sp)     # restore $s0
+   lw $s1, 4($sp)     # restore $s1
+   lw $s2, 8($sp)     # restore $s2
+   lw $s3, 12($sp)    # restore $s3
+   lw $s4, 16($sp)    # restore $s4
+
+   addu $sp, 20       # clear $sp
+
+jr $ra
+
+# just showing the powers of the generator
+showgenerator:
+
+   la $a0, generator_msg
+   li $v0, 4
+   syscall
+
+   li $t3, 4
+   lw $a0, powc($t3)
+   li $v0, 1
+   syscall
+
+   la $a0, endl
+   li $v0, 4
+   syscall
+
+jr $ra
+
+# read clear string
+readdecodeds:
+   la $a0, decodeds
+   li $a1, 101
+   li $v0, 8
+   syscall
+jr $ra
+
+# read encoded string - line by line
+readencodeds:
+   la $a0, encodeds
+   li $a1, 101
+   li $v0, 8
+   syscall
+jr $ra
+
+# function for encoding the string
+encode:
+
+   subu $sp, 4       # 4 * 1
+   sw $s2, 0($sp)     # $sp:($s2)
+
+   li $t0, 0
+   lw $s2, p
+
+   whileencode:
+
+      lb $t1, decodeds($t0)
+      sub $t2, $t1, 'A'
+
+      blt $t2, $0, endencode
+      rem $t2, $t2, $s2
+      mul $t2, $t2, 4
+
+      lw $t2, powc($t2)
+
+      li $t1, 'A'
+      add $t1, $t1, $t2
+
+      li $v0, 11
+      move $a0, $t1
+      syscall
+
+      add $t0, $t0, 1
+      lb $t1, decodeds($t0)
+
+   bne $t1, 0, whileencode
+
+   endencode:
+
+   la $a0, endl
+   li $v0, 4
+   syscall
+
+   lw $s2, 0($sp)     # restore $s2
+   addu $sp, 4        # clear $sp
+
+jr $ra
+
+# function for decoding the string
+decode:
+
+   subu $sp, 4        # 4 * 1
+   sw $s2, 0($sp)     # $sp:($s2)
+   subu $sp, 4        # $sp:()($s2)
+   sw $fp, 0($sp)     # $sp:($fp)($s2)
+   addi $fp, $sp, 8   # $sp:($fp)($s2)$fp:
+
+   li $t0, 0
+   lw $s2, p
+
+   whiledecode:
+
+      lb $t1, encodeds($t0)  # load $t1 as character
+      beqz $t1, enddecode    # end if $t1 = 0
+
+      sub $t1, $t1, 'A'      # $t1 = int($t1)
+      blt $t1, $0, enddecode
+      rem $t1, $t1, $s2      # $t1 mod p
+
+      li $t5, 0	      # $t5 -> visual i for powc
+      li $t6, 0       # $t6 -> real i for powc
+      lw $t3, p       # $t3 = p
+
+      whilepows:      # find power
+         lw $t4, powc($t6)
+         beq $t4, $t1, endwhilepows
+         add $t5, $t5, 1
+         add $t6, $t6, 4
+      blt $t5, $t3, whilepows
+
+      endwhilepows:
+
+      lb $t4, aa
+      add $t4, $t4, $t5
+      move $a0, $t4
+      li $v0, 11
+      syscall
+
+      add $t0, $t0, 1
+   j whiledecode
+
+   enddecode:
+
+   lw $s2, -4($fp)    # restore $s2
+   lw $fp, -8($fp)    # restore $fp
+   addu $sp, 8        # clear $sp
+
+jr $ra
+
+main:
+
+   #################################################
+   #					           #
+   # Created by Darius Buhai @ all rights reserved #
+   #					           #
+   #################################################
+
+   #la $a0, working
+   #li $v0, 4
+
+   jal readp
+
+   jal checkprime
+
+   jal determineg
+
+   jal showgenerator
+
+   jal readdecodeds
+
+   jal encode
+
+   jal readencodeds
+
+   jal decode
+
+   #syscall
+
+   j exit
+
+
+errorlog:
+   li $v0, 4
+   la $a0, error_log_msg
+   syscall
+   jr $ra
+
+exitnotprime:
+
+   jal errorlog
+   li $v0, 1
+   lw $a0, p
+   syscall
+
+   li $v0, 4
+   la $a0, not_prime_msg
+   syscall
+
+exit:
+   li $v0, 10
+   syscall

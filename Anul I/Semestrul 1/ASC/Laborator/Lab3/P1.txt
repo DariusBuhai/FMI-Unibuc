@@ -1,0 +1,18 @@
+.data
+str:.asciiz "sir de caractere"
+
+.text
+main:
+li $t0, 0
+lb $t1, str($t0)
+loop:
+beq $t1, 0, exit
+addi $t0, 1
+lb $t1, str($t0)
+j loop
+exit:
+move $a0, $t0
+li $v0, 1
+syscall
+li $v0, 10
+syscall

@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema1/Knapsack/knapsack_b.cpp
+iostream
+-
+fstream
+-
+

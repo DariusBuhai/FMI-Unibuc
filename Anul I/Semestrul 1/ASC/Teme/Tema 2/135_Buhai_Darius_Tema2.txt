@@ -1,0 +1,135 @@
+.data
+v:.word 1, 4, 5, 6, 7
+n:.word 5
+sp:.asciiz " "
+
+.text
+
+# sum of square function $sp:(x) -> $v0
+suma_patrate:
+   subu $sp, 4        # $sp:()(x)
+   sw $fp, 0($sp)     # $sp:($fp)(x)
+   addi $fp, $sp, 4   # $sp:($fp)$fp:(x)
+   subu $sp, 4        # $sp:()($fp)$fp:(x)
+   sw $ra, 0($sp)     # $sp:($ra)($fp)$fp:(x)
+   subu $sp, 4        # $sp:()($ra)($fp)$fp:(x)
+   sw $s0, 0($sp)     # $sp:($s0)($ra)($fp)$fp:(x)
+
+   li $v0, 1          # default returned value, 1
+   lw $s0, 0($fp)     # save x in $s0
+   sub $s0, $s0, 1    # substitute 1 from x
+
+   ble $s0, 1, end_suma_patrate
+
+   subu $sp, 4        # clear space for parameter x
+   sw $s0, 0($sp)     # add x as parameter, from $s0
+
+   jal suma_patrate   # recall suma_patrate, result should be in $v0
+
+   addi $sp, 4        # clear $sp
+
+   mul $s0, $s0, $s0  # store the root of x in $s0
+   add $v0, $v0, $s0  # add the square and the result of the recursive, save in $v0
+
+end_suma_patrate:
+   lw $s0, -12($fp)   # restore $s0
+   lw $ra, -8($fp)    # restore $ra
+   lw $fp, -4($fp)    # restore $fp
+   addu $sp, 12       # clear $sp
+
+jr $ra
+
+# modify the array, save results in v and print them
+modifica:
+
+   subu $sp, 4        # $sp:()(v)(n)
+   sw $fp, 0($sp)     # $sp:($fp)(v)(n)
+   addi $fp, $sp, 4   # $sp:($fp)$fp:(v)(n)
+   subu $sp, 4        # $sp:()($fp)$fp:(v)(n)
+   sw $ra, 0($sp)     # $sp:($ra)($fp)$fp:(v)(n)
+   subu $sp, 4        # $sp:()($ra)($fp)$fp:(v)(n)
+   sw $s0, 0($sp)     # $sp:($s0)($ra)($fp)$fp:(v)(n)
+   subu $sp, 4        # $sp:()($s0)($ra)($fp)$fp:(v)(n)
+   sw $s1, 0($sp)     # $sp:($s1)($s0)($ra)($fp)$fp:(v)(n)
+   
+   lw $s0, 0($fp)     # save v in $s0
+   lw $s1, 4($fp)     # save n in $s1
+   
+   beqz $s1, end_modifica
+   
+   lw $t0, 0($s0)     # load in $t0, the first value from v
+
+   subu $sp, 4        # make space for $t0
+   sw $t0, 0($sp)     
+
+   jal suma_patrate   # call sum sqares function
+
+   addi $sp, 4        # restore $sp
+
+   sw $v0, 0($s0)     # store the result in $s0
+
+   addi $s0, 4
+   addi $s1, -1       # n--
+
+   subu $sp, 4        # $sp:()..
+   sw $s1, 0($sp)     # $sp:($s1)..
+   subu $sp, 4        # $sp:()($s1)..
+   sw $s0, 0($sp)     # $sp:($s0)($s1)..
+
+   jal modifica       # recall modifica
+
+   addu $sp, 8        # restore $sp
+
+end_modifica:
+   lw $s1, -16($fp)   # restore $s1
+   lw $s0, -12($fp)   # restore $s0
+   lw $ra, -8($fp)    # restore $ra
+   lw $fp, -4($fp)    # restore $fp
+   addu $sp, 16       # clear $sp
+
+jr $ra
+
+main:
+
+   #################################################
+   #					           #
+   # Created by Darius Buhai @ all rights reserved #
+   #					           #
+   #################################################
+
+   lw $t0, n
+   subu $sp, 4
+   sw $t0, 0($sp)
+   
+   la $t0, v
+   subu $sp, 4
+   sw $t0, 0($sp)
+   
+   jal modifica
+   
+   addu $sp, 8
+   
+   la $t0, v
+   lw $t1, n
+   
+   # print results
+   print:
+      beqz $t1, end_print
+      
+      lw $a0, 0($t0)
+      li $v0, 1
+      syscall
+      
+      la $a0, sp
+      li $v0, 4
+      syscall
+      
+      addi $t0, $t0, 4
+      subu $t1, $t1, 1
+      
+      j print
+   end_print:
+   
+   # end program
+   li $v0, 10
+   syscall
