@@ -1,14 +1,17 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "c1d82251-9518-4f7c-963c-a1b5634b7f05"
+    "analytics": "de4ed3fe-0fd1-400b-b02e-27771c4e15a4"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Laborator2": {
+    "gr1": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -20,17 +23,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Laborator2",
+            "outputPath": "dist/gr1",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -71,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Laborator2:build:production"
+              "browserTarget": "gr1:build:production"
             },
             "development": {
-              "browserTarget": "Laborator2:build:development"
+              "browserTarget": "gr1:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Laborator2:build"
+            "browserTarget": "gr1:build"
           }
         },
         "test": {
@@ -92,12 +96,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -105,5 +110,5 @@
       }
     }
   },
-  "defaultProject": "Laborator2"
+  "defaultProject": "gr1"
 }
