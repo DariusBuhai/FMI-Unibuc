@@ -52,6 +52,9 @@ In this repository you can find all homeworks, projects and resources regarding 
 | I        | Calculabilitate și complexitate *                | 1 | 2 | - | - | E  | 5       |
 | I        | Securitatea sistemelor informatice *             | 2 | - | 2 | - | E  | 5       |
 | I        | Inginerie software *                             | 2 | - | 1 | 1 | E  | 5       |
+| I        | Angular&React                                    | - | - | - | - | -  | -       |
+| I        | Programarea Jocurilor pe Calculator              | - | - | - | - | -  | -       |
+| I        | Reinforced Learning                              | - | - | - | - | -  | -       |
 
 
 ## About
