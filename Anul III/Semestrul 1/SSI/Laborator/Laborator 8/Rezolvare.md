@@ -1,39 +1,6 @@
-## Ex 1
+## Ex 2 (nerezolvat)
 
- - A -> Nicio eroare nu a aparut
- - B ->
- - C ->
- - D ->
- - E ->
- - F ->
-
-## Ex 2
-
-```C
-#include <iostream>
-#include <string.h>
-using namespace std; 
-
-int main()
-{
-	char pass[7] = "fmiSSI";
-	char input[7];
-	int passLen = strlen(pass); 
-
-	cout<<"Introduceti parola: ";
-	cin>>input;
-
-	if (strncmp(input,pass,passLen)==0){
-	   cout<<"Parola introdusa este corecta!\n"; 
-	}
-	else{
-	   cout<<"Ati introdus o parola gresita :(\n";
-	}
-	return 0;
-}
-```
-
-Exemplu parola corecta diferita de ```fmiSSI```: ```fmiSSIhelloworld```
+ - Exemplu parola corecta diferita de ```fmiSSI```: ```fmiSSIhelloworld```
 
 
 ## Ex 3 (de verificat)
@@ -61,13 +28,18 @@ def getFileInfo(file_path):
     return None
 ```
 
-## Ex 4
+## Ex 4 (de verificat)
 
 
-
+Data la care a fost compilat programul:
 ```
-7D AB AF 61
+compiler-stamp: 0x61AFAB7D (Tue Dec 07 20:44:13 2021)
 ```
+
+ - Scrisa in little endian, aceasta devine: ```7DABAF61``` si se poate gasi in HxD (offset 88).
+ - Valoarea hex convertita in decimal este: ```2108403553```
+ - Valoarea decimal reprezinta timestamp-ul la care a fost compilat programul. Acesta timestamp este convertit prin [https://www.epochconverter.com/hex](https://www.epochconverter.com/hex).
+
 
 
 
