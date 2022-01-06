@@ -1,9 +1,9 @@
 # Sisteme de Securitate Informatice
 ### Grading
 
- - ```30p``` -> laborator (```24p momentan```)
- - ```10p``` -> teme (moodle)
- - ```60p``` -> examen
+ - [x] ```30p``` -> laborator
+ - [x] ```10p``` -> teme (moodle)
+ - [ ] ```60p``` -> examen
 
 ### Conditii de promovare:
 
