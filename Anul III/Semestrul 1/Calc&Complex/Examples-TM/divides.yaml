@@ -1,0 +1,26 @@
+input: '111'
+blank: B
+start state: pas0
+table:
+  pas0:
+    1: {write: 'a', R: pas1}
+    B: {L: pas5}
+  pas1:
+    1: {R: pas1}
+    B: {R: pas2}
+  pas2:
+    1: {R: pas2}
+    B: {write: 1, L: pas3}
+  pas3:
+    1: {L: pas3}
+    B: {L: pas4}
+  pas4:
+    1: {L: pas4}
+    [B, 'a']: {R: pas0}
+  pas5:
+    'a': {write: 1, L: pas5}
+    B: {R: fin}
+  # stare finala
+  fin:
+  # stare nefinala
+  nefin:
