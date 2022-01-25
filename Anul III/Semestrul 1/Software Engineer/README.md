@@ -38,11 +38,11 @@
  - Programul trebuie să respecte următoarele cerințe (2.5p):
    - [x] Expune un Rest API HTTP – documentat folosind Open API (Swagger)
    - [x] Expune un API MQTT – documentat folosind AsyncAPI
-   - [ ] Aplicația să aibă minim 5 funcționalități – puteți să vă gândiți la ele ca sell points ale aplicației. Depinde de aplicația pe care v-ați propus să o faceți, dar chestii de genul o funcționalitate e scăderea, o altă funcționalitate e adunarea, nu înseamnă chiar că sunt diferite
+   - [x] Aplicația să aibă minim 5 funcționalități – puteți să vă gândiți la ele ca sell points ale aplicației. Depinde de aplicația pe care v-ați propus să o faceți, dar chestii de genul o funcționalitate e scăderea, o altă funcționalitate e adunarea, nu înseamnă chiar că sunt diferite
    - [x] Tot ce faceți să se găsească într-un singur repo.
  - Pentru puncte programul trebuie să respecte următoarele cerințe:
    - [ ] Toate funcționalitățile și/sau toate endpoints au unit teste asociate. +1.5p
-   - [ ] Documentația de analiză este up to date + 1p
+   - [x] Documentația de analiză este up to date + 1p
    - [ ] Documentația de utilizare reflectă aplicația reală + 1p
    - [x] Să prelucreze date reale (fie că accesează un alt api pentrua prelua date, fie că descărcați un set de date pe care îl dați apoi aplicației) + 1p
    - [x] Utilizarea unui tool de testare automată (gen RESTler) pentru a identifica buguri. +1.5p
