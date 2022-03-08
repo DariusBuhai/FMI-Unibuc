@@ -28,6 +28,7 @@
 import json
 import re
 
+import matplotlib.pyplot as plt
 import pandas as pd
 from num2words import num2words
 import spacy
@@ -48,7 +49,7 @@ def num_to_words(sentence):
     return ' '.join(new_content)
 
 
-def plot_words(all_words, all_steamed_words, n=10):
+def plot_words(all_words, all_steamed_words, n=25):
     all_words_and_steamed = dict()
     for word in all_words:
         if word in all_words_and_steamed:
@@ -61,22 +62,23 @@ def plot_words(all_words, all_steamed_words, n=10):
             continue
         all_words_and_steamed[word] = {'word': 0, 'steamed': 1}
     top_words = list(all_words_and_steamed.keys())
-    top_words.sort(key=lambda x: all_words_and_steamed[x]['word'], reverse=True)
+    top_words.sort(
+        key=lambda x: 0 if x in ['', ' '] else all_words_and_steamed[x]['word'] + all_words_and_steamed[x]['steamed'],
+        reverse=True)
     top_words = top_words[:n]
     xx = [all_words_and_steamed[x]['word'] for x in top_words]
     yy = [all_words_and_steamed[x]['steamed'] for x in top_words]
     df = pd.DataFrame({'tokens': xx, 'steamed': yy}, index=top_words)
-    ax = df.plot.bar(rot=0)
-
+    df.plot.bar(rot=0)
+    plt.figure(figsize=(25, 10))
+    plt.show()
 
 
 def analyse_reviews(reviews):
-    # 1) Curatati si normalizati corpus-ul aplicand urmatoarele operatiii:
-
     # a) afisati caracterele diferite de literele mici ale alfabetului englez
-    # print("Caractere diferite de alfabetul englez: \n")
-    # for review in reviews:
-    #     print(re.sub(r'[a-z\s\n]', '', review['content']))
+    print("Caractere diferite de alfabetul englez: \n")
+    for review in reviews:
+        print(re.sub(r'[a-z\s\n]', '', review['content']))
 
     def get_differences(orig, list1, list2):
         i = 0
@@ -113,16 +115,17 @@ def analyse_reviews(reviews):
 
         return words, steamed_words, lemma_words, lemma_steamed_differences
 
+    # Comparand cu rezultatele de la punctul g, afisati top 15 cuvinte pentru care stemul este diferit de lema,
+    # sortate descrescator dupa numarul de caractere prin care stemul difera de lema.
     all_lemma_steamed_differences = []
     all_words, all_steamed_words = [], []
+    reviews_tokens = []
     for review in reviews:
         r_words, r_steamed_words, r_lemma_words, r_lemma_steamed_differences = analyse_sentence(review['content'])
         all_lemma_steamed_differences.extend(r_lemma_steamed_differences)
         all_words.extend(r_words)
         all_steamed_words.extend(r_steamed_words)
-
-    # Comparand cu rezultatele de la punctul g, afisati top 15 cuvinte pentru care stemul este diferit de lema,
-    # sortate descrescator dupa numarul de caractere prin care stemul difera de lema.
+        reviews_tokens.append(r_words)
     all_lemma_steamed_differences.sort(key=lambda x: x[1], reverse=True)
     print("Top 15 cuvinte cu stemul diferit de lema: \n", [x[0] for x in all_lemma_steamed_differences[:15]])
 
@@ -132,14 +135,7 @@ def analyse_reviews(reviews):
     trigram_results = colloc_founder.nbest(trigram_measures.pmi, 20)
     print("Top 20 trigrame: \n", trigram_results)
 
-    # 2) Calculati frecventele de aparitie ale fiecarui token la punctul e) si punctul g).
-    #    Plotati-le cum doriti, prin wordcloud sau plotbar. Ce diferente observati?
-    #    (intrucat numarul de cuvinte distincte poate fi mare, puteti plota informatii
-    #    doar despre cele mai frecvente N cuvinte)
-    plot_words(all_words, all_steamed_words)
-
-    # 3) Plotati distributia numarului de tokens per review (nr. de reviews vs. nr. de tokens),
-    #    atat pentru review-urile negative, cat si, separat, pentru cele pozitive. Ce observati?
+    return all_words, all_steamed_words, reviews_tokens
 
 
 def main():
@@ -147,8 +143,28 @@ def main():
         negative_reviews = json.loads(nrf.read())
     with open("data/positive_reviews.json", "r") as prf:
         positive_reviews = json.loads(prf.read())
-    analyse_reviews(positive_reviews['reviews'])
-    # analyse_reviews(negative_reviews['reviews'])
+    # 1) Curatati si normalizati corpus-ul aplicand urmatoarele operatiii:
+    all_positive_words, all_steamed_positive_words, positive_reviews_tokens = analyse_reviews(
+        positive_reviews['reviews'])
+
+    # 2) Calculati frecventele de aparitie ale fiecarui token la punctul e) si punctul g).
+    #    Plotati-le cum doriti, prin wordcloud sau plotbar. Ce diferente observati?
+    #    (intrucat numarul de cuvinte distincte poate fi mare, puteti plota informatii
+    #    doar despre cele mai frecvente N cuvinte)
+    plot_words(all_positive_words, all_steamed_positive_words)
+
+    # 3) Plotati distributia numarului de tokens per review (nr. de reviews vs. nr. de tokens),
+    #    atat pentru review-urile negative, cat si, separat, pentru cele pozitive. Ce observati?
+    _, __, negative_reviews_tokens = analyse_reviews(negative_reviews['reviews'])
+
+    plt.plot(range(len(positive_reviews_tokens)), [len(x) for x in positive_reviews_tokens], color='green')
+    plt.title('Distributia numarului de tokens per review pozitiv')
+    plt.show()
+    plt.plot(range(len(negative_reviews_tokens)), [len(x) for x in negative_reviews_tokens], color='red')
+    plt.title('Distributia numarului de tokens per review negativ')
+    plt.show()
+
+    # OBS: Review-urile negative au mai putine cuvinte in general
 
 
 if __name__ == "__main__":
