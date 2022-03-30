@@ -55,7 +55,10 @@ In this repository you can find all homeworks, projects and resources regarding 
 | I        | Angular&React                                    | - | - | - | - | -  | -       |
 | I        | Programarea Jocurilor pe Calculator              | - | - | - | - | -  | -       |
 | I        | Reinforced Learning                              | - | - | - | - | -  | -       |
-
+| II       | Natural Language Processing                      | - | - | - | - | -  | -       |
+| II       | iOS                                              | - | - | - | - | -  | -       |
+| II       | Blockchain                                       | - | - | - | - | -  | -       |
+| II       | Programarea Aplicatiilor de Simulare             | - | - | - | - | -  | -       |
 
 ## About
 
