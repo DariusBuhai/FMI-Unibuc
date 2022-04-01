@@ -3,7 +3,7 @@
 
 In this repository you can find all homeworks, projects and resources regarding my studies at the **University of Bucharest** (**Bachelor in Computer Science**), years: 2019-2022.
 
- - Repository progress: **[########__] 84%**.
+ - Repository progress: **[########__] 90%**.
  - All resources from this repository are public, but not intended for plagiarism (if you find any homework or project here, I do not encourage you to copy it).
  - P.S: This repository remains public from now on 😀.
 
@@ -55,7 +55,10 @@ In this repository you can find all homeworks, projects and resources regarding 
 | I        | Angular&React                                    | - | - | - | - | -  | -       |
 | I        | Programarea Jocurilor pe Calculator              | - | - | - | - | -  | -       |
 | I        | Reinforced Learning                              | - | - | - | - | -  | -       |
-
+| II       | Natural Language Processing                      | - | - | - | - | -  | -       |
+| II       | iOS                                              | - | - | - | - | -  | -       |
+| II       | Blockchain                                       | - | - | - | - | -  | -       |
+| II       | Programarea Aplicatiilor de Simulare             | - | - | - | - | -  | -       |
 
 ## About
 
