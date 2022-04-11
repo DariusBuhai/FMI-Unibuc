@@ -8,3 +8,7 @@
 | I        | Angular&React                                    | - | - | - | - | -  | -       |
 | I        | Programarea Jocurilor pe Calculator              | - | - | - | - | -  | -       |
 | I        | Reinforced Learning                              | - | - | - | - | -  | -       |
+| II       | Natural Language Processing                      | - | - | - | - | -  | -       |
+| II       | iOS                                              | - | - | - | - | -  | -       |
+| II       | Blockchain                                       | - | - | - | - | -  | -       |
+| II       | Programarea Aplicatiilor de Simulare             | - | - | - | - | -  | -       |
