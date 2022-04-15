@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<section class="signup-section pt-5" id="signup" style="min-height: 90vh">
+    <div class="container px-4 px-lg-5">
+        <div class="bg-white w-100 h-100 p-5" style="border-radius: 10px">
+            <h2 class="text-black fw-bold">Profil</h2>
+            <br>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Profil</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Parola</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <form (ngSubmit)="saveProfile()" class="mt-5">
+                        <div class="mb-3">
+                            <label class="form-label">Adresa email</label>
+                            <input disabled [(ngModel)]="user.email" name="email" type="email" class="form-control" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Nume</label>
+                            <input [(ngModel)]="user.displayName" name="name" type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Telefon</label>
+                            <input [(ngModel)]="user.phoneNumber" name="phone" type="tel" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Salvare <i class="fa fa-save"></i></button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <form (ngSubmit)="updatePassword()" class="mt-5">
+                        <div class="mb-3">
+                            <label class="form-label">Parola veche</label>
+                            <input [(ngModel)]="password" name="password" type="password" class="form-control" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Parola noua</label>
+                            <input [(ngModel)]="newPassword" name="new_password" type="password" class="form-control" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Repeta parola noua</label>
+                            <input [(ngModel)]="newPasswordRepeat" name="new_password_again" type="password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Salvare parola <i class="fa fa-save"></i></button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

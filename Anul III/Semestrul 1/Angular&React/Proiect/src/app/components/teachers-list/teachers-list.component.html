@@ -1,0 +1,17 @@
+<div class="list-group mt-3">
+    <div *ngFor="let teacher of teachers; let i = index">
+        <a *ngIf="groupFilter==null || teacher.group==groupFilter" href="teacher/{{teacher.teacherId}}" class="list-group-item list-group-item-action">
+            {{i + 1}}. {{teacher.firstName}} {{teacher.lastName}}
+            <div class="float-end text-end">
+                <div *ngIf="teacher.reviews>0">
+                    <span class="fa fa-star text-warning" *ngFor="let item of [].constructor(teacher.stars)"></span>
+                    <span class="fa fa-star text-muted" *ngFor="let item of [].constructor(5 - teacher.stars)"></span>&nbsp;
+                    <span class="text-muted" *ngIf="teacher.reviews>1">({{teacher.reviews}} Review-uri)</span>
+                    <span class="text-muted" *ngIf="teacher.reviews==1">(1 Review)</span>
+                </div>
+
+                <b class="text-muted" *ngIf="teacher.reviews==0">Niciun review primit</b>
+            </div>
+        </a>
+    </div>
+</div>

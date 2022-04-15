@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<section class="signup-section pt-5" id="signup" style="min-height: 90vh">
+    <div class="container px-4 px-lg-5">
+        <div class="bg-white w-100 h-100 p-5" style="border-radius: 10px">
+
+            <div *ngIf="loadedPage">
+                <h2 class="text-black fw-bold">Profesori:</h2>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button (click)="applyTeachersSeriesFilter(null)" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Toti</button>
+                    </li>
+                    <li class="nav-item" role="presentation" *ngFor="let group of allGroups">
+                        <button (click)="applyTeachersSeriesFilter(group)" class="nav-link" id="pills-{{group}}-tab" data-bs-toggle="pill" type="button" role="tab">{{group}}</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active">
+
+                    </div>
+                </div>
+                <app-teachers-list [teachers]="teachers" [groupFilter]="groupFilter"></app-teachers-list>
+            </div>
+            <div *ngIf="!loadedPage" class="text-center">
+                <span class="fa-2x mt-2 fa fa-spinner fa-spin"></span>
+            </div>
+        </div>
+    </div>
+</section>
+

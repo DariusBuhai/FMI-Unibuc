@@ -1,0 +1,26 @@
+<section class="signup-section pt-5" id="signup" style="min-height: 90vh">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+                <i class="far fa-user fa-2x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">Autentificare Teachers Reviews</h2>
+                <h4 class="text-white mb-5">Welcome {{user.email}}</h4>
+                <div class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Email ..." [(ngModel)]="user.email" [ngClass]="error?'is-invalid':''" (submit)="isNotValid() ? null : doLogin()"/>
+                    </div>
+                    <div class="form-group mt-4">
+                        <input class="form-control" placeholder="Password ..." type="password" [(ngModel)]="user.password" (submit)="isNotValid() ? null : doLogin()"/>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+                    <button (click)="doLogin()" class="btn btn-primary w-100 mt-4">Autentificare</button>
+                    <a class="btn btn-secondary btn-sm w-100 mt-2" [routerLink]="['/register']">Creare cont</a>
+                    <br>
+                    <br>
+                    <a class="mt-5" [routerLink]="['/forgot-password']">Ai uitat parola</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

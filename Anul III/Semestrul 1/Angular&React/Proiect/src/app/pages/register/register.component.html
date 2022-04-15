@@ -1,0 +1,42 @@
+<section class="signup-section pt-5" id="signup" style="min-height: 90vh">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+                <i class="far fa-user fa-2x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">Creare cont Teachers Reviews</h2>
+                <div class="form-signup">
+                    <form [formGroup]="myForm" (ngSubmit)="doRegister()" class="form-group">
+                        <input class="form-control"
+                               placeholder="Email"
+                               formControlName="email"
+                               [ngClass]="myForm.controls.email.errors?'is-invalid':''"
+                        />
+                        <div class="form-group mt-4">
+                            <input class="form-control"
+                                   placeholder="Parola"
+                                   formControlName="password"
+                                   type="password"
+                                   [ngClass]="myForm.controls.password.errors?'is-invalid':''"/>
+                        </div>
+                        <div class="form-group mt-4">
+                            <input class="form-control"
+                                   placeholder="Repeta parola"
+                                   formControlName="passwordAgain"
+                                   type="password"
+                                   [ngClass]="myForm.controls.passwordAgain.errors?'is-invalid':''"/>
+                        </div>
+                        <button
+                                [disabled]="!myForm.valid"
+                                class="btn btn-primary w-100 mt-4" type="submit">Creare cont
+                        </button>
+                        <a class="btn btn-secondary btn-sm w-100 mt-2" (click)="goToLogin()">Spre autentificare</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
