@@ -1,0 +1,66 @@
+asyncapi: '2.2.0'
+info:
+    title: Account Service
+    version: 1.0.0
+    description: This service is in charge of processing user signups
+channels:
+  global/{ID}:
+    parameters:
+      ID:
+        $ref: '#/components/parameters/ID'
+    subscribe:
+      message:
+        $ref: '#/components/messages/SubscribeMessage'
+    publish:
+      message:
+        $ref: '#/components/messages/PublishMessage'
+  perdevice/{DEVICE_NAME}:
+    parameters:
+      DEVICE_NAME:
+        $ref: '#/components/parameters/DEVICE_NAME'
+    subscribe:
+      message:
+        $ref: '#/components/messages/SubscribeMessage'
+    publish:
+      message:
+        $ref: '#/components/messages/PublishMessage'
+components:
+  parameters:
+    ID:
+      description: The ID of the user.
+      schema:
+        type: string
+    DEVICE_NAME:
+      description: The name of the device.
+      schema:
+        type: string
+  messages:
+    SubscribeMessage:
+      payload:
+        type: object
+        properties:
+          ShutDownSignal:
+            payload:
+              type: string
+          StartUpSignal:
+            payload:
+              type: string
+          SetEnergyLevelSignal:
+            payload:
+              type: string
+    PublishMessage:
+      payload:
+        type: object
+        properties:
+          Global_shutdown:
+            payload:
+              type: string
+          Schedule_tracker:
+            payload:
+              type: string
+          Power_schedule_tracker:
+            payload:
+              type: string
+          Alarm:
+            payload:
+              type: string

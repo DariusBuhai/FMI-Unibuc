@@ -1,0 +1,1355 @@
+{
+  "Requests": [
+    {
+      "id": {
+        "endpoint": "/devices",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "devices"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "id",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Number",
+                        "defaultValue": "1.23"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device",
+        "method": "Put"
+      },
+      "method": "Put",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "device",
+                "payload": {
+                  "InternalNode": [
+                    {
+                      "name": "",
+                      "propertyType": "Object",
+                      "isRequired": false,
+                      "isReadOnly": false
+                    },
+                    [
+                      {
+                        "LeafNode": {
+                          "name": "alias",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "FurnaceHRV [kW] mock device"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "description",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "FurnaceHRV [kW] mock device"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "id",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "Number",
+                              "defaultValue": "1.23",
+                              "exampleValue": "1"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "settings",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "Object",
+                              "defaultValue": "{ \"fuzz\": false }",
+                              "exampleValue": "{}"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "status",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "Bool",
+                              "defaultValue": "true",
+                              "exampleValue": "true"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "uuid",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "eb45cc37-daff-4df9-a312-2e829e89b3f3"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      }
+                    ]
+                  ]
+                },
+                "serialization": {
+                  "style": "Simple",
+                  "explode": false
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device",
+        "method": "Post"
+      },
+      "method": "Post",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "device",
+                "payload": {
+                  "InternalNode": [
+                    {
+                      "name": "",
+                      "propertyType": "Object",
+                      "isRequired": false,
+                      "isReadOnly": false
+                    },
+                    [
+                      {
+                        "LeafNode": {
+                          "name": "alias",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "FurnaceHRV [kW] mock device"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "description",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "FurnaceHRV [kW] mock device"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "id",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "Number",
+                              "defaultValue": "1.23",
+                              "exampleValue": "1"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "settings",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "Object",
+                              "defaultValue": "{ \"fuzz\": false }",
+                              "exampleValue": "{}"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "status",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "Bool",
+                              "defaultValue": "true",
+                              "exampleValue": "true"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      },
+                      {
+                        "LeafNode": {
+                          "name": "uuid",
+                          "payload": {
+                            "Fuzzable": {
+                              "primitiveType": "String",
+                              "defaultValue": "fuzzstring",
+                              "exampleValue": "eb45cc37-daff-4df9-a312-2e829e89b3f3"
+                            }
+                          },
+                          "isRequired": false,
+                          "isReadOnly": false
+                        }
+                      }
+                    ]
+                  ]
+                },
+                "serialization": {
+                  "style": "Simple",
+                  "explode": false
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device",
+        "method": "Delete"
+      },
+      "method": "Delete",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "id",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Number",
+                        "defaultValue": "1.23"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device/data",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "data"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "id",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Number",
+                        "defaultValue": "1.23"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              },
+              {
+                "name": "page",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Number",
+                        "defaultValue": "1.23"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              },
+              {
+                "name": "per_page",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Number",
+                        "defaultValue": "1.23"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device/data",
+        "method": "Post"
+      },
+      "method": "Post",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "data"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "id",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Number",
+                        "defaultValue": "1.23"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Simple",
+                  "explode": false
+                }
+              },
+              {
+                "name": "time",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Simple",
+                  "explode": false
+                }
+              },
+              {
+                "name": "value",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Number",
+                        "defaultValue": "1.23"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Simple",
+                  "explode": false
+                }
+              }
+            ]
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device/predict_consumption",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "predict_consumption"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "start_time",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              },
+              {
+                "name": "end_time",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              },
+              {
+                "name": "device_id",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Int",
+                        "defaultValue": "1"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device/predict_left_running",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "predict_left_running"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "device_id",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Int",
+                        "defaultValue": "1"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/device/anomaly_check",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "device"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "anomaly_check"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "timestamp",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "String",
+                        "defaultValue": "fuzzstring"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              },
+              {
+                "name": "device_id",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Int",
+                        "defaultValue": "1"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/user/statistics",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "user"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "statistics"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "month",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Int",
+                        "defaultValue": "1"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              },
+              {
+                "name": "year",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Int",
+                        "defaultValue": "1"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    },
+    {
+      "id": {
+        "endpoint": "/user/unoptimized_devices",
+        "method": "Get"
+      },
+      "method": "Get",
+      "basePath": "/Smart628/SmartEnergy/1.0.0",
+      "path": [
+        {
+          "Constant": [
+            "String",
+            "user"
+          ]
+        },
+        {
+          "Constant": [
+            "String",
+            "unoptimized_devices"
+          ]
+        }
+      ],
+      "queryParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": [
+              {
+                "name": "month",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Int",
+                        "defaultValue": "1"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              },
+              {
+                "name": "year",
+                "payload": {
+                  "LeafNode": {
+                    "name": "",
+                    "payload": {
+                      "Fuzzable": {
+                        "primitiveType": "Int",
+                        "defaultValue": "1"
+                      }
+                    },
+                    "isRequired": false,
+                    "isReadOnly": false
+                  }
+                },
+                "serialization": {
+                  "style": "Form",
+                  "explode": true
+                }
+              }
+            ]
+          }
+        ]
+      ],
+      "bodyParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "headerParameters": [
+        [
+          "Schema",
+          {
+            "ParameterList": []
+          }
+        ],
+        [
+          "DictionaryCustomPayload",
+          {
+            "ParameterList": []
+          }
+        ]
+      ],
+      "token": "Refreshable",
+      "headers": [
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "Host",
+          "virtserver.swaggerhub.com"
+        ]
+      ],
+      "httpVersion": "1.1",
+      "requestMetadata": {
+        "isLongRunningOperation": false
+      }
+    }
+  ]
+}

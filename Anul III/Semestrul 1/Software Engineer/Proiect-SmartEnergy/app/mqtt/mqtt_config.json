@@ -1,0 +1,1 @@
+{"broker_addr": "localhost", "broker_port": 1883, "mqtt_username": "", "mqtt_pass": "", "mqtt_keepalive": 5, "tls_enabled": false, "global_channel_prefix": "/global"}

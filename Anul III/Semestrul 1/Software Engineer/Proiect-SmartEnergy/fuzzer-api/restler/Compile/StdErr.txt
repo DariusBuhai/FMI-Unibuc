@@ -1,0 +1,26 @@
+Unhandled exception. System.NotImplementedException: Objects in header parameters are not supported yet.
+   at Restler.CodeGenerator.Python.formatNestedHeaderParameter@282(RequestParameter requestParameter, String parameterName, NestedType propertyType, FSharpOption`1 namePayloadSeq, IEnumerable`1 innerProperties) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 291
+   at Restler.CodeGenerator.Python.generatePythonParameter@408-1.Invoke(Int32 level, InnerProperty p, IEnumerable`1 innerProperties) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 408
+   at Restler.Grammar.Tree.processTree@34-1.Invoke(IEnumerable`1 ts) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\Grammar.fs:line 35
+   at System.Runtime.CompilerServices.RuntimeHelpers.DispatchTailCalls(IntPtr callersRetAddrSlot, IntPtr callTarget, IntPtr retVal)
+   at Restler.CodeGenerator.Python.generatePythonParameter(Boolean includeOptionalParameters, ParameterKind parameterKind, RequestParameter requestParameter) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 136
+   at Restler.CodeGenerator.Python.generatePythonFromRequestElement@474-2.Invoke(RequestParameter p) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 475
+   at Microsoft.FSharp.Primitives.Basics.List.map[T,TResult](FSharpFunc`2 mapping, FSharpList`1 x) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\local.fs:line 248
+   at Restler.CodeGenerator.Python.generatePythonFromRequestElement(Boolean includeOptionalParameters, RequestId requestId, RequestElement e) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 473
+   at Restler.CodeGenerator.Python.generatePythonFromRequest@754.Invoke(RequestElement requestElement) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 755
+   at Microsoft.FSharp.Primitives.Basics.List.mapToFreshConsTail[a,b](FSharpList`1 cons, FSharpFunc`2 f, FSharpList`1 x) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\local.fs:line 241
+   at Microsoft.FSharp.Primitives.Basics.List.map[T,TResult](FSharpFunc`2 mapping, FSharpList`1 x) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\local.fs:line 251
+   at Restler.CodeGenerator.Python.generatePythonFromRequest(Request request, Boolean includeOptionalParameters, Boolean mergeStaticStrings) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 753
+   at Restler.CodeGenerator.Python.generatePythonRequest@1207(Boolean includeOptionalParameters, FSharpFunc`2 formatRestlerPrimitive, Request request) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 1208
+   at Restler.CodeGenerator.Python.getRequests@1235.Invoke(Request r) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 1235
+   at Microsoft.FSharp.Primitives.Basics.List.mapToFreshConsTail[a,b](FSharpList`1 cons, FSharpFunc`2 f, FSharpList`1 x) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\local.fs:line 241
+   at Microsoft.FSharp.Primitives.Basics.List.map[T,TResult](FSharpFunc`2 mapping, FSharpList`1 x) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\local.fs:line 251
+   at Microsoft.FSharp.Collections.ListModule.Map[T,TResult](FSharpFunc`2 mapping, FSharpList`1 list) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\list.fs:line 75
+   at Restler.CodeGenerator.Python.generatePythonGrammar@1249.GenerateNext(IEnumerable`1& next) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 1256
+   at Microsoft.FSharp.Core.CompilerServices.GeneratedSequenceBase`1.MoveNextImpl() in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\seqcore.fs:line 371
+   at Microsoft.FSharp.Core.CompilerServices.GeneratedSequenceBase`1.System-Collections-IEnumerator-MoveNext() in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\seqcore.fs:line 403
+   at Microsoft.FSharp.Collections.SeqModule.ToList[T](IEnumerable`1 source) in F:\workspace\_work\1\s\src\fsharp\FSharp.Core\seq.fs:line 546
+   at Restler.CodeGenerator.Python.generateCode(GrammarDefinition grammar, Boolean includeOptionalParameters, FSharpFunc`2 write) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\CodeGenerator.fs:line 1281
+   at Restler.Workflow.generatePython(String grammarOutputDirectoryPath, Config config, GrammarDefinition grammar) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\Workflow.fs:line 27
+   at Restler.Workflow.generateRestlerGrammar(FSharpOption`1 swaggerDoc, Config config) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.Compiler\Workflow.fs:line 276
+   at Program.main(String[] argv) in Q:\Anul 3\Inginerie Software\SmartEnergy\restler-fuzzer\src\compiler\Restler.CompilerExe\Program.fs:line 37
