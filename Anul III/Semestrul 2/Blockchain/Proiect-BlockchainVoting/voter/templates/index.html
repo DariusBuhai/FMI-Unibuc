@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Darius Buhai, Savu Ioan Daniel">
+    <meta charset="utf-8">
+
+    <title>Voter</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="bg-light container p-3" style="margin-top: 50px">
+    <form id="transactionForm">
+        <div class="row">
+            <label class="col-sm-2">Address (Public Key):</label>
+            <div class="col-sm-10">
+                <input type="text" value="{{ public_key }}" name="public_key" id="publicKey" rows="2"
+                       class="form-control">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label class="col-sm-2">Private Key:</label>
+            <div class="col-sm-10">
+                <input type="text" value="{{ private_key }}" name="private_key" id="privateKey" rows="2"
+                       class="form-control">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <label class="col-sm-2">Your Vote:</label>
+            <div class="col-sm-6">
+                <select name="receiver" id="recipient_address" class="form-control" form="transactionForm">
+                    {% for option in voting_options %}
+                        <option value="VOTE_OPTION_{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-4 text-center">
+                <input type="button" id="performTransaction" class="btn btn-primary btn-lg " value="VOTE">
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<br><br>
+<div class="bg-light container p-3">
+    <div class="row">
+        <label class="col-sm-2">Available votes (funds):</label>
+        <div class="col-sm-6">
+            <input id="availableFunds" type="number" readonly value="0" class="form-control">
+        </div>
+    </div>
+</div>
+
+
+<!-- Alert Message for successful transaction -->
+<div class="modal modal-alert fade" id="transactionModalSuccess" tabindex="-1" role="dialog"
+     aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Success!</h4>
+                    <p>Your vote has been received!</p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/static/jquery/jquery.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/voter.js"></script>
+<script>
+    $(function () {
+        setInterval(async function () {
+            let publicKey = document.getElementById("publicKey").value;
+            $.ajax({
+                url: "/get/available_funds/" + publicKey,
+                type: 'GET',
+                success: function (resp) {
+                    document.getElementById("availableFunds").value = resp['available'];
+                },
+                error: function (error) {
+                }
+            });
+        }, 4000);
+
+        $("#performTransaction").click(function () {
+            $.ajax({
+                url: "/post/generate/transaction",
+                dataType: 'json',
+                type: "POST",
+                data: $('#transactionForm').serialize(),
+                success: function (_) {
+                    $("#transactionModalSuccess").modal('show');
+                },
+                error: function (resp) {
+                    try {
+                        let message = resp.responseJSON['message'];
+                        alert(message);
+                    } catch (_) {
+                        alert("Error creating transaction")
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Darius Buhai, Savu Ioan Daniel">
+    <meta charset="utf-8">
+
+    <title>Admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container bg-light p-3" style="margin-top: 50px">
+    <form id="adminForm">
+        <div class="row">
+            <label class="col-sm-2">Receiver Address (Public Key):</label>
+            <div class="col-sm-10">
+                <input type="text" name="receiver" id="publicKey" rows="2"
+                       class="form-control">
+            </div>
+        </div>
+        <br>
+        <input type="button" id="performTransaction" class="btn btn-primary btn-lg " value="SEND RIGHT TO VOTE">
+    </form>
+</div>
+
+
+<!-- Alert Message for successful transaction -->
+<div class="modal modal-alert fade" id="transactionModalSuccess" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Success!</h4>
+                    <p>The sender has received the right to vote</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/static/jquery/jquery.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(function () {
+    $("#performTransaction").click(function () {
+        $.ajax({
+            url: "/post/give/right",
+            dataType: 'json',
+            data: $('#adminForm').serialize(),
+            type: "POST",
+            error: function (resp){
+                try{
+                    let message = resp.responseJSON['message'];
+                    alert(message);
+                }catch (_){
+                    alert("Error creating transaction")
+                }
+            },
+            success: function (_) {
+                $("#transactionModalSuccess").modal('show');
+            },
+        });
+    });
+});
+</script>
+
+</body>
+
+</html>

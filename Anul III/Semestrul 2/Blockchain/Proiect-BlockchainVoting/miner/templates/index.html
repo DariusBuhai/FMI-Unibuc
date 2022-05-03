@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="author" content="Darius Buhai, Savu Ioan Daniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+
+    <title>Miner #x</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/DataTables/css/datatables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<div class="container p-3 bg-light" style="margin-top: 50px">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-body">
+                <h4 class="card-title">Status:
+                    &nbsp;<b id="statusMining" hidden>Mining &nbsp;&nbsp;<i class="fa fa-refresh fa-spin"></i></b>
+                    <b id="statusChecking">Pending &nbsp;&nbsp;<i class="fa fa-refresh fa-spin"></i></b>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-body">
+                <h4 class="card-title">Votes Summary</h4>
+                <div class="container">
+                    <table id="votesDatatable" class="table table-striped table-bordered"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-body">
+                <h4 class="card-title">Blockchain &nbsp;&nbsp;&nbsp;
+                    <button type="submit" id="refreshChain" class="btn btn-sq-xs btn-primary"><i
+                            class="fa fa-refresh"></i></button>
+                </h4>
+                <div class="container">
+                    <table id="transactionsDatatable" class="table table-striped table-bordered"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/static/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/DataTables/js/datatables.min.js"></script>
+<script type="text/javascript" src="/static/DataTables/js/ellipsis.js"></script>
+<script>
+    $(function () {
+        loadTransactions();
+
+        /// Periodic update
+        checkAndMine(3);
+        $("#refreshChain").click(function () {
+            $.ajax({
+                url: "/resolve/miners/conflicts",
+                type: "GET",
+                success: function (resp) {
+                    window.location.reload();
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+            });
+        });
+
+
+    });
+
+    async function checkAndMine(period) {
+        document.getElementById("statusMining").hidden = false;
+        document.getElementById("statusChecking").hidden = true;
+        $.ajax({
+            url: "/update_miner",
+            type: 'GET',
+            async: true,
+            success: function (resp) {
+                window.location.reload();
+                /// then
+                document.getElementById("statusMining").hidden = true;
+                document.getElementById("statusChecking").hidden = false;
+                setTimeout(function () {
+                    checkAndMine(period);
+                }, period * 1000);
+            },
+            error: function (error) {
+                /// then
+                document.getElementById("statusMining").hidden = true;
+                document.getElementById("statusChecking").hidden = false;
+                setTimeout(function () {
+                    checkAndMine(period);
+                }, period * 1000);
+            }
+        });
+    }
+
+    function loadTransactions() {
+        $.ajax({
+            url: "/get/blockchain",
+            type: 'GET',
+            success: function (resp) {
+                let transactions = [];
+                let votesObject = {};
+                let counter = 1;
+                for (let i = 0; i < resp.length; i++) {
+                    for (let j = 0; j < resp["chain"][i]["transactions"].length; j++) {
+                        let options = {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit"
+                        };
+                        let date = new Date(resp["chain"][i]["timestamp"] * 1000);
+                        let dateTimeFormatted = date.toLocaleTimeString("en-us", options);
+                        let transaction = [counter,
+                            resp["chain"][i]["id"],
+                            resp["chain"][i]["transactions"][j]["sender"],
+                            resp["chain"][i]["transactions"][j]["receiver"],
+                            resp["chain"][i]["transactions"][j]["value"],
+                            dateTimeFormatted,
+                        ];
+                        if (resp["chain"][i]["transactions"][j]["receiver"].includes("VOTE_OPTION")) {
+                            let option = resp["chain"][i]["transactions"][j]["receiver"].replace("VOTE_OPTION_", "");
+                            if (votesObject.hasOwnProperty(option)) {
+                                votesObject[option]++;
+                            } else {
+                                votesObject[option] = 1;
+                            }
+                        }
+                        transactions.push(transaction);
+                        counter += 1;
+                    }
+                }
+                $('#transactionsDatatable').dataTable({
+                    columns: [{title: "#"},
+                        {title: "Block"},
+                        {title: "Sender Address"},
+                        {title: "Receiver Address"},
+                        {title: "Value"},
+                        {title: "Timestamp"},],
+                    data: transactions,
+                    columnDefs: [{targets: [1, 2, 3], render: $.fn.dataTable.render.ellipsis(25)}]
+                });
+
+                let votesData = [];
+                for (const [key, value] of Object.entries(votesObject)) {
+                    votesData.push([key, value]);
+                }
+
+                $('#votesDatatable').dataTable({
+                    columns: [
+                        {title: "Vote"},
+                        {title: "Votes"}],
+                    data: votesData,
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+</script>
+</body>
+</html>

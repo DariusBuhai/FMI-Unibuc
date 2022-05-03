@@ -1,0 +1,59 @@
+
+
+::::::::::::::::::::
+:::     PBFT     :::
+--- Buhai Darius ---
+::::::::::::::::::::
+
+1.
+ - Crypto monedele si alte aplicatii ale blockchain-ului (descentralizate) au la baza Consensus Protocols, protocoale ce le diferentiaza de sistemele clasice (centralizate), precum bancile.
+ - Principala problema legata de tranzactiile decentralizate o reprezinta securitatea acestora, mai exact de modul in care un atacator poate fi prevenit din a insera blocuri de tranzactii invalide in retea.
+ - Pentru a putea valida tranzactiile realizate intr-un blockchain (adaugarea blocurilor noi), avem nevoie de protocoale specifice capabile sa verifice tranzactiile efectuate in retea si sa aduca toate nodurile (din retea) la un consens.
+ - Retelele de tip blockchain au implementate diferite metode de Consensus Protocols, dintre care Proof of Work si Proof of Stake fiind cele mai utilizate.
+ - Principala problema intampinata la Proof of Work o reprezinta puterea de procesare necesara generarii numerelor de validare (~10 min per bloc).
+
+2.
+ - Astfel, pentru a se evita folosirea resurselor in mod excesiv (pentru generarea numerelor de validare - Proof of Work), putem folosi Proof of Stake, ce se bazeaza pe alegerea unui validator care aproba sau nu blocul ce urmeaza a fi introdus in blockchain. Spre deosebire de Proof of Work, Proof of Stake nu necesita gasirea unui numar de validare, iar puterea de procesare necesara este infima.
+ - Cea mai populara Crypto Moneda ce foloseste Proof of Stake este Ethereum.
+
+3.   
+ - Practical Byzantine Fault Tolerance a fost introdus la sfarsitul anilor 90 de catre Barbara Liskov si Miguel Castro. Acest protocol este creat pentru a lucra eficient in sisteme asincrone.
+ - Acest protocol ajuta retelele distribuite sa ajunga la un consens chiar si atunci cand anumite noduri din retea nu raspund in timp util sau raspund cu informatii incorecte.
+ - Obiectivul principal al pBFT este de a proteja reteaua impotriva erorilor de sistem implementand o decizie colectiva asupra datelor din blockchain.
+
+4.
+ - Eficienta Consumului de energie, spre deosebire de Proof of Work, pBFT poate ajunge la consens distribuit fara a rula computatii matematice complexe. Vezi Zilliqa.
+ - Finalitatea Tranzactiilor: Tranzactiile nu necesita confirmari multiple dupa finalizarea si agrearea blocurilor in retea.
+ - Reward-uri mici: Fiecare nod din retea este responsabil de validarea Blocurilor, recompensa primita de nodurile ajutatoare este mai mica fata de PoW, unde doar minerii primesc recompense - acestea fiind mai mari.
+
+5.
+ - Sistemele pBFT pot functiona doar in cazul in care numarul maxim de noduri malitioase nu este mai mare sau egal decat 1/3 din toate nodurile din sistem.
+ - Cu cat numarul de noduri din sistem creste, cu atat securitatea acestuia devine mai buna.
+ - Nodurile din pBFT sunt impartite in noduri primare si noduri de back-up. Nodurile primare sunt selectate la fiecare runda.
+
+6.
+ - pBFT este impartit in 4 faze de functionare:
+ - 1. Clientul trimite un request catre nodul primar (selectat aleator).
+ - 2. Nodul primar trimite request-ul catre toate nodurile de back-up.
+ - 3. Nodurile primare si de back-up ruleaza serviciul cerut si trimit un raspuns catre client.
+ - 4. Request-ul clientului este validat atunci cand acesta primeste m+1 raspunsuri de la noduri diferite din retea (cu acelasi rezultat), unde m = numarul maxim de noduri gresite permise.
+
+7.
+ - Nodul primar este schimbat la fiecare alegere (runda de consens pBFT) si poate fi substituit printr-un protocol de tip: view change protocol, daca un nod predefinit nu actioneaza in timp util.
+ - Daca este necesar, o majoritate de noduri 'oneste' pot vota inlocuirea nodului primar cu urmatorul nod.
+
+8.
+ - Scalabilitate: atunci cand reteaua de noduri devine prea mare, acest protocol poate deveni ineficient, deoarece fiecare nod va trebui sa comunice cu celelalte noduri din retea pentru a mentine reteaua securizata.
+ - Atacuri de tip Sybil: Retelele de tip pBFT sunt susceptibile atacurilor Sybil, unde un singur nod creeaza sau manipuleaza majoritatea nodurilor din retea (sau cel putin > 1/3) si compromite securitatea sistemului. Aceast atac devine din ce in ce mai complicat pe masura ce reteaua de noduri creste. Spre deosebire, protocoalele de tip PoW folosesc puterea de procesare drept securitate in retea.
+
+9.
+ - RBFT - Reduntant BFT
+ - ABsTRACTs 
+ - Q/U
+ - HQ - Hybrid Quorum Protocol for BFT
+ - Adapt
+
+10.
+ - Zilliqa foloseste o versiune optimizate de pBFT pentru a ajunge la consens legat de blocurile din blockchain. Acesta foloseste si Proof of Work pentru fiecare ~100 de blocuri pentru network sharding, unde minerii sunt impartiti in grupuri mici numite shard-uri. Fiecare shard este capabil sa proceseze tranzactii in paralel.
+
+ - Hyperledger Fabric este un environment open-source pentru blockchain, hostat de Linux Foundation si foloseste o versiune permissioned de pBFT pentru platforma.
