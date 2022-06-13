@@ -3,7 +3,7 @@
 
 In this repository you can find all homeworks, projects and resources regarding my studies at the **University of Bucharest** (**Bachelor in Computer Science**), years: 2019-2022.
 
- - Repository progress: **[########__] 90%**.
+ - Repository progress: **[#########_] 95%**.
  - All resources from this repository are public, but not intended for plagiarism (if you find any homework or project here, I do not encourage you to copy it).
  - P.S: This repository remains public from now on 😀.
 
@@ -62,6 +62,6 @@ In this repository you can find all homeworks, projects and resources regarding 
 
 ## About
 
-I hope that this repository helped you, for more details about me, you can access my website: [darius.buhai.ro](https://darius.buhai.ro).
+If this repository helped you, please star it, and share it to other collegues. Also follow me on github. For more details about me, you can access my website: [darius.buhai.ro](https://darius.buhai.ro).
 
 
