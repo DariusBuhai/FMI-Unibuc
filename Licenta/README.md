@@ -1,5 +1,8 @@
 # Instagram Analytics
 
+<br>
+<img src="https://github.com/DariusBuhai/FMI-Unibuc/blob/main/Licenta/Images/logo.png" width="30%">
+
 ## Rezumat
 Creșterea numărului de like-uri primite în postările de Instagram, cât și analiza asupra urmăritorilor activi reprezintă niște ustensile destul de importante pentru orice influencer de success.
 
@@ -38,6 +41,9 @@ Aplicația mobilă va fi realizată în Flutter și va include 3 pagini principa
 1. Pagina de prezicere a numărului de like-uri, aici utilizatorul poate încărca imaginea, ziua și ora la care dorește să o posteze cât și descrierea. Folosind modelul antrenat anterior, utilizatorul va primi o predicție asupra numărului de like-uri raportat la numărul de followeri pe care îi are.
 2. Pagina de asociere cu contul de Instagram. Aici utilizatorul își va completa username-ul de instagram și va primii analize asupra numărului de urmăritori și media like-urilor postărilor. Aceste metrici vor fi utilizate automat în predicția postărilor.
 3. Pagina de setări, unde utilizatorul își va putea administra contul și setările apli- cației.
+
+<br>
+<img src="https://github.com/DariusBuhai/FMI-Unibuc/blob/main/Licenta/Images/preview.png">
 
 ### Frontend:
 [DariusBuhai/InstagramAnalytics-Flutter](https://github.com/DariusBuhai/InstagramAnalytics-Flutter)
