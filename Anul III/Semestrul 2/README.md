@@ -1,7 +1,7 @@
 
 # Semestrul 2
 
-### Bachelor Platform:
+### Theises Platform:
  - [https://licenta-disertatie.fmi.unibuc.ro/student/suggested-teachers](https://licenta-disertatie.fmi.unibuc.ro/student/suggested-teachers)
 
 ### Educational plan
