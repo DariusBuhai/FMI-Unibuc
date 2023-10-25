@@ -1,0 +1,30 @@
+
+.data
+str:.byte 101
+.text
+main:
+# 2. se citeste un sir de caractere de dimensiune maxim 99, sa se afiseze pe ecran caracterele de pe pozitii pare
+
+la $a0, str
+li $a1, 99
+li $v0, 8# cod system pentru citire string
+syscall
+
+li $t0, 0
+lb $t1, str($t0)
+
+loop:
+li $t4, 99
+bgt $t0, $t4, exit
+beqz $t1, exit
+lb $t1, str($t0)
+li $v0, 11
+move $a0, $t1
+syscall
+addi $t0, 2
+j loop
+
+exit:
+li $v0, 10
+syscall
+

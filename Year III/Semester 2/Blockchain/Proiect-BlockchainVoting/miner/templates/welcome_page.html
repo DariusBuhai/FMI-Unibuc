@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="author" content="Darius Buhai, Savu Ioan Daniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+
+    <title>Miner #x</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/DataTables/css/datatables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<div class="container bg-light p-3" style="margin-top: 50px">
+    <div class="row">
+            <div class="col-lg-12">
+                <div class="card-body">
+                    <h4 class="card-title">Set up Miner</h4>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">If this is not the primary miner, please specify a friendly miner adress</label>
+                        <input type="adress" class="form-control" id="inputAdress" aria-describedby="adress" placeholder="Enter adress">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                        </div>
+                        <button id = "submitAdress" class="btn btn-primary">Submit Adress</button>
+                        <br>
+                        <br>
+                        <h5 class = "card-title">The miner is a primary miner</h5>
+                        <button id = "submitPrimary" class="btn btn-primary">Submit primary miner</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/static/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/DataTables/js/datatables.min.js"></script>
+<script type="text/javascript" src="/static/DataTables/js/ellipsis.js"></script>
+<script>
+    $(function () {
+        // loadTransactions();
+
+        /// Periodic update
+        // checkAndMine(3);
+        $("#submitAdress").click(function () {
+            const friendlyMiner = document.getElementById("inputAdress")
+            $.ajax({
+                url:"/set_miner",
+                type:"POST",
+                dataType: 'json',
+                data: {"friendly_miner" : friendlyMiner.value,
+                        "miner_type" : "not_primary"},
+                error : function (error){
+                    console.log(error)
+                }
+                    // window.location.reload()
+            }).then(function () {
+                window.location.reload()
+            })
+        })
+
+        $("#submitPrimary").click(function () {
+            $.ajax({
+                url:"/set_miner",
+                type:"POST",
+                dataType: 'json',
+                data: {"miner_type" : "primary"},
+                error : function (error){
+                    console.log(error)
+                }
+            }).then(function (){
+                window.location.reload()
+            })
+        })
+
+    });
+</script>
+</body>
+</html>

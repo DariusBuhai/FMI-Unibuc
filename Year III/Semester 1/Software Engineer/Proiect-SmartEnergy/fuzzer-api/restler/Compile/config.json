@@ -1,0 +1,23 @@
+{
+  "SwaggerSpecFilePath": [
+    "Q:\\Anul 3\\Inginerie Software\\SmartEnergy\\fuzzer-api\\restler\\./api_spec.yaml"
+  ],
+  "GrammarOutputDirectoryPath": "Q:\\Anul 3\\Inginerie Software\\SmartEnergy\\fuzzer-api\\restler\\Compile",
+  "CustomDictionaryFilePath": "Q:\\Anul 3\\Inginerie Software\\SmartEnergy\\fuzzer-api\\restler\\Compile\\defaultDict.json",
+  "IncludeOptionalParameters": true,
+  "UseHeaderExamples": true,
+  "UsePathExamples": false,
+  "UseQueryExamples": true,
+  "UseBodyExamples": true,
+  "UseAllExamplePayloads": false,
+  "DiscoverExamples": false,
+  "ExamplesDirectory": "",
+  "DataFuzzing": true,
+  "ReadOnlyFuzz": false,
+  "ResolveQueryDependencies": true,
+  "ResolveBodyDependencies": true,
+  "ResolveHeaderDependencies": false,
+  "UseRefreshableToken": true,
+  "AllowGetProducers": false,
+  "TrackFuzzedParameterNames": false
+}

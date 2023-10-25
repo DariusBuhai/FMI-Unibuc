@@ -1,0 +1,138 @@
+{
+  "/device": {
+    "DELETE": {
+      "Query": [
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "id"
+        }
+      ]
+    },
+    "GET": {
+      "Query": [
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "id"
+        }
+      ]
+    }
+  },
+  "/device/anomaly_check": {
+    "GET": {
+      "Query": [
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "device_id"
+        },
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "timestamp"
+        }
+      ]
+    }
+  },
+  "/device/data": {
+    "GET": {
+      "Query": [
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "id"
+        },
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "page"
+        },
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "per_page"
+        }
+      ]
+    }
+  },
+  "/device/predict_consumption": {
+    "GET": {
+      "Query": [
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "device_id"
+        },
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "end_time"
+        },
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "start_time"
+        }
+      ]
+    }
+  },
+  "/device/predict_left_running": {
+    "GET": {
+      "Query": [
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "device_id"
+        }
+      ]
+    }
+  },
+  "/user/statistics": {
+    "GET": {
+      "Query": [
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "month"
+        },
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "year"
+        }
+      ]
+    }
+  },
+  "/user/unoptimized_devices": {
+    "GET": {
+      "Query": [
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "month"
+        },
+        {
+          "producer_endpoint": "",
+          "producer_method": "",
+          "producer_resource_name": "",
+          "consumer_param": "year"
+        }
+      ]
+    }
+  }
+}

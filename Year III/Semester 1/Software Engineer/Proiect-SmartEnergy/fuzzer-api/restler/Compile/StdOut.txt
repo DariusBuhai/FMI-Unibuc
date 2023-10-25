@@ -1,0 +1,318 @@
+[2/1/2022 6:15:13 PM] Generating grammar...
+[2/1/2022 6:15:14 PM] Getting requests...
+[2/1/2022 6:15:14 PM] Getting dependencies...
+[2/1/2022 6:15:14 PM] Getting path consumers...
+[2/1/2022 6:15:14 PM] Getting query consumers...
+[2/1/2022 6:15:14 PM] Getting header consumers...
+[2/1/2022 6:15:14 PM] Getting body consumers...
+[2/1/2022 6:15:14 PM] Getting producers...
+[2/1/2022 6:15:14 PM] Done processing producers
+[2/1/2022 6:15:14 PM] Compute dependencies
+found unsupported format: YYYY-MM-DD HH:MM:SS
+[[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/devices"
+  xMsPath = None
+  method = Get }
+[[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Post }[[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Post }2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Post }
+
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/devices"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Post }
+
+[[[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Post }2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/devices"
+  xMsPath = None
+  method = Get }
+
+[[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Post }
+2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/devices"
+  xMsPath = None
+  method = Get }
+2/1/2022 6:15:14 PM[] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Get }2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/anomaly_check"
+  xMsPath = None
+  method = Get }
+
+2/1/2022 6:15:14 PM[] Second pass dependencies for request { endpoint = "/device/anomaly_check"
+  xMsPath = None
+  method = Get }
+2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Post }
+2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/anomaly_check"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Post }
+[2/1/2022 6:15:14 PM[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Post }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Post }
+[[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Post }
+2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/devices"
+  xMsPath = None
+  method = Get }
+] [[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Post }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Post }
+Done dependencies for request { endpoint = "/devices"
+  xMsPath = None
+  method = Get }
+2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/anomaly_check"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/devices"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/devices"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/anomaly_check"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Delete }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/anomaly_check"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/predict_consumption"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/predict_consumption"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Post }[
+2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/predict_consumption"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Put }[
+2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Delete }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/user/statistics"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/user/statistics"
+  xMsPath = None
+  method = Get }
+found unsupported format: YYYY-MM-DD HH:MM:SS
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/user/statistics"
+  xMsPath = None
+  method = Get }
+found unsupported format: YYYY-MM-DD HH:MM:SS
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Post }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Put }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/predict_consumption"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/predict_consumption"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Delete }
+] Done dependencies for request { endpoint = "/user/statistics"
+  xMsPath = None
+  method = Get }
+[[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Delete }2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Delete }
+
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/predict_left_running"
+  xMsPath = None
+  method = Get }[
+2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/user/unoptimized_devices"
+  xMsPath = None
+  method = Get }[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/user/statistics"
+  xMsPath = None
+  method = Get }
+
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Put }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/user/statistics"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Post }
+] Second pass dependencies for request { endpoint = "/device/predict_left_running"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/predict_consumption"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] ] Second pass dependencies for request { endpoint = "/user/unoptimized_devices"
+  xMsPath = None
+  method = Get }
+Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Put }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/predict_left_running"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Delete }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/user/unoptimized_devices"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/user/unoptimized_devices"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Get }[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/user/unoptimized_devices"
+  xMsPath = None
+  method = Get }
+
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/predict_left_running"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/user/unoptimized_devices"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/predict_left_running"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/predict_left_running"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Put }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Put }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Delete }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/user/statistics"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/anomaly_check"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/predict_consumption"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Delete }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/predict_consumption"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/user/statistics"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Put }[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/anomaly_check"
+  xMsPath = None
+  method = Get }
+
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/predict_left_running"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device"
+  xMsPath = None
+  method = Put }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/user/unoptimized_devices"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/predict_left_running"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/user/unoptimized_devices"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Second pass dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Done dependencies for request { endpoint = "/device/data"
+  xMsPath = None
+  method = Get }
+[2/1/2022 6:15:14 PM] Getting ordering constraints...
+[2/1/2022 6:15:14 PM] Dependency analysis completed.
+[2/1/2022 6:15:14 PM] Generating request primitives...
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+found unsupported format: YYYY-MM-DD HH:MM:SS
+Writing new dictionary to Q:\Anul 3\Inginerie Software\SmartEnergy\fuzzer-api\restler\Compile\dict.json
+[2/1/2022 6:15:14 PM] Generating python grammar...
+[2/1/2022 6:15:14 PM] Get requests

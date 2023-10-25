@@ -1,0 +1,31 @@
+﻿@model Lab10.Models.Article
+
+<h2>Adaugare articol</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Articles"))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.Label("Title", "Titlu Articol")
+    <br />
+    @Html.TextBox("Title", null, new { @class = "form-control" })
+
+    @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+    <br /><br />
+
+    @Html.Label("Content", "Continut Articol")
+    <br />
+    @Html.TextArea("Content", null, new { @class = "form-control" })
+    @Html.ValidationMessage("Content", null, new { @class = "text-danger" })
+    <br /><br />
+
+    <label>Selectati categoria</label>
+    @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categ, "Value", "Text"),
+    "Selectati categoria", new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <button class="btn btn-sm btn-success" type="submit">Adauga articol</button>
+
+}
+

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+    rt1:
+        image: snisioi/retele:2021
+        volumes:
+            - .:/elocal
+        tty: true
+        networks:
+            - cap2net
+        ports:
+         - "8001:8001"
+    rt2:
+        image: snisioi/retele:2021
+        volumes:
+            - .:/elocal
+        tty: true
+        networks:
+            - cap2net
+networks:
+    cap2net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.9.0.0/16 
+                  gateway: 172.9.1.1

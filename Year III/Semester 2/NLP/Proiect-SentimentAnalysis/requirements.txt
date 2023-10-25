@@ -1,0 +1,10 @@
+nltk~=3.6.5
+pandas~=1.4.0
+numpy~=1.19.5
+gensim~=3.8.2
+sklearn~=0.0
+scikit-learn~=0.21.3
+tqdm~=4.62.3
+torch~=1.10.1
+blitz-bayesian-pytorch
+keras~=2.7.0

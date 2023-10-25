@@ -1,0 +1,26 @@
+
+.data
+str:.asciiz "abcd"
+.text
+main:
+# 3. Se da un sir de caractere, sa se mofidice sirul adaugand +1 pe codul ascii al fiecarui caracter
+
+li $t0, 0
+lb $t1, str($t0)
+
+loop:
+beqz $t1, exit
+addi $t1, $t1, 1
+
+li $v0, 11
+move $a0, $t1
+syscall
+
+addi $t0, $t0, 1
+lb $t1, str($t0)
+j loop
+
+exit:
+li $v0, 10
+syscall
+

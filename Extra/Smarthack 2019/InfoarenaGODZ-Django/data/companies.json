@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Vodafone",
+    "code": "VOD"
+  },
+  {
+    "name": "Diageo",
+    "code": "DGE"
+  },
+  {
+    "name": "Tesco",
+    "code": "TSCO"
+  },
+  {
+    "name": "CRH",
+    "code": "CRH"
+  },
+  {
+    "name": "Coca-Cola",
+    "code": "CCH"
+  },
+  {
+    "name": "BP",
+    "code": "BP"
+  },
+  {
+    "name": "National Grid",
+    "code": "NG"
+  },
+  {
+    "name": "Centrica",
+    "code": "CNA"
+  },
+  {
+    "name": "Compass Group",
+    "code": "CPG"
+  },
+  {
+    "name": "Rio Tinto",
+    "code": "RIO"
+  }
+]

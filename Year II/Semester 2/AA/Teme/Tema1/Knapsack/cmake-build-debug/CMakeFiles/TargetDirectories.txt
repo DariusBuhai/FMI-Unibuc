@@ -1,0 +1,4 @@
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema1/Knapsack/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema1/Knapsack/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema1/Knapsack/cmake-build-debug/CMakeFiles/KnapsackB.dir
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema1/Knapsack/cmake-build-debug/CMakeFiles/KnapsackA.dir

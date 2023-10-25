@@ -1,0 +1,14 @@
+Restler Information: 0 : Starting task Compile...
+    DateTime=2022-02-01T16:15:12.8520872Z
+Restler Information: 0 : Launching 'dotnet "Q:\Anul 3\Inginerie Software\SmartEnergy\fuzzer-api\restler\../compiler/Restler.CompilerExe.dll" "Q:\Anul 3\Inginerie Software\SmartEnergy\fuzzer-api\restler\Compile\config.json"'
+    DateTime=2022-02-01T16:15:13.5190903Z
+Restler Information: 0 : Process execution terminated in 00:01:17.0596790 with exit code 0xE0434352: 'dotnet "Q:\Anul 3\Inginerie Software\SmartEnergy\fuzzer-api\restler\../compiler/Restler.CompilerExe.dll" "Q:\Anul 3\Inginerie Software\SmartEnergy\fuzzer-api\restler\Compile\config.json"'
+    DateTime=2022-02-01T16:16:30.5860061Z
+Restler Information: 0 : (27248) dotnet "Q:\Anul 3\Inginerie Software\SmartEnergy\fuzzer-api\restler\../compiler/Restler.CompilerExe.dll" "Q:\Anul 3\Inginerie Software\SmartEnergy\fuzzer-api\restler\Compile\config.json" exited with code: -532462766
+    DateTime=2022-02-01T16:16:30.5910405Z
+Restler Error: 0 : Compiler failed. See logs in Q:\Anul 3\Inginerie Software\SmartEnergy\fuzzer-api\restler\Compile directory for more information. 
+    DateTime=2022-02-01T16:16:30.5998330Z
+Restler Information: 0 : Task Compile failed.
+    DateTime=2022-02-01T16:16:30.6042189Z
+Restler Information: 0 : Collecting logs...
+    DateTime=2022-02-01T16:16:30.6102857Z

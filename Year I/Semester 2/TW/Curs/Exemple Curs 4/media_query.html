@@ -1,0 +1,41 @@
+<!DOCTYPE  html>  <!-- obligatoriu HTML5 --> 
+<html lang=“ro”> 
+
+<head> 
+<style>
+
+#continut {background-color: grey;} 
+#meniu{background-color : pink;}
+
+@media screen and (min-width: 768px) {
+#meniu {width: 100%;}
+#meniu li {display: inline; margin-left: 20px; margin-right: 20px;}
+#continut {width: 100%;}
+}
+
+@media screen and (max-width: 768px) {
+#meniu {width: 25%; float: left;}
+#meniu ul {list-style-type: none;}
+#meniu li {margin-top: 10px; margin-bottom: 10px;}
+#continut {width: 70%; float: right; padding-left: 5px;}
+
+}
+
+</style>
+
+<title>Titlul paginii</title>
+</head> 
+ 
+<body> 
+<div id="meniu">
+	<ul>
+		<li>HTML</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+	</ul>
+</div>
+<div id="continut">
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+</div>
+</body>
+</html>

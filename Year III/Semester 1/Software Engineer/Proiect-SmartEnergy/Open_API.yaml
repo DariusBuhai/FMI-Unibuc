@@ -1,0 +1,454 @@
+---
+openapi: 3.0.0
+info:
+  title: SmartEnergy-API
+  description: The API for the SmartEnergy IOT project
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/Smart628/SmartEnergy/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: http://127.0.0.1:5000/
+  description: Localhost
+paths:
+  /devices:
+    get:
+      tags:
+      - Devices
+      description: returns all devices registered in database
+      operationId: getDevices
+      responses:
+        "200":
+          description: All devices from database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Devices'
+  /device:
+    get:
+      tags:
+      - Device
+      description: returns a specific device
+      operationId: getDevice
+      parameters:
+      - name: id
+        in: query
+        description: Device id
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: Device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+    put:
+      tags:
+      - Device
+      description: Update device
+      operationId: updateDevice
+      parameters:
+      - name: device
+        in: body
+        description: Device
+        required: false
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Device'
+      responses:
+        "200":
+          description: Newly updated device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+    post:
+      tags:
+      - Device
+      description: Add device to database
+      operationId: addDevice
+      parameters:
+      - name: device
+        in: body
+        description: Device
+        required: false
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Device'
+      responses:
+        "200":
+          description: Newly added device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+    delete:
+      tags:
+      - Device
+      description: Delete device from database
+      operationId: deleteDevice
+      parameters:
+      - name: id
+        in: query
+        description: Device id
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: True or False if the device has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+                format: boolean
+  /device/data:
+    get:
+      tags:
+      - Device Data
+      description: Get device data
+      operationId: getDeviceData
+      parameters:
+      - name: id
+        in: query
+        description: Device id
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      - name: page
+        in: query
+        description: Page id
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      - name: per_page
+        in: query
+        description: Items per page
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: Device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceDatas'
+    post:
+      tags:
+      - Device Data
+      description: Insert device data in database
+      operationId: addDeviceData
+      parameters:
+      - name: id
+        in: query
+        description: Device id
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      - name: time
+        in: query
+        description: Time and Date
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          formate: date
+      - name: value
+        in: query
+        description: Consumption value
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: True or False if the device data has been inserted successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+                format: boolean
+  /device/predict_consumption:
+    get:
+      tags:
+      - Device Statistics
+      description: returns the predicted consumption for a device in a given timeframe
+      operationId: getDeviceConsumptionPrediction
+      parameters:
+      - name: start_time
+        in: query
+        description: the start date of the given timeframe
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+      - name: end_time
+        in: query
+        description: the end date of the given timeframe
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+      - name: device_id
+        in: query
+        description: the device id for which the prediction is made
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: The predicted consumption, in kW
+          content:
+            application/json:
+              schema:
+                type: integer
+        "400":
+          description: Bad argument
+  /device/predict_left_running:
+    get:
+      tags:
+      - Device Statistics
+      description: returns if the device is presumed left running without a real need
+      operationId: predictIsDeviceLeftRunning
+      parameters:
+      - name: device_id
+        in: query
+        description: the device id for which the prediction is made
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A boolean, True or False, if the device is left running or not
+          content:
+            application/json:
+              schema:
+                type: boolean
+        "400":
+          description: Bad argument
+  /device/anomaly_check:
+    get:
+      tags:
+      - Device Statistics
+      description: returns True if the consumption profile of a given device in an interval of 6 hours is annormal
+      operationId: getAnomalyCheck
+      parameters:
+      - name: timestamp
+        in: query
+        description: the start date of the 6 hour period for which the consumption is tested
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date
+      - name: device_id
+        in: query
+        description: the device id for which the prediction is made
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: True, if the consumption is very different from the predicted consumption, False otherwise
+          content:
+            application/json:
+              schema:
+                type: boolean
+        "403":
+          description: Invalid parameters
+  /user/statistics:
+    get:
+      tags:
+      - User
+      description: returns consumption data for all devices for a given month in a year
+      operationId: getStatistics
+      parameters:
+      - name: month
+        in: query
+        description: the month for which the statistics are wanted
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      - name: year
+        in: query
+        description: the year for which the statistics are wanted
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: a list of consumption data for each device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceStatistics'
+        "400":
+          description: Invalid request
+  /user/unoptimized_devices:
+    get:
+      tags:
+      - User
+      description: returns which devices can be optimized for a better energy consumption
+      operationId: getUnoptimizedDevices
+      parameters:
+      - name: month
+        in: query
+        description: the month for which the statistics are wanted
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      - name: year
+        in: query
+        description: the year for which the statistics are wanted
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: a list of consumption data for each device with energy reduction tips
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnoptimizedDevice'
+        "400":
+          description: Invalid request
+components:
+  schemas:
+    Devices:
+      type: array
+      items:
+        $ref: '#/components/schemas/Devices_inner'
+    Device:
+      type: object
+      properties:
+        alias:
+          type: string
+          example: FurnaceHRV [kW] mock device
+        description:
+          type: string
+          example: FurnaceHRV [kW] mock device
+        id:
+          type: integer
+          example: 1
+        settings:
+          type: object
+          example: {}
+        status:
+          type: boolean
+          example: true
+        uuid:
+          type: string
+          example: eb45cc37-daff-4df9-a312-2e829e89b3f3
+    DeviceDatas:
+      type: array
+      items:
+        $ref: '#/components/schemas/DeviceDatas_inner'
+    DeviceData:
+      type: object
+      properties:
+        device_id:
+          type: integer
+          example: 1
+        id:
+          type: integer
+          example: 1
+        time:
+          type: string
+          example: 2014-01-01 00:00:00.000000
+        value:
+          type: integer
+          example: 0.195337778
+    DeviceStatistics:
+      type: array
+      items:
+        $ref: '#/components/schemas/DeviceStatistics_inner'
+    UnoptimizedDevice:
+      type: array
+      items:
+        $ref: '#/components/schemas/UnoptimizedDevice_inner'
+    Devices_inner:
+      properties:
+        allOf:
+          $ref: '#/components/schemas/Device'
+    DeviceDatas_inner:
+      properties:
+        allOf:
+          $ref: '#/components/schemas/DeviceData'
+    DeviceStatistics_inner:
+      type: object
+      properties:
+        device name:
+          type: string
+          example: Dish washer
+        total consumption this month (kW):
+          type: integer
+          example: 12.1321
+        average daily consumption (kW):
+          type: integer
+          example: 0.413
+    UnoptimizedDevice_inner:
+      type: object
+      properties:
+        device name:
+          type: string
+          example: Dish washer
+        predicted consumption (kW):
+          type: integer
+          example: 12.1321
+        real consumption (kW):
+          type: integer
+          example: 20.413
+        tip:
+          type: string
+          example: Reduce the consumption by keeping the old habits

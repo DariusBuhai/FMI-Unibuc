@@ -1,0 +1,1 @@
+/usr/bin/g++  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Tema2.dir/main.cpp.o CMakeFiles/Tema2.dir/algorithm/mutation.cpp.o CMakeFiles/Tema2.dir/algorithm/chromosome.cpp.o  -o Tema2 

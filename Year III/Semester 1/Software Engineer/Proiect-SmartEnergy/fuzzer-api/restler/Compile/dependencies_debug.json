@@ -1,0 +1,392 @@
+[
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "id"
+        },
+        "ContainerName": "device",
+        "PathContainerName": "device",
+        "CandidateTypeNames": [
+          "device"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "id",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device",
+          "method": "Delete"
+        },
+        "ResourceReference": {
+          "QueryResource": "id"
+        },
+        "ContainerName": "device",
+        "PathContainerName": "device",
+        "CandidateTypeNames": [
+          "device"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "id",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/anomaly_check",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "device_id"
+        },
+        "ContainerName": "anomaly_check",
+        "PathContainerName": "anomaly_check",
+        "CandidateTypeNames": [
+          "anomaly__check"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "device_id",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/anomaly_check",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "timestamp"
+        },
+        "ContainerName": "anomaly_check",
+        "PathContainerName": "anomaly_check",
+        "CandidateTypeNames": [
+          "anomaly__check"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "timestamp",
+        "ProducerParameterName": "timestamp",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/data",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "id"
+        },
+        "ContainerName": "data",
+        "PathContainerName": "data",
+        "CandidateTypeNames": [
+          "datum"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "id",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/data",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "page"
+        },
+        "ContainerName": "data",
+        "PathContainerName": "data",
+        "CandidateTypeNames": [
+          "datum"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "page",
+        "ProducerParameterName": "page",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/data",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "per_page"
+        },
+        "ContainerName": "data",
+        "PathContainerName": "data",
+        "CandidateTypeNames": [
+          "datum"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "per_page",
+        "ProducerParameterName": "page",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/predict_consumption",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "device_id"
+        },
+        "ContainerName": "predict_consumption",
+        "PathContainerName": "predict_consumption",
+        "CandidateTypeNames": [
+          "predict__consumption"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "device_id",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/predict_consumption",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "start_time"
+        },
+        "ContainerName": "predict_consumption",
+        "PathContainerName": "predict_consumption",
+        "CandidateTypeNames": [
+          "predict__consumption"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "start_time",
+        "ProducerParameterName": "time",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/predict_consumption",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "end_time"
+        },
+        "ContainerName": "predict_consumption",
+        "PathContainerName": "predict_consumption",
+        "CandidateTypeNames": [
+          "predict__consumption"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "end_time",
+        "ProducerParameterName": "time",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/device/predict_left_running",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "device_id"
+        },
+        "ContainerName": "predict_left_running",
+        "PathContainerName": "predict_left_running",
+        "CandidateTypeNames": [
+          "predict__left__running"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "device_id",
+        "ProducerParameterName": "id",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/user/statistics",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "month"
+        },
+        "ContainerName": "statistics",
+        "PathContainerName": "statistics",
+        "CandidateTypeNames": [
+          "statistic"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "month",
+        "ProducerParameterName": "month",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/user/statistics",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "year"
+        },
+        "ContainerName": "statistics",
+        "PathContainerName": "statistics",
+        "CandidateTypeNames": [
+          "statistic"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "year",
+        "ProducerParameterName": "year",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/user/unoptimized_devices",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "month"
+        },
+        "ContainerName": "unoptimized_devices",
+        "PathContainerName": "unoptimized_devices",
+        "CandidateTypeNames": [
+          "unoptimized__device"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "month",
+        "ProducerParameterName": "month",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  },
+  {
+    "consumer": {
+      "id": {
+        "RequestId": {
+          "endpoint": "/user/unoptimized_devices",
+          "method": "Get"
+        },
+        "ResourceReference": {
+          "QueryResource": "year"
+        },
+        "ContainerName": "unoptimized_devices",
+        "PathContainerName": "unoptimized_devices",
+        "CandidateTypeNames": [
+          "unoptimized__device"
+        ],
+        "AccessPathParts": {
+          "path": []
+        },
+        "ResourceName": "year",
+        "ProducerParameterName": "year",
+        "IsNestedBodyResource": false,
+        "PrimitiveType": "String"
+      },
+      "parameterKind": "Query"
+    }
+  }
+]

@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/chromosome.h
+utility
+-
+vector
+-
+general.h
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/general.h
+
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/general.h
+
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/mutation.cpp
+fstream
+-
+iostream
+-
+random
+-
+utility
+-
+mutation.h
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/mutation.h
+chromosome.h
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/chromosome.h
+general.h
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/general.h
+
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/mutation.h
+iostream
+-
+vector
+-
+general.h
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/general.h
+chromosome.h
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Teme/Tema2/algorithm/chromosome.h
+

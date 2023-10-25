@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/dariusbuhai/Desktop/FMI-Unibuc/Anul II/Semestrul 2/AA/Laborator/Lab2/main.cpp
+iostream
+-
+fstream
+-
+queue
+-
+vector
+-
+unordered_set
+-
+

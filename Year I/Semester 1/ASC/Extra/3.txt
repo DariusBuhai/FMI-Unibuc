@@ -1,0 +1,96 @@
+## 3. Sa se implementeze procedura perfect(x), cu x numar natural nenul, care decide daca numarul x este perfect sau nu. (in $v0, ca .word)
+
+.data
+   yes:.asciiz "Numarul este perfect"
+   no:.asciiz "Numarul nu este perfect"
+.text
+# sum_div(x) -> $v0
+sum_div:
+   subu $sp, 4         # ()(x)
+   sw $fp, 0($sp)      # ($fp)(x) 
+   addi $fp, $sp, 4    # ($fp)$fp:(x)
+   subu $sp, 4         # ()($fp)$fp:(x)
+   sw $ra, 0($sp)      # ($ra)($fp)$fp:(x)
+   
+   lw $t0, 0($fp)      # $t0 = x
+   li $t1, 2           # $t1 = d = 2 
+   li $t3, 0           # $t3 = sum = 0
+
+   while1:
+
+      mul $t2, $t1, $t1
+      bgt $t2, $t0, endwhile1
+      rem $t2, $t0, $t1
+      addi $t1, $t1, 1
+      bne $t2, 0, while1
+      add $t3, $t3, $t1
+
+   j while1
+   endwhile1:
+
+   move $v0, $t3
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   
+   addi $sp, 8
+jr $ra
+
+# perfect(x) -> $v0
+perfect:
+   subu $sp, 4
+   sw $fp, 0($sp)
+   addi $fp, $sp, 4
+   subu $sp, 4
+   sw $ra, 0($sp)
+   subu $sp, 4
+   sw $s0, 0($sp)
+   
+   lw $s0, 0($fp)
+   subu $sp, 4
+   sw $s0, 0($sp)
+   
+   jal sum_div
+
+   addi $sp, 4
+
+   move $t0, $v0
+   
+   li $v0, 1
+
+   beq $t0, $s0, end_perfect
+
+   li $v0, 0
+
+end_perfect:
+
+   lw $s0, -12($fp)
+   lw $ra, -8($fp)
+   lw $fp, -4($fp)
+   
+   addi $sp, 12
+
+jr $ra
+
+main:
+
+   #################################################
+   #					           #
+   # Created by Darius Buhai @ all rights reserved #
+   #					           #
+   #################################################
+
+   li $t0, 7
+   subu $sp, 4
+   sw $t0, 0($sp)
+
+   jal perfect
+
+   addi $sp, 4
+
+   la $a0, no
+
+   beqz $v0, NO
+   la $a0, yes
+   NO:
+   li $v0, 4
+   syscall
